@@ -1,8 +1,8 @@
-//interfaz para mostrar data de la empresa
+//interfaz de usuario para CRUD de clientes
 import Layout from "../../components/Layout"
 
 export default function Home() {
     return <Layout>
-        Dashboard
+        clientes
     </Layout>
 }

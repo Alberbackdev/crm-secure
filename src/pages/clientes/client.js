@@ -8,6 +8,6 @@ export default function Home() {
 
     return(
     <Layout>
-        <Link className="bg-blue-900 text-white rounded-md py-1 px-2" href={'/clientes/newclient'}> Add New Client</Link>
+        <Link className="bg-blue-900 text-white rounded-md py-1 px-2" href={'/clientes/crear'}> Add New Client</Link>
     </Layout>)
 }

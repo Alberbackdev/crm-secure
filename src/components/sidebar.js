@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export default function Nav() {
-    const inactiveLink ='flex gap-1 p-1'
-    const activeLink = inactiveLink+' bg-white text-blue-900 rounded-lg'
+    const inactiveLink ='flex gap-1 p-1';
+    const activeLink = inactiveLink+' bg-white text-blue-900 rounded-lg';
     return (
         <aside className="text-white p-4">
             <Link href={'/'} className="flex gap-1 mb-4">

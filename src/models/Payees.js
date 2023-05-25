@@ -1,11 +1,18 @@
-const { default: mongoose, mongo } = require("mongoose");
+const { Schema, model, models } = require("mongoose");
 
 //Beneficiarios del cliente
-const payeesSchema = new mongoose.Schema({
-    name_payee: String,
-    cidentified_payee: String,
-    dateofbirth: String,
-    age_payee: String,
-    create_at: Date.now,
-    update_at: Date.now
+const payeesSchema = new Schema({
+    name_payee: { type: String, require: true },
+    cidentified_payee: { type: String, require: true },
+    dateofbirth: { type: String, require: true },
+    age_payee: { type: String, require: true },
+    client: [{
+        type: Schema.Types.ObjectId,
+        ref: "Client" 
+    }]
+}, {
+    timestamps: true,
+    versionKey: false
 })
+
+export default models.Payees || model('Payees', payeesSchema);

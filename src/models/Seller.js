@@ -1,11 +1,18 @@
-const { default: mongoose, mongo } = require("mongoose");
+const { Schema, model, models } = require("mongoose");
 
 //Vendedores/Cobradores
-const sellerSchema = new mongoose.Schema({
-    name_seller: String,
-    cidentified_seller: String,
-    role: String,
-    phone_seller: String,
-    create_at: Date.now,
-    update_at: Date.now
+const sellerSchema = new Schema({
+    name_seller: { type: String, require: true },
+    cidentified_seller: { type: String, require: true },
+    role: { type: String, require: true },
+    phone_seller: { type: String, require: true },
+    clients:[{
+        type: Schema.Types.ObjectId,
+        ref: "Client"
+    }]
+}, {
+    timestamps: true,
+    versionKey: false
 })
+
+export default models.Seller || model('Seller', sellerSchema);

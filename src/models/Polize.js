@@ -1,12 +1,19 @@
-const { default: mongoose, mongo } = require("mongoose");
+const { Schema, model, models } = require("mongoose");
 
 //data polize-secure
 
-const polizeSchema = new mongoose.Schema({
-    type_polize: String,
-    seller: String,
-    dateofcontract: Date.now,
-    city_contract: String,
-    create_at: Date.now,
-    update_at: Date.now
+const polizeSchema = new Schema({
+    type_polize: { type: String, require: true },
+    seller: { type: String, require: true },
+    dateofcontract: { type: String, require: true },
+    city_contract: { type: String, require: true },
+    client:[{
+        type: Schema.Types.ObjectId,
+        ref: "Client"
+    }]
+}, {
+    timestamps: true,
+    versionKey: false
 })
+
+export default models.Polize || model('Polize', polizeSchema);

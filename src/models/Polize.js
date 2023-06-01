@@ -7,9 +7,13 @@ const polizeSchema = new Schema({
     seller: { type: String, require: true },
     dateofcontract: { type: String, require: true },
     city_contract: { type: String, require: true },
-    client:[{
+    clientId:[{
         type: Schema.Types.ObjectId,
-        ref: "Client"
+        ref: "Client._id"
+    }],
+    payees:[{
+        type: Schema.Types.ObjectId,
+        ref: "Payees"
     }]
 }, {
     timestamps: true,

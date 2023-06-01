@@ -9,10 +9,10 @@ const clientSchema = new Schema({
     addres: { type: String, require: true },
     phone: { type: String, require: true },
     dateofbirth: { type: String, require: true },
-    polize:{
+    polize:[{
         type: Schema.Types.ObjectId,
         ref: "Polize"
-    },
+    }],
     payees: [{
         type: Schema.Types.ObjectId,
         ref: "Payees"
@@ -21,10 +21,10 @@ const clientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Datapay"
     }],
-    seller:{
+    seller:[{
         type: Schema.Types.ObjectId,
         ref: "Seller"
-    }
+    }]
 }, {
     timestamps: true,
     versionKey: false

@@ -14,7 +14,7 @@ export const FormClientData = () => {
   async function createClient(ev) {
     ev.preventDefault();
     const data = { name, lastname, cidentified, addres, phone, dateofbirth };
-    await axios.post("../api/clientes", data);
+    await axios.post("../api/clientes/clientes", data);
   }
 
   return (

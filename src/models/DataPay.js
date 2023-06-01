@@ -11,7 +11,7 @@ const paySchema = new Schema({
     full_payment_dollar: { type: String, require: true },
     client:{
         type: Schema.Types.ObjectId,
-        ref: "Client"
+        ref: "Clients"
     }
 }, {
     timestamps: true,

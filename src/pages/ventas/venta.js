@@ -1,5 +1,7 @@
+import Layout from "../../components/LayoutFolder/Layout"
+
 //registar /actualizar venta
-import Layout from "../../components/Layout"
+
 
 export default function Home() {
     return <Layout>

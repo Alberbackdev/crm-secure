@@ -1,6 +1,7 @@
-import Layout from "../../components/Layout";
-import { FormPolize } from "../../components/FormPolize";
-import { FormPayees } from "../../components/FormPayees";
+import { FormPayees } from "../../components/FormPayees/FormPayees"
+import { FormPolize } from "../../components/FormPolize/FormPolize"
+import Layout from "../../components/LayoutFolder/Layout"
+
 
 
 //This is form for new client

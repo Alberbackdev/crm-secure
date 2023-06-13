@@ -1,5 +1,8 @@
-import Layout from "../../components/Layout";
-import { Setting} from "../../components/settings";
+
+import Layout from "../../components/LayoutFolder/Layout"
+import { Setting } from "../../components/SettingsFolder/Settings"
+
+
 
 export const profile = () => {
     return(

@@ -1,6 +1,5 @@
-import React, { useState} from "react";
-import Layout from "../../components/Layout";
-import { FormClientData } from "../../components/FormClientData";
+import { FormClientData } from "../../components/FormClientData/FormClientData";
+import Layout from "../../components/LayoutFolder/Layout";
 
 
 //This is form for new client

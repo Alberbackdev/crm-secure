@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
         case 'POST':
             try {
-                const newClient = new ClientData(body, client);
+                const newClient = new ClientData(body, ClientData);
     
                 const saveClient = await newClient.save()
                 return res.status(201).json(saveClient);

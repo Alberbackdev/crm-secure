@@ -1,6 +1,6 @@
 // plantilla dentro del cuadro blanco
 import { useSession, signIn, signOut } from "next-auth/react"
-import Nav from "./sidebar"
+import Nav from "../Sidebar/Sidebar"
 
 //children es el nombre de la pagina que esta accediedo
 export default function Layout({children}) {

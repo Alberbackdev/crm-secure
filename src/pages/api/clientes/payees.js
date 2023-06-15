@@ -1,29 +1,34 @@
 import clientPromise from "../../../lib/mongodb";
 import { mongooseConnect } from "../../../lib/mongoose";
-import ClientData from "../../../models/ClientData";
+import Payees from "../../../models/Payees";
+
+
 
 mongooseConnect(clientPromise);
 
-//crud clientes api
 export default async function handler(req, res) {
 
-    const { method, body } = req
+    const { method, body, clientId } = req
+    console.log(req)
+
+    const payee = await Payees.find(clientId);
 
     switch (method) {
         case 'GET':
             try {
-                const client = await ClientData.find({});
-                return res.status(200).json(client);
+                const Payees = await Payees.find();
+
+                return res.status(200).json(Payees);
             } catch (error) {
                 return res.status(500).json({ error: error.message })
             }
 
         case 'POST':
             try {
-                const newClient = new ClientData(body, ClientData);
-    
-                const saveClient = await newClient.save()
-                return res.status(201).json(saveClient);
+                const newPayees = new Payees(body);
+
+                const savePayees = await newPayees.save()
+                return res.status(201).json(savePayees);
             } catch (error) {
                 return res.status(500).json({ error: error.message })
             }

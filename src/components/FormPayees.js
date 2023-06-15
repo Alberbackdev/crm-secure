@@ -1,35 +1,31 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useForm } from "../utils/useForm";
+import { createClientAction } from "../services/clienteServices";
 
 //This is form for new client
 
 export const FormPayees = () => {
-    const [name_payee, setName_payee] = useState("");
-    const [cidentified_payee, setCidentified_payee] = useState("");
-    const [dateofbirth, setDateofbirth] = useState("");
-    const [age_payee, setAge_payee] = useState("");
-
-    async function createPayees(ev) {
-        ev.preventDefault();
-        const data = { name_payee, cidentified_payee, dateofbirth, age_payee };
-        await axios.post("../api/clientes/clientes", data);
-    }
+    //llama a la funcion para actualizar el estado del input
+    const { values, handleInputChange, reset } = useForm({ name_payee: "", cidentified_payee: "", age_payee: "", dateofbirth: "" })
+    //actua como actualizador y reseteo de forms
+    const sendPayees = (ev) => createClientAction(ev, values, reset)
 
     return (
         <div className="max-w-screen-md border-b border-gray-900/10 pb-12">
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6">
-                <form onSubmit={createPayees} className="sm:col-span-8">
+                <form onSubmit={sendPayees} className="sm:col-span-8">
                     <h1 className="text-base font-semibold leading-7 text-gray-900">Beneficiarios</h1>
                     
                     <div className="sm:col-span-3">
                         <label>Nombre y Apellido</label>
                         <div className="mt-2">
                             <input
+                                name="name_payee"
                                 type="text"
                                 placeholder="fullName"
                                 className="block w-full rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                value={name_payee}
-                                onChange={(ev) => setName_payee(ev.target.value)}
+                                value={values.name_payee}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -37,32 +33,35 @@ export const FormPayees = () => {
                     <div className="sm:col-span-2 sm:col-start-1">
                         <label>Cedula de Identidad</label>
                         <input
+                            name="cidentified_payee"
                             type="text"
-                            placeholder="V- 12345678"
+                            placeholder="V-12345678"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            value={cidentified_payee}
-                            onChange={(ev) => setCidentified_payee(ev.target.value)}
+                            value={values.cidentified_payee}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="sm:col-span-2">
                         <label>Edad</label>
                         <input
+                            name="age_payee"
                             type="number"
                             placeholder="18"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            value={age_payee}
-                            onChange={(ev) => setAge_payee(ev.target.value)}
+                            value={values.age_payee}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="col-span-full">
                         <label>Fecha de Nacimiento</label>
                         <input
+                            name="dateofbirth"
                             type="date"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            value={dateofbirth}
-                            onChange={(ev) => setDateofbirth(ev.target.value)}
+                            value={values.dateofbirth}
+                            onChange={handleInputChange}
                         />
                     </div>
 

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "../utils/useForm";
 import { createClientAction } from "../services/clienteServices";
+import Link from "next/link";
 
 //This is form for new client
 
@@ -85,10 +86,11 @@ export const FormClientData = () => {
                             onChange={handleInputChange}
                         />
                     </div>
-
-                    <button type="submit" className="btn-primary">
-                        Siguiente
-                    </button>
+                    <Link href={"/clientes/poliza"}>
+                        <button type="submit" className="btn-primary">
+                            Siguiente
+                        </button>
+                    </Link>
                 </form>
             </div>
         </div>

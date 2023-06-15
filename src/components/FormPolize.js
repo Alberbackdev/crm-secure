@@ -1,41 +1,43 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useForm } from "../utils/useForm";
+import { createPolizeAction } from "../services/polizaServices";
+import Select from "react-select";
+import { CityOptions, TypePolizeOptions, VendedoresOptions } from "../utils/optionsForm";
+
+
 
 //This is form for new client
 
 export const FormPolize = () => {
-    const [type_polize, setType_polize] = useState("");
-    const [seller, setSeller] = useState("");
-    const [dateofcontract, setDateofcontract] = useState("");
-    const [city_contract, setCity_contract] = useState("");
+    //llama a la funcion para actualizar el estado del input
+    const { values, handleInputChange, reset } = useForm({ type_polize: "", seller: "", dateofcontract: "", city_contract: "" })
+    //actua como actualizador y reseteo de forms
+    const sendPolize = (ev) => createPolizeAction(ev, values, reset)
 
-
-    async function createPolize(ev) {
-        ev.preventDefault();
-        const data = { type_polize, seller, dateofcontract, city_contract};
-        await axios.post("../api/clientes/polize", data);
-    }
-
+    
+    const tiposLabel = TypePolizeOptions.map((l, i) => <option value={l.value} selected key={i} >{l.label}</option>)
+    const vendedorLabel = VendedoresOptions.map((l, i) => <option value={l.value} selected key={i} >{l.label}</option>)
+    const cityContractLabel = CityOptions.map((l, i) => <option value={l.value} selected key={i} >{l.label}</option>)
 
     return (
         <div className="max-w-screen-md border-b border-gray-900/10 pb-12">
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6">
-                <form onSubmit={createPolize} className="sm:col-span-8">
+                <form onSubmit={sendPolize} className="sm:col-span-8">
                     <h1 className="text-base font-semibold leading-7 text-gray-900">Ingrese los Datos de la Poliza</h1>
                     
                     <div className="col-span-full">
                         <label>Tipo de Plan</label>
                         <div class="mt-2">
-                            <select 
-                                id="type_polize" 
+                            <select
                                 name="type_polize" 
                                 autocomplete="type_polize" 
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                value={type_polize}
-                                onChange={(ev) => setType_polize(ev.target.value)}>
-                                <option value='Basico'>Basico</option>
-                                <option>Especial</option>
-                            </select>
+                                value={values.type_polize}
+                                onChange={handleInputChange}>
+                                    {
+                                        tiposLabel
+                                    }
+                                </select>
                         </div>
                     </div>
 
@@ -43,40 +45,46 @@ export const FormPolize = () => {
                         <label>Nombre del Cobrador/Vendedor</label>
                         <div class="mt-2">
                             <select
-                                id="seller"
                                 name="seller"
                                 autocomplete="seller"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                value={seller}
-                                onChange={(ev) => setSeller(ev.target.value)}>
-                                <option>Basico</option>
-                                <option>Especial</option>
+                                value={values.seller}
+                                onChange={handleInputChange}>
+                                {
+                                    vendedorLabel
+                                }
+                                
                             </select>
                         </div>
                     </div>
                     <div className="sm:col-span-3">
                         <label>Fecha de Contrato</label>
                         <input
+                            name="dateofcontract"
                             type="date"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            value={dateofcontract}
-                            onChange={(ev) => setDateofcontract(ev.target.value)}
+                            value={values.dateofcontract}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="col-span-full">
                         <label>Ciudad</label>
-                        <input
+                        <select
+                            name="city_contract"
                             type="text"
                             placeholder="Av. 6 entre calles 9 y 10 al aldo de x por y carea"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            value={city_contract}
-                            onChange={(ev) => setCity_contract(ev.target.value)}
-                        />
+                            value={values.city_contract}
+                            onChange={handleInputChange}>
+                                {
+                                    cityContractLabel
+                                }
+                            </select>
                     </div>
 
                     <button type="submit" className="btn-primary">
-                        Siguiente
+                        Guardar
                     </button>
                 </form>
             </div>

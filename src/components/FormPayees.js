@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "../utils/useForm";
-import { createClientAction } from "../services/clienteServices";
+import { createPayeeAction } from "../services/payeesServices";
 
 //This is form for new client
 
@@ -8,7 +8,7 @@ export const FormPayees = () => {
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({ name_payee: "", cidentified_payee: "", age_payee: "", dateofbirth: "" })
     //actua como actualizador y reseteo de forms
-    const sendPayees = (ev) => createClientAction(ev, values, reset)
+    const sendPayees = (ev) => createPayeeAction(ev, values, reset)
 
     return (
         <div className="max-w-screen-md border-b border-gray-900/10 pb-12">
@@ -22,7 +22,8 @@ export const FormPayees = () => {
                             <input
                                 name="name_payee"
                                 type="text"
-                                placeholder="fullName"
+                                placeholder="Pablo Ramirez"
+                                required
                                 className="block w-full rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={values.name_payee}
                                 onChange={handleInputChange}
@@ -36,6 +37,7 @@ export const FormPayees = () => {
                             name="cidentified_payee"
                             type="text"
                             placeholder="V-12345678"
+                            required
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.cidentified_payee}
                             onChange={handleInputChange}
@@ -48,6 +50,7 @@ export const FormPayees = () => {
                             name="age_payee"
                             type="number"
                             placeholder="18"
+                            required
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.age_payee}
                             onChange={handleInputChange}
@@ -59,6 +62,7 @@ export const FormPayees = () => {
                         <input
                             name="dateofbirth"
                             type="date"
+                            required
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.dateofbirth}
                             onChange={handleInputChange}
@@ -66,7 +70,7 @@ export const FormPayees = () => {
                     </div>
 
                     <button type="submit" className="btn-primary">
-                        Siguiente
+                        Agregar
                     </button>
                 </form>
             </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Layout from "../../components/Layout";
 import { FormPolize } from "../../components/FormPolize";
 import { FormPayees } from "../../components/FormPayees";
@@ -9,8 +10,17 @@ export default function crear() {
 
     return (
         <Layout>
-            <FormPolize />
-            <FormPayees />
+            <div className="block absolute w-full rounded-md py-1.5 sm:max-w-xs sm:text-sm sm:leading-6">
+                <FormPolize />
+                <Link href={"/clientes/pagos"}>
+                    <button type="submit" className="btn-primary">
+                        Guardar y Continuar
+                    </button>
+                </Link>
+            </div> 
+            <div className="block absolute ml-96 w-full rounded-md py-1.5 sm:max-w-xs sm:text-sm sm:leading-6">
+                <FormPayees />
+            </div>
         </Layout>
     )
 }

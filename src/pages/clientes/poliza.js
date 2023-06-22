@@ -12,7 +12,7 @@ export default function crear() {
         <Layout>
             <div className="block absolute w-full rounded-md py-1.5 sm:max-w-xs sm:text-sm sm:leading-6">
                 <FormPolize />
-                <Link href={"/clientes/pagos"}>
+                <Link href={"/clientes/pago"}>
                     <button type="submit" className="btn-primary">
                         Guardar y Continuar
                     </button>

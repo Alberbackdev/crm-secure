@@ -6,7 +6,7 @@ import { FormPago } from "../../components/FormPago";
 
 //This is form for new client
 
-export default function crear() {
+export default function pago() {
 
     return (
         <Layout>

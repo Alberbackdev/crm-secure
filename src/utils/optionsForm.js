@@ -15,3 +15,10 @@ export const VendedoresOptions = [
     { label: 'JESUS DEL CARMEN ARAUJO CARRILLO', value: 'JESUS DEL CARMEN ARAUJO CARRILLO' },
     { label: 'JOSE LEONARDO JIMENEZ RAMIREZ', value: 'JOSE LEONARDO JIMENEZ RAMIREZ' }
 ]
+
+export const FormatoPagoOptions = [
+    { label: "Transferencia", value:"transferencia"},
+    { label: "Pago Movil", value:"pago_movil"},
+    { label: "Efectivo",value:"efectivo"},
+    { label:'Punto de Venta',value:'puntodeventa'}
+]

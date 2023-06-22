@@ -2,6 +2,7 @@
 import {useSession} from "next-auth/react"
 import Image from 'next/image'
 import style from './header.module.css';
+import { namePageHelper } from "../../utils/namePage"
 
 
 function Header() {
@@ -12,7 +13,7 @@ function Header() {
   return (
     <div className={style.header}>
         <div className={style.headerNamePage}>
-        <h2 className={style.namePage}>{namePage ? 'Clientes' : 'Clientes'}</h2>
+        <h2 className={style.namePage}>{namePageHelper()}</h2>
         {pathname.length > 1 && <p className={style.pathPage}>{pathname}</p>}
         </div>
         <div className={style.contentAvatar}>

@@ -1,4 +1,4 @@
-import { FormPayees } from "../../components/FormPayees/FormPayees"
+import Beneficiarios from "../../components/Beneficiarios/Beneficiarios"
 import { FormPolize } from "../../components/FormPolize/FormPolize"
 import Layout from "../../components/LayoutFolder/Layout"
 
@@ -10,8 +10,11 @@ export default function crear() {
 
     return (
         <Layout>
-            <FormPolize />
-            <FormPayees />
+            <div style={{display: "flex", width: "100%", marginTop: '3rem', justifyContent: 'space-around'}}> 
+                <FormPolize />
+                <Beneficiarios />
+            </div>
+            {/* <FormPayees />  MODAAAL */}
         </Layout>
     )
 }

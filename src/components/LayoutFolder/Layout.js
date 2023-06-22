@@ -1,11 +1,12 @@
 // plantilla dentro del cuadro blanco
 import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from "../Sidebar/Sidebar"
+import style from './layout.module.css'
+import Header from "../Header/Header"
 
 //children es el nombre de la pagina que esta accediedo
 export default function Layout({children}) {
   const { data: session } = useSession()
-  const WhiteBackgd = "bg-white flex-grow p-2 px-4 rounded-lg w-screen";
   if (!session) {
     return (
       <div className="bg-blue-900 w-screen h-screen flex items-center">
@@ -21,10 +22,13 @@ export default function Layout({children}) {
   //if a user is logged, show control panel admin
   //children is name of page
   return (
-    <div className = "bg-blue-900 w-screen h-screen flex">
-    <Nav />
-      <div className={WhiteBackgd}>
-        <p>{children}</p>
+    <div className={style.container}>      
+      <div className={style.contentPlantilla}> {/* Sidebar */} 
+        <Nav />
+      </div>
+      <div className={style.children}> {/* Header y Children */}
+        <Header />
+        {children}
       </div>
     </div>
   )

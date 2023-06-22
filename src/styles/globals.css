@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #F1F5F8;
+}
+
 input{
     @apply border-2 border-gray-300 px-1 p-1 w-full;
     @apply mb-2;

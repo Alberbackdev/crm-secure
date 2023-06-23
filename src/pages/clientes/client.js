@@ -1,7 +1,8 @@
 //interfaz de usuario para CRUD de clientes
-import { Card } from "/src/components/Card"
-import Layout from "/src/components/Layout"
+
 import Link from "next/link"
+import Layout from "../../components/LayoutFolder/Layout"
+import { Card } from "../../components/Card/Card"
 
 //show form for add new client
 

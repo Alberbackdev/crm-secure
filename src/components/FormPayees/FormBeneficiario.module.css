@@ -1,0 +1,66 @@
+.Backdrop {
+    background-color: #000000bd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 574px;
+    height: 505px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 2rem;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 23px;
+}
+
+.field {
+    width: 100%;
+    outline: none;
+}
+
+.inputForm {
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #404D61;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.buttons {
+    margin-top: .8rem;
+    display: flex; 
+    justify-content: space-between;
+    font-weight: 600;
+    width: 100%;
+}
+
+.buttons > button {
+    width: 195px;
+    padding: 13px 20px;
+    border-radius: 25px;
+}
+
+.buttons > button:nth-child(1) {
+    border: 1px solid #5A81FA;
+    background: #CEDEFF;
+    color: #000;
+}

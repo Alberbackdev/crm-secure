@@ -12,7 +12,7 @@ export default function Layout({children}) {
       <div className="bg-blue-900 w-screen h-screen m-auto flex items-center">
         <div className="bg-white text-center">
           <p> Not signed in</p> <br />
-          <button onClick={() => signIn('github')}>Sign in</button>
+          <button onClick={() => signIn()}>Sign in</button>
 
         </div>
       </div>

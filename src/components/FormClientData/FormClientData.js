@@ -9,14 +9,9 @@ import style from './formClientData.module.css'
 export const FormClientData = () => {
     const router = useRouter()
     //llama a la funcion para actualizar el estado del input
-   const { values, handleInputChange, reset } = useForm({ name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "" })
-         
-    const sendClient = async (ev) => { //actua como actualizador y reseteo de forms   
-        ev.preventDefault()
-        await createClientAction(ev, values, reset);
-        router.push('/clientes/poliza');
-    }
-    
+    const { values, handleInputChange, reset } = useForm({ name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "" })
+    //actua como actualizador y reseteo de forms
+    const sendClient = (ev) => createClientAction(ev, values, reset)
 
     return (
         <div className={style.container}>
@@ -95,7 +90,7 @@ export const FormClientData = () => {
                         <button type="button" className="btn-primary" onClick={() => reset()}>
                             Cancelar
                         </button>
-                        <button type="submit" className="btn-primary">
+                    <button type="submit" className="btn-primary" onClick={() => router.push('/clientes/poliza')}>
                             Siguiente
                         </button>
                     </div>

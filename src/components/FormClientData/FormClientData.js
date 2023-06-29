@@ -13,7 +13,7 @@ export const FormClientData = () => {
          
     const sendClient = async (ev) => { //actua como actualizador y reseteo de forms   
         ev.preventDefault()
-        await createClientAction(ev, values, reset);
+        // await createClientAction(ev, values, reset);
         router.push('/clientes/poliza');
     }
     

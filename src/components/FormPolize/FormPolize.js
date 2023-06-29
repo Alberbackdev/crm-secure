@@ -16,7 +16,8 @@ export const FormPolize = () => {
     async function createPolize(ev) {
         ev.preventDefault();
         const data = { type_polize, seller, dateofcontract, city_contract};
-        await axios.post("../api/clientes/polize", data);
+        // await axios.post("../api/clientes/polize", data);
+        router.push('/clientes/pagos');
     }
 
 

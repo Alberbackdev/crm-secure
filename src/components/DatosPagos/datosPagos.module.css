@@ -1,0 +1,41 @@
+.container {
+    width: 570px;
+    height: 505px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0px 41px;
+}
+
+.formContent{
+    margin-top: 23px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.formChild {
+    display: flex;
+    flex-direction: column;
+}
+
+.formChild > label {
+    color: #404D61;
+    font-weight: 500;
+}
+
+.inputForm{
+    margin: 10px 0;
+    border: 1px solid #404D61;
+    border-radius: 20px;
+    width: 240px;
+    padding: 10px;
+}

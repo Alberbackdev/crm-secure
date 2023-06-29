@@ -19,6 +19,11 @@
     outline: none;
 }
 
+.field > label {
+    color: #404D61;
+    font-weight: 500;
+}
+
 .inputForm {
     margin: 10px 0;
     width: 100%;

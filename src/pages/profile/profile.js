@@ -5,7 +5,7 @@ import Layout from "../../components/LayoutFolder/Layout"
 
 
 export default function Profile() {
-    const { data: session, status } = useSession()
+    const { data: session } = useSession()
     return (<Layout>
         Perfil
         <div>

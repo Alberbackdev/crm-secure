@@ -1,0 +1,86 @@
+.container {
+    height: 215px;
+}
+
+.title {
+    color: #404D61;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.boxes {
+    height: 150px;
+    width: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 12px;
+}
+
+.boxes::-webkit-scrollbar-thumb {
+    background: #2B308B;
+    border-radius: 5px;
+}
+
+.boxes::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa; 
+    border-radius: 5px;
+}
+
+.cardMensualidad {
+    width: 155px;
+    height: 100px;
+    border-radius: 20px;
+    border: 2px solid #DADADA;
+    padding: 3px 8px;
+    color: #404D61;
+}
+
+.cardMensualidad_top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardMensualidad_top > input{
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+}
+
+.cardMensualidad_mes > h4 {    
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cardMensualidad_mes > p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cardMensualidad > input {
+    border: 2px solid #9fb2eb;
+    color: #000;
+    outline: none;
+    margin-top: 5px;
+}
+
+.buttonBack {
+    width: 170px;
+    height: 40px;
+    padding: 13px 20px;
+    border-radius: 25px;
+    border: none;
+    border: 1px solid #5A81FA;
+    background: #CEDEFF;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+
+   

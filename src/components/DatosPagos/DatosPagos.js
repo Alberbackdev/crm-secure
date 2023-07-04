@@ -1,11 +1,13 @@
+"use client"
+
+import Mensualidad from './Mensualidad/Mensualidad'
 import style from './datosPagos.module.css';
 
 export default function DatosPagos() {
   return (
-    <div className={style.container}>
+    <div className={style.containerTopData}>
             <h1 className={style.title}>Ingrese los Datos del Pago</h1>
-
-           <form className={style.formContent}>                    
+            <form className={style.formContent}>       
                 <div className={style.formGroup}>
                     <div className={style.formChild}>
                         <label htmlFor='formatoPago'>Formato de pago</label>
@@ -33,7 +35,7 @@ export default function DatosPagos() {
                     </div>                  
                 </div>
                 <div className={style.formGroup}>
-                <div className={style.formChild}>
+                    <div className={style.formChild}>
                         <label htmlFor='fechaPago'>Fecha de pago</label>
                         <input 
                             type='date'
@@ -57,7 +59,7 @@ export default function DatosPagos() {
                         />                                                         
                     </div>
                 </div>    
-            </form>        
-    </div>        
+            </form>
+        </div>       
   )
 }

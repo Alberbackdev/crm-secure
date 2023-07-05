@@ -1,4 +1,4 @@
-'use client'
+
 import { useRouter } from 'next/router'
 import style from './formPolize.module.css'
 import { useForm } from "../../utils/useForm";
@@ -14,20 +14,21 @@ export const FormPolize = () => {
     //actua como actualizador y reseteo de forms
     const sendPolize = (ev) => createPolizeAction(ev, values, reset)
 
+    const validateNext = () => router.push('/clientes/pago')
+
 
     const tiposLabel = TypePolizeOptions.map((l, i) => <option value={l.value} key={i}>{l.label}</option>)
     const vendedorLabel = VendedoresOptions.map((l, i) => <option value={l.value} key={i} >{l.label}</option>)
 
     return (
         <div className={style.container}>
+            <h1 className={style.title}>Ingrese los Datos de la Poliza</h1>
             <form onSubmit={sendPolize} className={style.formContent}>
-                <h1 className={style.title}>Ingrese los Datos de la Poliza</h1>
                 
                 <div className={style.field}>
                     <label>Tipo de Plan</label>
                     <select
                         name="type_polize"
-                        autocomplete="type_polize"
                         required
                         className={style.inputForm}
                         value={values.type_polize}
@@ -81,7 +82,7 @@ export const FormPolize = () => {
                     <button type="button" className="btn-primary" onClick={() => router.push('/clientes/crear')}>
                         Atras
                     </button>
-                    <button type="submit" className="btn-primary">
+                    <button type="submit" className="btn-primary" onClick={validateNext}>
                         Siguiente
                     </button>
                 </div>

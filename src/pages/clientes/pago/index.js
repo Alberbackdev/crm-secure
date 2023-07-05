@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Layout from "../../components/LayoutFolder/Layout";
-import { FormPago } from "../../components/FormPago";
+import Layout from "../../../components/LayoutFolder/Layout";
+import { FormPago } from "../../../components/FormPago";
 
 
 

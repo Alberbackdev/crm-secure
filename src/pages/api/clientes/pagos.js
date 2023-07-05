@@ -10,7 +10,7 @@ mongooseConnect(clientPromise);
 export default async function handler(req, res) {
 
     const { method, body } = req
-    console.log(req)
+    console.log(body)
 
     switch (method) {
         case 'GET':

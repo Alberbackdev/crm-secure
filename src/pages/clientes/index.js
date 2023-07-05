@@ -17,7 +17,6 @@ export default function Home({ clientes }) {
             > 
                 Add New Client
             </Link>
-            <Card />
         </Layout>
         )
 }

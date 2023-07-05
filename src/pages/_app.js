@@ -6,7 +6,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <SessionProvider session={session} basePath='/crm/api/auth'>
+    <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
   );

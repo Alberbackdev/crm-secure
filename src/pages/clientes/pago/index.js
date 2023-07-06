@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import Layout from "../../../components/LayoutFolder/Layout";
-import { FormPago } from "../../../components/FormPago";
+
+import ContainerSelectDatosPagos from "../../../components/ContainerSelectDatosPagos/ContainerSelectDatosPagos"
+import CardRightDatosPagos from "../../../components/CardRightDatosPagos/CardRightDatosPagos"
+import Layout from "../../../components/LayoutFolder/Layout"
 
 
-
-
-//This is form for new client
-
-export default function pago() {
-
+function pagos() {
     return (
         <Layout>
-            <FormPago />
+            <div style={{ display: "flex", width: "100%", marginTop: '3rem', justifyContent: 'space-evenly' }}>
+                <ContainerSelectDatosPagos />
+                <CardRightDatosPagos />
+            </div>
         </Layout>
     )
 }
+
+
+
+export default pagos

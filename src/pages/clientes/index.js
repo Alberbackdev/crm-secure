@@ -6,9 +6,7 @@ import { Card } from "../../components/Card/Card"
 
 //show form for add new client
 
-export default function Home({ clientes }) {
-
-    console.log(clientes)
+export default function Home() {
     return (
         <Layout>
             <Link 
@@ -21,7 +19,7 @@ export default function Home({ clientes }) {
         )
 }
 
-export const getServerSideProps = async (ctx) => {
+/* export const getServerSideProps = async (ctx) => {
     const res = await fetch('http://localhost:3000/api/clientes/clientes')
     const clientes = await res.json()
 
@@ -30,4 +28,4 @@ export const getServerSideProps = async (ctx) => {
             clientes,
         }
     }
-}
+} */

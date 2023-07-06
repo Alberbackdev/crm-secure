@@ -14,19 +14,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const polize = await Polize.find();
-                /* const resultado = await Polize.aggregate(
-                    {
-                        $lookup:
-                        {
-                            from: "Client",
-                            localField: "clientId",
-                            foreignField: "_id",
-                            as: "clientPoliza"
-                        }
-                    }
-                )
-                console.log(resultado) */
+                const polize = await Polize.find().populate('clientId');
                 
                 return res.status(200).json(polize);
             } catch (error) {

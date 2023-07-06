@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const Pago = await DataPay.find();
+                const Pago = await DataPay.find().populate('Client');
 
                 return res.status(200).json(Pago);
             } catch (error) {

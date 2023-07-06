@@ -1,16 +1,18 @@
-
+"use client"
 import { useRouter } from 'next/router'
 import style from './formPolize.module.css'
 import { useForm } from "../../utils/useForm";
 import { TypePolizeOptions, VendedoresOptions } from "../../utils/optionsForm";
 import { createPolizeAction } from "../../services/polizaServices";
 
+
 //This is form for new client
 
 export const FormPolize = () => {
     const router = useRouter()
+    
     //llama a la funcion para actualizar el estado del las entradas
-    const { values, handleInputChange, reset } = useForm({ type_polize: "", seller: "", dateofcontract: "", city_contract: "" })
+    const { values, handleInputChange, reset } = useForm({ type_polize: "", seller: "", dateofcontract: "", city_contract: "", clientId: '' })
     //actua como actualizador y reseteo de forms
     const sendPolize = (ev) => createPolizeAction(ev, values, reset)
 
@@ -89,4 +91,4 @@ export const FormPolize = () => {
             </form>
         </div>
     );
-};
+}

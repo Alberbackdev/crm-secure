@@ -12,3 +12,14 @@ export default function crear() {
         </Layout>
     )
 }
+
+/* export const getServerSideProps = async (ctx) => {
+    const res = await fetch('http://localhost:3000/api/clientes/polize')
+    const codigoPoliza = await res.json('')
+
+    return {
+        props: {
+            codigoPoliza,
+        }
+    }
+} */

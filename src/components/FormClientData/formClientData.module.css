@@ -26,6 +26,7 @@
     width: 217px;
     padding: 10px;
 }
+.groupChild > label, .full_input > label { color: #404D61; font-weight: 500;}
 .full_input { margin: 10px 0; }
 .full_input > input{ padding: 10px; }
 

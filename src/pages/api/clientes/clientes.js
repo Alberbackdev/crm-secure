@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const client = await ClientData.find({});
+                const client = await ClientData.find();
                 return res.status(200).json(client);
             } catch (error) {
                 return res.status(500).json({ error: error.message })
@@ -20,6 +20,8 @@ export default async function handler(req, res) {
 
         case 'POST':
             try {
+                const { polize } = req.body
+                console.log(polize)
                 const newClient = new ClientData(body, ClientData);
     
                 const saveClient = await newClient.save()

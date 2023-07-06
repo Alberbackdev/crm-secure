@@ -3,7 +3,6 @@ import { FormPolize } from "../../../components/FormPolize/FormPolize"
 import Layout from "../../../components/LayoutFolder/Layout"
 
 
-
 //This is form for new client
 
 export default function crear() {
@@ -18,3 +17,15 @@ export default function crear() {
         </Layout>
     )
 }
+
+/* export const getServerSideProps = async (ctx) => {
+    const resid = await fetch('http://localhost:3000/api/clientes/clientes')
+    const idCliente = await resid.json()
+    const clientId = idCliente.pop()
+
+    return {
+        props: {
+            clientId
+        }
+    }
+} */

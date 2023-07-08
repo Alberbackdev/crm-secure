@@ -10,7 +10,7 @@ const clientSchema = new Schema({
     phone: { type: String, require: true },
     dateofbirth: { type: String, require: true },
     polize:{
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: "Polize"
     },
     payees: [{

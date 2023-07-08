@@ -4,7 +4,9 @@ import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../lib/mongodb"
 
-export default NextAuth({
+export const authOptions = {
+  adapter: MongoDBAdapter(clientPromise),
+  secret: process.env.JWT_SECRET,
   providers: [
     // OAuth authentication providers...
     GitHubProvider({
@@ -15,7 +17,7 @@ export default NextAuth({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM
     }),
-  ],
-  adapter: MongoDBAdapter(clientPromise),
-  secret: process.env.JWT_SECRET
-})
+  ]
+}
+
+export default NextAuth(authOptions)

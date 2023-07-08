@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import style from './formPolize.module.css'
 import { useForm } from "../../utils/useForm";
 import { TypePolizeOptions, VendedoresOptions } from "../../utils/optionsForm";
-import { createPolizeAction } from "../../services/polizaServices";
+import { updatePolizeAction } from "../../services/polizaServices";
 
 
 //This is form for new client
@@ -12,12 +12,13 @@ export const FormPolize = () => {
     const router = useRouter()
     
     //llama a la funcion para actualizar el estado del las entradas
-    const { values, handleInputChange, reset } = useForm({ type_polize: "", seller: "", dateofcontract: "", city_contract: "", clientId: '' })
+    const { values, handleInputChange, reset } = useForm({
+        type_polize: "", seller: "", dateofcontract: "", city_contract: "" })
     //actua como actualizador y reseteo de forms
-    const sendPolize = (ev) => createPolizeAction(ev, values, reset)
+    const sendPolize = (ev) => updatePolizeAction(ev, values, reset)
 
     const validateNext = () => router.push('/clientes/pago')
-
+   
 
     const tiposLabel = TypePolizeOptions.map((l, i) => <option value={l.value} key={i}>{l.label}</option>)
     const vendedorLabel = VendedoresOptions.map((l, i) => <option value={l.value} key={i} >{l.label}</option>)

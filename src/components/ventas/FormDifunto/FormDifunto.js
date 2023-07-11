@@ -1,8 +1,10 @@
 "use client"
+import { useRouter } from 'next/router'
 import style from './FormDifunto.module.css'
 
 
 function FormDifunto() {
+    const router = useRouter()
     const values = {};
 
 
@@ -105,12 +107,12 @@ function FormDifunto() {
                     />
                 </div>
                 <div className={style.buttons}>                 
-                    <button type="submit" className="btn-primary" onClick={() => {}}>
+                    <button type="button" className="btn-primary" onClick={() => router.push('/ventas/responsable')}>
                         Siguiente
                     </button>
                 </div>
             </form>
-        </div>
+    </div>
   )
 }
 

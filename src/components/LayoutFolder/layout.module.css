@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+}
+
+.children {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -1,5 +1,5 @@
 const { Schema, model, models } = require("mongoose");
-
+const Polize = mongoose.model('Polize');
 
 //Data of client-contract
 const clientSchema = new Schema({

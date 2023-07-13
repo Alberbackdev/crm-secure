@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar';
+import ContainerPrinc from '../components/LayoutFolder/Layout';
 import Providers from './Providers'
 import './globals.css'
 
@@ -13,8 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body>
         <Providers>
-          <Navbar />
-          { children }
+          <ContainerPrinc>
+            {children}
+          </ContainerPrinc>
         </Providers>
       </body>
     </html>

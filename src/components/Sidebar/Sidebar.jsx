@@ -1,9 +1,10 @@
+'use client'
 import Link from "next/link";
 import style from './sidebar.module.css'
-import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 
-export default async function Sidebar() {
-    const session = await getServerSession();
+export default function Sidebar() {
+    const { data: session } = useSession();
     const inactiveLink ='flex gap-1 p-1';
     const activeLink = inactiveLink+' bg-white text-blue-900 rounded-lg';
     return (

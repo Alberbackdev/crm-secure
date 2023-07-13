@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    align-items: center;
+}
+
+.pageLogin {
+    height: 100vh;
+    width: 50%;
+    background-image: linear-gradient(
+        rgba(81, 9, 235, 0.548),
+        rgba(65, 19, 174, 0.6)
+    ),
+    url('/backgroundLogin.png');
+}

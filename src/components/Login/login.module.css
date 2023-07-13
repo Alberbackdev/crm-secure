@@ -1,0 +1,41 @@
+.container {
+    width: 50%;
+    height: 100vh;
+    color: #000 !important;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container > h2 {
+    color: #404D61;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+
+.formLogin > input, .buttonLogin {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #5A81FA;
+    border-radius: 25px;
+    outline: none;
+}
+.buttonLogin {
+    color: #fff;
+    background: #2B308B;
+}
+
+.formLogin > input::placeholder {
+    color: #000;
+}
+
+.forgotPassword {
+    color: #2B308B;
+    font-size: 18px;
+    font-weight: 600;
+}

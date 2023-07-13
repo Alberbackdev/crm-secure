@@ -1,10 +1,12 @@
-import Layout from "../components/LayoutFolder/Layout"
-
+// import Layout from "../components/LayoutFolder/Layout"
+import Login from "../components/Login/Login"
+import style from '../styles/loginPage.module.css'
 
 export default function Home() {
   return (
-    <Layout>
-      {/* Poner aqui la estructura HTML que se quiera mostrar en esta pagina */}
-    </Layout>
+      <div className={style.content}>
+        <Login />
+        <div className={style.pageLogin}></div>
+      </div>  
   )
 }

@@ -1,6 +1,6 @@
-import Beneficiarios from "../../../components/Beneficiarios/Beneficiarios"
-import { FormPolize } from "../../../components/FormPolize/FormPolize"
-import Layout from "../../../components/LayoutFolder/Layout"
+import Beneficiarios from "@/src/components/Beneficiarios/Beneficiarios"
+import { FormPolize } from "@/src/components/FormPolize/FormPolize"
+
 
 
 //This is form for new client

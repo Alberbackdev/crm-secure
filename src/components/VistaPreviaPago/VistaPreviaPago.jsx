@@ -1,3 +1,4 @@
+'use client'
 import style from './vistaPreviaPago.module.css'
 import Image from 'next/image';
 

@@ -6,4 +6,6 @@ export const NamePageHelper = () => {
     if(pathname ==='/clientes') return 'Clientes';
     if(pathname === '/dashboard') return 'Dashboard';
     if(pathname === '/ventas') return 'Ventas';
+    if (pathname === '/login') return 'Inicio de Sesión';
+    return
 }

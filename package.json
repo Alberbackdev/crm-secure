@@ -2,7 +2,7 @@
   "name": "crm-aseguradora",
   "version": "0.1.0",
   "private": true,
-  "main": "page.jsx",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,8 +26,5 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/react": "18.2.14"
-  },
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "author": "alberbackdev",
-  "license": "ISC"
+  }
 }

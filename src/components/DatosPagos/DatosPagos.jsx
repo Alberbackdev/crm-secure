@@ -5,6 +5,7 @@ import Mensualidad from './Mensualidad/Mensualidad';
 import style from './datosPagos.module.css';
 
 export default function DatosPagos() {
+    
   return (
     <div className={style.containerTopData}>
             <h1 className={style.title}>Ingrese los Datos del Pago</h1>

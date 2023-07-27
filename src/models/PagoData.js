@@ -3,17 +3,35 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 
 //Pagos
 const paySchema = new Schema({
-    type_pay: { type: String, require: true },
-    number_pay: { type: String, require: true },
-    date_pay: { type: String, require: true },
-    type_of_change: { type: String, require: true },
+    type_pay: {
+        type: String,
+        required: [true, "El tipo de pago es requerido"],
+    },
+    number_pay: { 
+        type: String, 
+        required: [true, "El numero de pago es requerido"],
+        unique: true,
+    },
+    date_pay: { 
+        type: String, 
+        required: [true, "El fecha de pago es requerido"],
+    },
+    type_of_change: { 
+        type: String, 
+        required: [true, "El tipo de cambio es requerido"],
+    },
     month_pay: [{ type: String, require: true }],
-    status_pay: { type: String, require: true },
-    full_payment_bs: { type: String, require: true },
-    full_payment_dollar: { type: String, require: true },
-    client:{
-        type: Schema.Types.ObjectId,
-        ref: "Clients"
+    status_pay: { 
+        type: String, 
+        required: [true, "El status del cliente es requerido"],
+    },
+    full_payment_bs: { 
+        type: String, 
+        required: [true, "El total del pago en bs es requerido"],
+    },
+    full_payment_dollar: { 
+        type: String, 
+        required: [true, "El total del pago en USD es requerido"],
     }
 }, {
     timestamps: true,
@@ -23,4 +41,4 @@ const paySchema = new Schema({
 paySchema.plugin(mongoosePaginate)
 
 //esto elimina el error overwrite model
-export const DataPago = models.DataPay || model('Pays', paySchema);
+export const DataPago = models.Pays || model('Pays', paySchema);

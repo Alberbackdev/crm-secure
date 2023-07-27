@@ -1,8 +1,6 @@
 
 import { FormClientData } from "@/src/components/FormClientData/FormClientData";
 import { InputCodigoSeguro } from "../../../components/InputCodigoSeguro/InputCodigoSeguro";
-import axios from "axios";
-
 
 
 //This is form for new client

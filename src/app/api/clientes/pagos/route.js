@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     await connectDB()
-    const pagos = await DataPago.paginate({}, { limit: 2 });
+    const pagos = await DataPago.paginate({});
     return NextResponse.json(pagos, { status: 200 })
 }
 

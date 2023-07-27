@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
 import style from './InputCodigoSeguro.module.css'
 import { useForm } from '@/src/utils/useForm';
 import { createPolizeAction } from '@/src/services/polizaServices';

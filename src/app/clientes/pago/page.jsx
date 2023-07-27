@@ -5,7 +5,7 @@ import ContainerSelectDatosPagos from "@/src/components/ContainerSelectDatosPago
 import CardRightDatosPagos from "@/src/components/CardRightDatosPagos/CardRightDatosPagos"
 
 
-function pagos() {
+export default function pagos() {
     return (
         <>
             <div style={{ display: "flex", width: "100%", marginTop: '3rem', justifyContent: 'space-evenly' }}>
@@ -15,7 +15,3 @@ function pagos() {
         </>
     )
 }
-
-
-
-export default pagos

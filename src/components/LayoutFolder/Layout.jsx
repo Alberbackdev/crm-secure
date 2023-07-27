@@ -1,8 +1,8 @@
 // plantilla dentro del cuadro blanco
 
-import Nav from "../Sidebar/Sidebar";
 import style from "./layout.module.css";
 import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
 
 //children es el nombre de la pagina que esta accediedo
 export default function ContainerPrinc({ children }) {
@@ -11,7 +11,7 @@ export default function ContainerPrinc({ children }) {
       <div className={style.contentPlantilla}>
         {" "}
         {/* Sidebar */}
-        <Nav />
+        <Sidebar />
       </div>
       <div className={style.children}>
         {" "}

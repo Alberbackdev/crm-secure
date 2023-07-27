@@ -34,6 +34,7 @@ const handler = NextAuth({
             }
         })
     ],
+    //redirecciona a las paginas de login and logout
     pages: {
         signIn: '/login',
         signOut: '/api/auth/signout',

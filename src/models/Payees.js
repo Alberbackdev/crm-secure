@@ -1,4 +1,5 @@
 const { Schema, model, models } = require("mongoose");
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 //Beneficiarios del cliente
 const payeesSchema = new Schema({
@@ -10,5 +11,6 @@ const payeesSchema = new Schema({
     timestamps: true,
     versionKey: false
 })
+payeesSchema.plugin(mongoosePaginate)
 
 export default models.Payees || model('Payees', payeesSchema);

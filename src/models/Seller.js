@@ -1,5 +1,5 @@
 const { Schema, model, models } = require("mongoose");
-
+const mongoosePaginate = require('mongoose-paginate-v2');
 //Vendedores/Cobradores
 const sellerSchema = new Schema({
     name_seller: { type: String, require: true },
@@ -14,5 +14,6 @@ const sellerSchema = new Schema({
     timestamps: true,
     versionKey: false
 })
+sellerSchema.plugin(mongoosePaginate)
 
 export default models.Seller || model('Seller', sellerSchema);

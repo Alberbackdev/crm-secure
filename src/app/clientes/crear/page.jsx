@@ -13,6 +13,7 @@ export default async function crear() {
     const poliza = await Polize.find();
     const id = poliza.pop()
     const codigo = id.codigoPoliza
+    console.log(codigo)
     return (
       <>
         <InputCodigoSeguro data={codigo} />

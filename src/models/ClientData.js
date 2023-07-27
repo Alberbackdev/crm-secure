@@ -1,5 +1,5 @@
+const mongoosePaginate = require('mongoose-paginate-v2');
 const { Schema, model, models } = require("mongoose");
-const Polize = mongoose.model('Polize');
 
 //Data of client-contract
 const clientSchema = new Schema({
@@ -48,6 +48,7 @@ const clientSchema = new Schema({
     versionKey: false
 })
 
+clientSchema.plugin(mongoosePaginate)
+
 //esto elimina el error overwrite model
-const Cliente = models.Client || model('Client', clientSchema);
-export default Cliente;
+export const Cliente = models.Client || model('Client', clientSchema);

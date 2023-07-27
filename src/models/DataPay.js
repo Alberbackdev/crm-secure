@@ -1,4 +1,6 @@
 const { Schema, model, models } = require("mongoose");
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 //Pagos
 const paySchema = new Schema({
     type_pay: { type: String, require: true },
@@ -18,6 +20,7 @@ const paySchema = new Schema({
     versionKey: false
 }
 )
+paySchema.plugin(mongoosePaginate)
 
 //esto elimina el error overwrite model
 export default models.DataPay || model('Pays', paySchema);

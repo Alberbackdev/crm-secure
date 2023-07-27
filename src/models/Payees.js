@@ -13,4 +13,4 @@ const payeesSchema = new Schema({
 })
 payeesSchema.plugin(mongoosePaginate)
 
-export default models.Payees || model('Payees', payeesSchema);
+export const DataBeneficiario = models.Payees || model('Payees', payeesSchema);

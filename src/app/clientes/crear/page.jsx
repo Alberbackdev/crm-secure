@@ -1,23 +1,21 @@
 
 import { FormClientData } from "@/src/components/FormClientData/FormClientData";
 import { InputCodigoSeguro } from "../../../components/InputCodigoSeguro/InputCodigoSeguro";
-import Polize from "@/src/models/Polize";
-import { connectDB } from "@/src/lib/mongodb";
+import axios from "axios";
 
 
 
 //This is form for new client
 
 export default async function crear() {
-    await connectDB();
-    const poliza = await Polize.find();
-    const id = poliza.pop()
-    const codigo = id.codigoPoliza
-    console.log(codigo)
+    const res = await fetch("http://localhost:3000/api/clientes/polizas");
+    const resp = await res.json()
+    const codigoP = await resp.docs.pop().codigoPoliza;
+    
     return (
       <>
-        <InputCodigoSeguro data={codigo} />
-        <FormClientData data={codigo} />
+        <InputCodigoSeguro data={codigoP} />
+        <FormClientData data={codigoP} />
       </>
     );
 }

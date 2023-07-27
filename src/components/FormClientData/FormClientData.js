@@ -1,16 +1,17 @@
 "use client"
 
-import { useRouter } from 'next/router'
+
 import { useForm } from "../../utils/useForm";
 import { createClientAction } from "../../services/clienteServices";
 import style from './formClientData.module.css'
+import { useRouter } from "next/navigation";
 //This is form for new client
 
 export const FormClientData = () => {
     const router = useRouter()
     
     //llama a la funcion para actualizar el estado del input
-    const { values, handleInputChange, reset } = useForm({ name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "", polize: '' })
+    const { values, handleInputChange, reset } = useForm({ name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "", polize: "" })
     //actua como actualizador y reseteo de forms
     const sendClient = (ev) => createClientAction(ev, values, reset)
 

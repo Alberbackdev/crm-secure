@@ -2,9 +2,12 @@ const { Schema, model, models } = require("mongoose");
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 //data polize-secure
-
+// falta validar campos y manejar los errores
 const polizeSchema = new Schema({
-    codigoPoliza: { type: String, require: true },
+    codigoPoliza: {
+        type: String,
+        required: [true, "El codigo de Poliza es requerido"],
+        unique: true, },
     type_polize: { type: String, require: true },
     seller: { type: String, require: true },
     dateofcontract: { type: String, require: true },
@@ -20,4 +23,5 @@ const polizeSchema = new Schema({
 
 polizeSchema.plugin(mongoosePaginate)
 
-export default models.Polize || model('Polize', polizeSchema);
+export const DataPoliza =  models.Polize || model('Polize', polizeSchema);
+

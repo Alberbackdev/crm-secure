@@ -1,6 +1,6 @@
 import clientPromise from "../../../lib/mongodb";
 import { mongooseConnect } from "../../../lib/mongoose";
-import DataPay from "../../../models/DataPay";
+import DataPay from "../../../models/PagoData";
 
 
 

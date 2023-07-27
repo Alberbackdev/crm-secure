@@ -23,4 +23,4 @@ const paySchema = new Schema({
 paySchema.plugin(mongoosePaginate)
 
 //esto elimina el error overwrite model
-export default models.DataPay || model('Pays', paySchema);
+export const DataPago = models.DataPay || model('Pays', paySchema);

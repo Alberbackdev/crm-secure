@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { connectDB } from "@/src/lib/mongodb"
-import User from "@/src/models/User"
+import { User } from "@/src/models/User"
 
 const handler = NextAuth({
     providers: [

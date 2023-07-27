@@ -16,4 +16,4 @@ const sellerSchema = new Schema({
 })
 sellerSchema.plugin(mongoosePaginate)
 
-export default models.Seller || model('Seller', sellerSchema);
+export const DataVendedor = models.Seller || model('Seller', sellerSchema);

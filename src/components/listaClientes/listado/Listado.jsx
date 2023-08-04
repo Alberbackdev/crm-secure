@@ -1,16 +1,13 @@
-import { connectDB } from '@/src/lib/mongodb';
+
 import style from './listado.module.css'
 import Image from 'next/image';
-import { Cliente } from '@/src/models/ClientData';
 
-
-export default async function Listado() {
-    await connectDB()
-    const clientes = await Cliente.paginate({}, {limit:12});
+export default function Listado(data) {
+  console.log(data.data)
 
   return (
     <div className={style.listado}>
-      {clientes.docs.map((element) => {
+      {data.data.map((element) => {
         return (
           <div className={style.card} key={element._id}>
             <div className={style.cardTop}>

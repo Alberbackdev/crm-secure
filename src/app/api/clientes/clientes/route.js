@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) { 
     await connectDB()
-    const clientes = await Cliente.paginate({}, { limit: 2 });
+    const clientes = await Cliente.paginate({}, { limit: 10 });
     return NextResponse.json( clientes , { status: 200 })
 }
 

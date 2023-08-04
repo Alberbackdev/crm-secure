@@ -1,13 +1,13 @@
 'use client';
 import { useSession, signOut } from "next-auth/react"
-import Layout from "../../components/LayoutFolder/Layout"
+import ContainerPrinc from "../../components/LayoutFolder/Layout";
 
 
 
 export default function Profile() {
     const { data: session } = useSession()
     return (
-        <div>
+        <ContainerPrinc>
             <h1>Perfil</h1>
             <p>Signed in as {session?.user?.email}</p>
             <button
@@ -18,6 +18,6 @@ export default function Profile() {
             >
             Signout
             </button>
-        </div>
+        </ContainerPrinc>
     );
 }

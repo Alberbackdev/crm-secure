@@ -1,4 +1,5 @@
 "use client";
+import ContainerPrinc from "@/src/components/LayoutFolder/Layout";
 import { useSession, signOut } from "next-auth/react";
 
 function DashboardPage() {
@@ -7,7 +8,7 @@ function DashboardPage() {
   console.log(session, status);
 
   return (
-    
+    <ContainerPrinc>
       <div className="h-[calc(100vh-4rem)] flex flex-col gap-y-10 items-center justify-center text-white">
         <h1 className="font-bold text-3xl">Profile</h1>
 
@@ -31,7 +32,7 @@ function DashboardPage() {
           Signout
         </button>
       </div>
-    
+    </ContainerPrinc>
   );
 }
 

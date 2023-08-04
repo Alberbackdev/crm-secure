@@ -5,10 +5,9 @@ import { useForm } from '@/src/utils/useForm';
 import { createPolizeAction } from '@/src/services/polizaServices';
 //This is form for new client
 
-export const InputCodigoSeguro = (data) => {
-    console.log(data.data)
+export const InputCodigoSeguro = () => {
     //llama a la funcion para actualizar el estado del input
-    const { values, handleInputChange, reset } = useForm({ codigoPoliza: data.data })
+    const { values, handleInputChange, reset } = useForm({ codigoPoliza: "" })
     //actua como actualizador y reseteo de forms
     const sendCodigo = (ev) => createPolizeAction(ev, values, reset)
 
@@ -21,7 +20,7 @@ export const InputCodigoSeguro = (data) => {
                         <input
                             name="codigoPoliza"
                             type="text"
-                            placeholder={data.data}
+                            placeholder="O-1000"
                             className="rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.codigoPoliza}
                             onChange={handleInputChange}

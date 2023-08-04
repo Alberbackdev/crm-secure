@@ -9,9 +9,17 @@ import { createClientAction } from '@/src/services/clienteServices';
 
 export const FormClientData = (data) => {
     const router = useRouter()
-    
+    console.log(data.data)
     //llama a la funcion para actualizar el estado del input
-    const { values, handleInputChange, reset } = useForm({ name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "", polize: '' })
+    const { values, handleInputChange, reset } = useForm({
+      name: "",
+      lastname: "",
+      cidentified: "",
+      addres: "",
+      phone: "",
+      dateofbirth: "",
+      polize: data.data,
+    });
     //actua como actualizador y reseteo de forms
     const sendClient = (ev) => createClientAction(ev, values, reset)
 

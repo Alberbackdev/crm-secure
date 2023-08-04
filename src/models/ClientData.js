@@ -29,20 +29,9 @@ const clientSchema = new Schema({
         required: [true, "La Fecha de Nacimiento es requerido"],
     },
     polize: {
-        type: Schema.Types.String,
+        type: Schema.Types.ObjectId,
         ref: "Polize"
     },
-    payees: [{
-        type: Schema.Types.ObjectId,
-    }],
-    datapay: [{
-        type: Schema.Types.ObjectId,
-        ref: "Datapay"
-    }],
-    seller: [{
-        type: Schema.Types.ObjectId,
-        ref: "Seller"
-    }]
 }, {
     timestamps: true,
     versionKey: false

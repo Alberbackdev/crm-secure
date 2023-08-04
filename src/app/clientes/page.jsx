@@ -7,14 +7,12 @@ import axios from "axios";
 
 export default async function Lista() {
   const res = await axios.get("http://localhost:3000/api/clientes/clientes");
-  const clientes = await res.data.docs
+  const clientes = await res.data
   
   return (
-    <>
       <div style={{ marginLeft: "41px", marginTop: "3rem" }}>
         <ButtonsActions />
         <Listado data={clientes}/>
       </div>
-    </>
   );
 }

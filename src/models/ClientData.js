@@ -40,4 +40,4 @@ const clientSchema = new Schema({
 clientSchema.plugin(mongoosePaginate)
 
 //esto elimina el error overwrite model
-export const Cliente = models.Client || model('Client', clientSchema);
+export default models.Client || model('Client', clientSchema);

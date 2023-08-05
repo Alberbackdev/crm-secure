@@ -11,7 +11,8 @@ import { useState } from 'react';
 export const FormClientData = (data) => {
     const [error, setError] = useState("");
     const router = useRouter()
-    console.log(data.data)
+    const polizeId = data.data._id
+    console.log(polizeId)
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({
       name: "",
@@ -20,17 +21,21 @@ export const FormClientData = (data) => {
       addres: "",
       phone: "",
       dateofbirth: "",
-      polize: data.data,
+      polize: polizeId,
     });
     //actua como actualizador y reseteo de forms
     const sendClient = async(ev) => {
-        const resp = await createClientAction(ev, values, reset)
-        console.log(resp)
-
-        if (resp?.error) return setError(resp.error);
-
-        if (resp?.ok) return router.push("/clientes/poliza");
-
+      try {
+        const { status } = await createClientAction(ev, values, reset);
+        console.log(status);
+        
+        if (status === 201) {
+          router.push("/clientes/poliza");
+        }
+      } catch (error) {
+        console.log(error)
+        
+      }
     }
     return (
       <div className={style.container}>

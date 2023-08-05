@@ -1,12 +1,12 @@
 import { connectDB } from "@/src/lib/mongodb";
-import { Cliente } from "@/src/models/ClientData";
+import ClientData from "@/src/models/ClientData";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 
 export async function GET(req, res) { 
     await connectDB()
-    const clientes = await Cliente.find().populate('polize');
+    const clientes = await ClientData.find({}).populate('polize');
     return NextResponse.json( clientes , { status: 200 })
 }
 
@@ -14,7 +14,7 @@ export async function POST(req, res) {
     await connectDB()
     try {
         const body = await req.json()
-        const newClient = await Cliente.create(body)
+        const newClient = await ClientData.create(body)
         return NextResponse.json({data:newClient}, {status: 201})
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {

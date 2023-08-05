@@ -23,5 +23,5 @@ const polizeSchema = new Schema({
 
 polizeSchema.plugin(mongoosePaginate)
 
-export const DataPoliza =  models.Polize || model('Polize', polizeSchema);
+export default models.Polize || model('Polize', polizeSchema);
 

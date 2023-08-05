@@ -6,11 +6,15 @@ const payeesSchema = new Schema({
     name_payee: { type: String, require: true },
     cidentified_payee: { type: String, require: true },
     dateofbirth: { type: String, require: true },
-    age_payee: { type: String, require: true }
+    age_payee: { type: String, require: true },
+    clientId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Client'
+    },
 }, {
     timestamps: true,
     versionKey: false
 })
 payeesSchema.plugin(mongoosePaginate)
 
-export const DataBeneficiario = models.Payees || model('Payees', payeesSchema);
+export default models.Beneficiario || model('Beneficiario', payeesSchema);

@@ -7,9 +7,10 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     await connectDB()
-    const polizes = await Polize.find();
+    const polizes = await Polize.find({});
     return NextResponse.json( polizes, { status: 200 })
 }
+
 
 export async function POST(req, res) {
     await connectDB()

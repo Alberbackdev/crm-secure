@@ -9,6 +9,8 @@ import axios from "axios";
 export default async function crear() {
   const res = await axios.get("http://localhost:3000/api/clientes/polizas");
   const polizaId = await res.data.pop();
+  const {data} = await getPolizeAPI();
+  console.log(data)
   
   return (
     <>

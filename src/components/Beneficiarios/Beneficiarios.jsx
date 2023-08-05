@@ -5,9 +5,9 @@ import style from "./beneficiarios.module.css";
 import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 
-export default function Beneficiarios(data) {
+export default function Beneficiarios(poliza, clientes) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
-  const beneficiario = data.data;
+  console.log(poliza, clientes)
 
   return (
     <div className={style.container}>

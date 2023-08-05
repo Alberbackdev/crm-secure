@@ -1,5 +1,3 @@
-import ContainerPrinc from "../components/LayoutFolder/Layout";
-import Login from "../components/Login/Login";
 import Providers from "./Providers";
 import "./globals.css";
 

@@ -3,13 +3,18 @@
 import style from './InputCodigoSeguro.module.css'
 import { useForm } from '@/src/utils/useForm';
 import { createPolizeAction } from '@/src/services/polizaServices';
+import { useRouter } from 'next/navigation';
 //This is form for new client
 
 export const InputCodigoSeguro = () => {
+    const router = useRouter()
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({ codigoPoliza: "" })
     //actua como actualizador y reseteo de forms
-    const sendCodigo = (ev) => createPolizeAction(ev, values, reset)
+    const sendCodigo = (ev) => {
+        createPolizeAction(ev, values, reset)
+        router.refresh()
+    }
 
     return (
         <div className={style.container}>

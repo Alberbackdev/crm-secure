@@ -5,9 +5,13 @@ import style from "./beneficiarios.module.css";
 import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 
-export default function Beneficiarios(poliza, clientes) {
+
+export default function Beneficiarios({data}) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
-  console.log(poliza, clientes)
+  
+  const data1 = data;
+  
+  //ver el error y modificar, esto queda pendiente
 
   return (
     <div className={style.container}>
@@ -16,12 +20,13 @@ export default function Beneficiarios(poliza, clientes) {
         modalFormBeneficiario && (
           <FormBeneficiario
             setModalFormBeneficiario={setModalFormBeneficiario}
+            data={data1}
           />
         )
       }
 
       <div className={style.header}>
-        <h3>{data._id}</h3>
+        <h3>Beneficiarios</h3>
 
         <Image
           src="/userplus.png"
@@ -42,19 +47,19 @@ export default function Beneficiarios(poliza, clientes) {
           <div className={style.cardCenter}>
             <div>
               <p className={style.title}>Nombre</p>
-              <p>{beneficiario.name_payee}</p>
+              <p>Alberto</p>
             </div>
             <div>
               <p className={style.title} style={{ textAlign: "right" }}>
                 Fecha de Nacimiento
               </p>
-              <p style={{ textAlign: "right" }}> {beneficiario.dateofbirth} </p>
+              <p style={{ textAlign: "right" }}> 10/03/2000 </p>
             </div>
           </div>
           <div className={style.cardBottom}>
             <div>
               <p className={style.title}>Cedula</p>
-              <p>{beneficiario.cidentified_payee}</p>
+              <p>27405246</p>
             </div>
             <div>
               <p className={style.title} style={{ textAlign: "right" }}>
@@ -62,7 +67,7 @@ export default function Beneficiarios(poliza, clientes) {
               </p>
               <p style={{ textAlign: "right" }}>
                 {" "}
-                {beneficiario.age_payee} años
+                23 años
               </p>
             </div>
           </div>

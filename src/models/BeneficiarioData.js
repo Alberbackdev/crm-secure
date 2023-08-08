@@ -7,9 +7,17 @@ const payeesSchema = new Schema({
     cidentified_payee: { type: String, require: true },
     dateofbirth: { type: String, require: true },
     age_payee: { type: String, require: true },
-    clientId: {
+    cliente: {
         type: Schema.Types.ObjectId,
-        ref: 'Client'
+        ref: 'Client', 
+        require: [true, "Los datos del cliente son requeridos"],
+        unique: [true, "Los beneficiarios solo pertenecen a un cliente"],
+    },
+    poliza: {
+        type: Schema.Types.ObjectId,
+        ref: 'Polize',
+        require: [true, "Los datos de la poliza son requeridos"],
+        unique: [true, "Los beneficiarios solo pertenecen a un cliente"],
     },
 }, {
     timestamps: true,

@@ -32,6 +32,12 @@ const clientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Polize"
     },
+    beneficiarios:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Beneficiario"
+        }
+    ]
 }, {
     timestamps: true,
     versionKey: false
@@ -41,3 +47,5 @@ clientSchema.plugin(mongoosePaginate)
 
 //esto elimina el error overwrite model
 export default models.Client || model('Client', clientSchema);
+
+//agregar beneficiarios al cliente, crear codigo...

@@ -11,7 +11,7 @@ import { useState } from 'react';
 export const FormClientData = (data) => {
     const [error, setError] = useState("");
     const router = useRouter()
-    const polizeId = data.data._id
+    const polizeId = data.data
     console.log(polizeId)
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({

@@ -2,15 +2,14 @@
 import { FormClientData } from "@/src/components/FormClientData/FormClientData";
 import { InputCodigoSeguro } from "../../../components/InputCodigoSeguro/InputCodigoSeguro";
 import axios from "axios";
+import { getPolizeAPI } from "@/src/services/polizaServices";
 
 
 //This is form for new client
 
 export default async function crear() {
-  const res = await axios.get("http://localhost:3000/api/clientes/polizas");
-  const polizaId = await res.data.pop();
   const {data} = await getPolizeAPI();
-  console.log(data)
+  const polizaId = data.pop()._id
   
   return (
     <>

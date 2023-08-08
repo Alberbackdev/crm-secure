@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export async function getPolizeAPI() {
-    const resB = await axios.get("../api/clientes/polizas");
-    console.log(resB.data)
-    return resB;
+    const resB = await axios.get("http://localhost:3000/api/clientes/polizas");
+    return resB.data;
 }
 
 export async function createPolizeAction(ev, values, reset) {

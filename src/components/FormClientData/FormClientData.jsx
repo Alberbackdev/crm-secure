@@ -33,7 +33,7 @@ export const FormClientData = (data) => {
         console.log(status);
         
         if (status === 201) {
-          router.push("/clientes/poliza");
+          router.push(`/clientes/poliza/${params.id}`);
           router.refresh();
         }
       } catch (error) {

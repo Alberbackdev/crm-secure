@@ -2,7 +2,6 @@ import axios from "axios";
 
 export async function getClientsAPI() {
     const res = await axios.get("http://localhost:3000/api/clientes/clientes");
-    console.log(res.data);
     return res;//retorna la data de la api ref a la almacenada en la db
 }
 

@@ -9,10 +9,11 @@ import { getPolizeAPI } from "@/src/services/polizaServices";
 export default async function CrearPoliza() {
   //solo trae el id, para luego a;adirlo y popularlo
   //const idP = await getPolizeAPI();
-  const id = await getClientsAPI();
+  const { data } = await getClientsAPI();
+  console.log(data.pop()?._id);
   const info = {
-    poliza: id.pop().polize._id,
-    cliente: id.pop()._id,
+    cliente: data.pop()?._id,
+    poliza: data.pop()?.polize?._id,
     beneficiarios: await getBeneficiariosAPI(),
   };
 

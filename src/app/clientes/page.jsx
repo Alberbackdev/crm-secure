@@ -7,12 +7,12 @@ import { getClientsAPI } from "@/src/services/clienteServices";
 //This is form for new client
 
 export default async function Lista() {
-  const {data} = await getClientsAPI();
-  
+  const res = await getClientsAPI();
+  console.log(res)
   return (
       <div style={{ marginLeft: "41px", marginTop: "3rem" }}>
         <ButtonsActions />
-        <Listado data={data}/>
+        <Listado data={res}/>
       </div>
   );
 }

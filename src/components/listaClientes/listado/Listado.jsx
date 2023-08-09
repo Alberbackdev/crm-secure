@@ -8,7 +8,7 @@ import { useRef } from 'react';
 
 export default function Listado({data}) {
   const router = useRouter()
-
+  
   const deleteClient = (ev) => {
     const value = ev.target.getAttribute("value");
     deleteClientAction(ev, value);

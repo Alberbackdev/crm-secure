@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation'
 
 
-function ButtonsActions() {
+export default function ButtonsActions() {
     const router = useRouter()
 
 
@@ -34,4 +34,3 @@ function ButtonsActions() {
   )
 }
 
-export default ButtonsActions

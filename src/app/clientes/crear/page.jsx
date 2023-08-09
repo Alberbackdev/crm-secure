@@ -8,7 +8,7 @@ import { getPolizeAPI } from "@/src/services/polizaServices";
 
 export default async function crear() {
   const data = await getPolizeAPI();
-  const polizaId = data.pop()._id;
+  const polizaId = data?.pop()?._id;
   
   return (
     <>

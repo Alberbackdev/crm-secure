@@ -13,8 +13,7 @@ export const FormClientData = (data) => {
     const [error, setError] = useState("");
     const router = useRouter()
     const params = useParams()
-    const polizeId = data.data
-    console.log(polizeId)
+    console.log(data?.data)
    
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({
@@ -24,18 +23,18 @@ export const FormClientData = (data) => {
       addres: "",
       phone: "",
       dateofbirth: "",
-      polize: polizeId,
+      polize: data?.data,
     });
     //actua como actualizador y reseteo de forms
     const sendClient = async(ev) => {
       try {
-        const { status } = await createClientAction(ev, values, reset);
-        console.log(status);
+        const res = await createClientAction(ev, values, reset);
+        console.log(res);
         
-        if (status === 201) {
-          router.push(`/clientes/poliza/${params.id}`);
+        /* if (status === 201) {
+          router.push(`/clientes/poliza/${}`);
           router.refresh();
-        }
+        } */
       } catch (error) {
         console.log(error)
         

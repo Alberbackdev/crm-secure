@@ -9,7 +9,6 @@ import { updatePolizeAction } from "../../services/polizaServices";
 
 export const FormPolize = () => {
   const router = useRouter();
-
   //llama a la funcion para actualizar el estado del las entradas
   const { values, handleInputChange, reset } = useForm({
     type_polize: "",
@@ -20,7 +19,7 @@ export const FormPolize = () => {
   //actua como actualizador y reseteo de forms
   const sendPolize = async (ev) => {
     try {
-      const { status } = await updatePolizeAction(ev, values, reset);
+      const { status } = await updatePolizeAction(ev, values, reset, );
       console.log(status);
 
       if (status === 201) {

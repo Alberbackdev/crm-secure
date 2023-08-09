@@ -11,10 +11,10 @@ export async function createPolizeAction(ev, values, reset) {
     reset();
 }
 
-export async function updatePolizeAction(ev, values, reset) {
+export async function updatePolizeAction(ev, values, reset, id) {
     console.log(ev, values)
     ev.preventDefault();
-    const res = await axios.put("../api/clientes/polizas", values);
+    const res = await axios.put(`../api/clientes/polizas/${id}`, values);
     reset();
     return res;
 }

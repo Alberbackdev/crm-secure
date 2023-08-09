@@ -29,6 +29,7 @@ export async function DELETE(request, { params }) {
     const id = params.id
     try {
         const result = await ClientData.findByIdAndDelete(id)
+        console.log(result)
         if (!result) {
             return NextResponse.json({message: `Document with ID: ${id} not found.`}, {status:404}) 
         }

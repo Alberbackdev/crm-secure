@@ -1,8 +1,9 @@
 import axios from "axios";
+import { fetchData } from "next-auth/client/_utils";
 
 export async function getClientsAPI() {
-    const res = await axios.get("http://localhost:3000/api/clientes/clientes");
-    return res;//retorna la data de la api ref a la almacenada en la db
+    const res = await fetch("http://localhost:3000/api/clientes/clientes");
+    return res.json();//retorna la data de la api ref a la almacenada en la db
 }
 
 

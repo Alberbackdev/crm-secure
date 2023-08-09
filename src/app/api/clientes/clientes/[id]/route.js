@@ -1,6 +1,5 @@
 import { connectDB } from "@/src/lib/mongodb";
-import { Cliente } from "@/src/models/ClientData";
-
+import ClientData from "@/src/models/ClientData";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -8,7 +7,7 @@ export async function GET(request, {params}) {
     await connectDB()
     const id = params.id
     try {
-        const result = await Cliente.findById(id)
+        const result = await ClientData.findById(id)
         return NextResponse.json({data: result}, {status: 200})
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -29,7 +28,7 @@ export async function DELETE(request, { params }) {
     await connectDB()
     const id = params.id
     try {
-        const result = await Cliente.findByIdAndDelete(id)
+        const result = await ClientData.findByIdAndDelete(id)
         if (!result) {
             return NextResponse.json({message: `Document with ID: ${id} not found.`}, {status:404}) 
         }
@@ -45,7 +44,7 @@ export async function PUT( request, {params}) {
     const body = await request.json()
 
     try {
-        const result = await Cliente.findByIdAndUpdate(id, {$set:{...body}}, {new: true})
+        const result = await ClientData.findByIdAndUpdate(id, {$set:{...body}}, {new: true})
         if (!result) {
             return NextResponse.json({ message: `Document with ID: ${id} not found.` }, { status: 404 })
         }

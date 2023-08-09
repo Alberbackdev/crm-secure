@@ -1,18 +1,21 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
+
 import style from './formClientData.module.css'
 import { useForm } from '@/src/utils/useForm';
 import { createClientAction } from '@/src/services/clienteServices';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //This is form for new client
 
 export const FormClientData = (data) => {
     const [error, setError] = useState("");
     const router = useRouter()
+    const params = useParams()
     const polizeId = data.data
     console.log(polizeId)
+   
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({
       name: "",
@@ -31,19 +34,27 @@ export const FormClientData = (data) => {
         
         if (status === 201) {
           router.push("/clientes/poliza");
+          router.refresh();
         }
       } catch (error) {
         console.log(error)
         
       }
     }
+
+    useEffect(() => {
+      console.log(params)
+    }, [params])
+
     return (
       <div className={style.container}>
         <form onSubmit={sendClient} className={style.formContent}>
           {error && (
             <div className="bg-red-500 text-white p-2 mb-2">{error}</div>
           )}
-          <h1 className={style.title}>Nuevo Cliente</h1>
+          <h1 className={style.title}>
+            {!params.id ? "Nuevo Cliente" : "Actualizar Cliente"}
+          </h1>
           <div className={style.group}>
             <div className={style.groupChild}>
               <label>Nombres</label>

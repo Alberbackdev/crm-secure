@@ -1,7 +1,8 @@
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 export const NamePageHelper = () => {
     const pathname = usePathname();
+    const params = useParams()
     if(pathname === '/') return 'Bienvenido';
     if(pathname ==='/clientes') return 'Clientes';
     if(pathname === '/dashboard') return 'Dashboard';

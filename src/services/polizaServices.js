@@ -13,7 +13,7 @@ export async function createPolizeAction(ev, values, reset) {
 
 export async function updatePolizeAction(ev, values, reset) {
     ev.preventDefault();
-    const res = await axios.put("../api/clientes/polize", values);
+    const res = await axios.put("../api/clientes/polizas", values);
     reset();
     return res;
 }

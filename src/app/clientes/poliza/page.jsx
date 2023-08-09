@@ -6,7 +6,7 @@ import { getPolizeAPI } from "@/src/services/polizaServices";
 
 //This is form polize and payees, for register an client
 
-export default async function crear() {
+export default async function CrearPoliza() {
   //solo trae el id, para luego a;adirlo y popularlo
   //const idP = await getPolizeAPI();
   const id = await getClientsAPI();

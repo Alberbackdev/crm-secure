@@ -25,23 +25,17 @@ export default function Login() {
 
   return (
     <div className={style.container}>
+      <h2>Inicio de Sesión</h2>
       <form onSubmit={handleSubmit} className={style.formLogin}>
         {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-        <h1 className="text-4xl font-bold mb-7">Inicio de Sesion</h1>
-
-        <label className="text-slate-300">Email:</label>
         <input
           type="email"
-          placeholder="Email"
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
+          placeholder="Correo electrónico"
           name="email"
         />
-
-        <label className="text-slate-300">Password:</label>
         <input
           type="password"
-          placeholder="Password"
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
+          placeholder="Contraseña"
           name="password"
         />
 
@@ -50,22 +44,8 @@ export default function Login() {
       <Link
         href="/register"
         className="flex gap-1 p-1 bg-white text-blue-900 rounded-lg"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-          />
-        </svg>
-        Register
+      >       
+        Registrarse
       </Link>
       <p className={style.forgotPassword}>¿Has olvidado tu contraseña?</p>
     </div>

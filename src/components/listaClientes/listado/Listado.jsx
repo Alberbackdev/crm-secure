@@ -4,14 +4,14 @@ import style from './listado.module.css'
 import Image from 'next/image';
 import { deleteClientAction } from '@/src/services/clienteServices';
 import { useRouter } from 'next/navigation';
-import { useRef } from 'react';
 
 export default function Listado({data}) {
   const router = useRouter()
+  console.log(data)
   
-  const deleteClient = (ev) => {
+  const deleteClient = async(ev) => {
     const value = ev.target.getAttribute("value");
-    deleteClientAction(ev, value);
+    await deleteClientAction(ev, value);
     router.refresh();
   };
 

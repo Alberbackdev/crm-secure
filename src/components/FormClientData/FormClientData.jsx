@@ -29,12 +29,13 @@ export const FormClientData = (data) => {
     const sendClient = async(ev) => {
       try {
         const res = await createClientAction(ev, values, reset);
-        console.log(res);
+        console.log(res)
+        const {data} = await res.json();
         
-        /* if (status === 201) {
-          router.push(`/clientes/poliza/${}`);
+        if (res.status === 201) {
+          router.push(`/clientes/poliza/${data._id}`);
           router.refresh();
-        } */
+        }
       } catch (error) {
         console.log(error)
         

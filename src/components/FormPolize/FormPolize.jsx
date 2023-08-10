@@ -7,8 +7,9 @@ import { updatePolizeAction } from "../../services/polizaServices";
 
 //This is form for new client
 
-export const FormPolize = () => {
+export const FormPolize = ({data}) => {
   const router = useRouter();
+  console.log(data)
   //llama a la funcion para actualizar el estado del las entradas
   const { values, handleInputChange, reset } = useForm({
     type_polize: "",
@@ -19,11 +20,11 @@ export const FormPolize = () => {
   //actua como actualizador y reseteo de forms
   const sendPolize = async (ev) => {
     try {
-      const { status } = await updatePolizeAction(ev, values, reset, );
-      console.log(status);
+      const res = await updatePolizeAction(ev, values, reset, );
+      console.log(res);
 
-      if (status === 201) {
-        router.push("/clientes/pago");
+      if (res.status === 201) {
+        router.push(`/clientes/pago/`); //${}
         router.refresh();
       }
     } catch (error) {

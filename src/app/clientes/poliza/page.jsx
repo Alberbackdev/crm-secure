@@ -8,11 +8,11 @@ import { getBeneficiariosAPI } from "@/src/services/payeesServices";
 export default async function CrearPoliza() {
   
   //usa la info de la API cliente
-  const { data } = await getClientsAPI();
-  console.log(data?.pop()?._id);
+  const res = await getClientsAPI();
+  const resp = await res.json();
   const info = {
-    cliente: data?.pop()?._id,
-    poliza: data?.pop()?.polize?._id,
+    cliente: resp?.pop()?._id,
+    poliza: resp?.pop()?.polize?._id,
     beneficiarios: await getBeneficiariosAPI(),
   };
 
@@ -26,7 +26,7 @@ export default async function CrearPoliza() {
           justifyContent: "space-around",
         }}
       >
-        <FormPolize/>
+        <FormPolize data={info} />
         <Beneficiarios data={[info]} />
       </div>
       {/* <FormPayees />  MODAAAL */}

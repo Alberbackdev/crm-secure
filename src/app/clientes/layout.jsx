@@ -1,6 +1,7 @@
 import ContainerPrinc from "@/src/components/LayoutFolder/Layout";
 import Providers from "../Providers";
 import "../globals.css";
+import RootLayout from "../layout";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,10 +10,8 @@ export const metadata = {
 
 export default function ClientesLayout({ children }) {
   return (
-    <>
-      <Providers>
-        <ContainerPrinc>{children}</ContainerPrinc>
-      </Providers>
-    </>
+    <RootLayout>
+      <ContainerPrinc>{children}</ContainerPrinc>
+    </RootLayout>
   );
 }

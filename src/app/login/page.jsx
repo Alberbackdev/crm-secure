@@ -5,7 +5,7 @@ export default function page() {
   return (
     <div className={style.content}>
       <Login />
-      <div className={style.pageLogin}></div>
+      <div className={style.backgroundImage}></div>
     </div>
   );
 }

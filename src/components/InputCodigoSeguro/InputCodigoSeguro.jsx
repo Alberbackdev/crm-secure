@@ -11,10 +11,20 @@ export const InputCodigoSeguro = () => {
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({ codigoPoliza: "" })
     //actua como actualizador y reseteo de forms
-    const sendCodigo = (ev) => {
-        createPolizeAction(ev, values, reset);
-        router.refresh();
+    const sendCodigo = async(ev) => {
+        try {
+        const res = await createPolizeAction(ev, values, reset);
+        console.log(res)
+        
+        if (res.status === 201) {
+          router.refresh();
+        }
+      } catch (error) {
+        console.log(error)
+        
+      }
     }
+
 
     return (
         <div className={style.container}>

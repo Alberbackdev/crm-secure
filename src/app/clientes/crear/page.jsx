@@ -6,14 +6,15 @@ import { getPolizeAPI } from "@/src/services/polizaServices";
 
 //This is form for new client
 
-export default async function crear() {
+export default async function CrearCliente() {
   const data = await getPolizeAPI();
-  const polizaId = data?.pop()?._id;
+  const res = data.pop()?._id
+  console.log(res);
   
   return (
     <>
       <InputCodigoSeguro />
-      <FormClientData data={polizaId}/>
+      <FormClientData data={!data ? `No hay registros` : res} />
     </>
   );
 }

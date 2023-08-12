@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     await connectDB()
-    const beneficiarios = await BeneficiarioData.find({}).populate('cliente');
+    const beneficiarios = await BeneficiarioData.find().populate('cliente');
     return NextResponse.json(beneficiarios, { status: 200 })
 }
 

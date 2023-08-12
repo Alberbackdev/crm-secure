@@ -10,8 +10,6 @@ export const metadata = {
 
 export default function ClientesLayout({ children }) {
   return (
-    <RootLayout>
-      <ContainerPrinc>{children}</ContainerPrinc>
-    </RootLayout>
+    <ContainerPrinc>{children}</ContainerPrinc>
   );
 }

@@ -3,23 +3,38 @@
 import { useForm } from "../../utils/useForm";
 import { createPayeeAction, getBeneficiariosAPI } from "../../services/payeesServices";
 import style from "./FormBeneficiario.module.css";
+import { useRouter } from "next/navigation";
 
 //This is form for new client
 
 export const FormBeneficiario = ({ setModalFormBeneficiario, data }) => {
-  console.log(data[0]);
+  const router = useRouter()
+  console.log(data);
   //llama a la funcion para actualizar el estado del input
   const { values, handleInputChange, reset } = useForm({
     name_payee: "",
     cidentified_payee: "",
     age_payee: "",
     dateofbirth: "",
-    cliente: data[0].cliente,
-    poliza: data[0].poliza,
+    cliente: `${data.cliente}`,
+    poliza: `${data.poliza}`,
   });
   //actua como actualizador y reseteo de forms
   
-  const sendPayees = (ev) => createPayeeAction(ev, values, reset);
+  const sendPayees = async(ev) => {
+    try {
+        const res = await createPayeeAction(ev, values, reset);
+        console.log(res)
+        //const {data} = await res.json();
+        
+        if (res.status === 201) {
+          router.refresh();
+        }
+      } catch (error) {
+        console.log(error)
+        
+      }
+  }
 
   const cerrarModal = () => {
     // usar la funcion reset para limpiar el estado

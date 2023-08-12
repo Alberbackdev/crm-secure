@@ -1,12 +1,21 @@
 import axios from "axios";
-const url = "http://localhost:3000/api/clientes/clientes"
+
 export async function getClientsAPI() {
-    return await fetch(url); ;//retorna la data de la api ref a la almacenada en la db
+    const res = await axios.get("http://localhost:3000/api/clientes/clientes");
+    const data = await res.data;
+    return data
 }
 
 
 //Crea un client
 export async function createClientAction(ev, values, reset) {
+    ev.preventDefault();
+    const res = await axios.post("/api/clientes/clientes", values);
+    reset();
+    return res
+}
+
+/* export async function createClientAction(ev, values, reset) {
     ev.preventDefault();
     const res = await fetch("/api/clientes/clientes", {
         method: "POST",
@@ -19,7 +28,7 @@ export async function createClientAction(ev, values, reset) {
     reset();
     return res;
 }
-
+ */
 //hacer que actualice y 
 export async function updateClientAction(ev, values, reset) {
     ev.preventDefault();

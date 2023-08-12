@@ -2,20 +2,21 @@ import Beneficiarios from "@/src/components/Beneficiarios/Beneficiarios"
 import { FormPolize } from "@/src/components/FormPolize/FormPolize"
 import { getClientsAPI } from "@/src/services/clienteServices";
 import { getBeneficiariosAPI } from "@/src/services/payeesServices";
+import { getPolizeAPI } from "@/src/services/polizaServices";
 
 //This is form polize and payees, for register an client
 
 export default async function CrearPoliza() {
   
   //usa la info de la API cliente
-  const res = await getClientsAPI();
-  const resp = await res.json();
+  const data = await getClientsAPI();
+  const finish = data.pop()
   const info = {
-    cliente: resp?.pop()?._id,
-    poliza: resp?.pop()?.polize?._id,
+    cliente: finish._id,
+    poliza: !finish.polize ? "No hay poliza add" : finish.polize._id,
     beneficiarios: await getBeneficiariosAPI(),
   };
-
+  console.log(info)
   return (
     <>
       <div
@@ -27,7 +28,7 @@ export default async function CrearPoliza() {
         }}
       >
         <FormPolize data={info} />
-        <Beneficiarios data={[info]} />
+        <Beneficiarios data={info} />
       </div>
       {/* <FormPayees />  MODAAAL */}
     </>

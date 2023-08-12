@@ -9,11 +9,11 @@ import { useEffect, useState } from 'react';
 
 //This is form for new client
 
-export const FormClientData = (data) => {
+export const FormClientData = ({data}) => {
     const [error, setError] = useState("");
     const router = useRouter()
     const params = useParams()
-    console.log(data?.data)
+    console.log(data)
    
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({
@@ -23,17 +23,17 @@ export const FormClientData = (data) => {
       addres: "",
       phone: "",
       dateofbirth: "",
-      polize: data?.data,
+      polize: `${data}`,
     });
     //actua como actualizador y reseteo de forms
     const sendClient = async(ev) => {
       try {
         const res = await createClientAction(ev, values, reset);
         console.log(res)
-        const {data} = await res.json();
+        //const {data} = await res.json();
         
         if (res.status === 201) {
-          router.push(`/clientes/poliza/${data._id}`);
+          router.push(`/clientes/poliza`);
           router.refresh();
         }
       } catch (error) {
@@ -133,7 +133,7 @@ export const FormClientData = (data) => {
               className="btn-primary"
               onClick={() => {
                 reset();
-                router.push("/clientes/lista");
+                router.push("/clientes");
               }}
             >
               Cancelar

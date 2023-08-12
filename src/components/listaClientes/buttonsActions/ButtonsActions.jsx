@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation'
 
 
-export default function ButtonsActions() {
+export default function ButtonsActions(poliza) {
     const router = useRouter()
 
 

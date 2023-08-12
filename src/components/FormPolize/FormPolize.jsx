@@ -20,10 +20,10 @@ export const FormPolize = ({data}) => {
   //actua como actualizador y reseteo de forms
   const sendPolize = async (ev) => {
     try {
-      const res = await updatePolizeAction(ev, values, reset, );
+      const res = await updatePolizeAction(ev, values, reset, data.poliza);
       console.log(res);
 
-      if (res.status === 201) {
+      if (res.status === 200) {
         router.push(`/clientes/pago/`); //${}
         router.refresh();
       }

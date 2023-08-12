@@ -10,14 +10,11 @@ const payeesSchema = new Schema({
     cliente: {
         type: Schema.Types.ObjectId,
         ref: 'Client', 
-        require: [true, "Los datos del cliente son requeridos"],
-        unique: [true, "Los beneficiarios solo pertenecen a un cliente"],
+
     },
     poliza: {
         type: Schema.Types.ObjectId,
         ref: 'Polize',
-        require: [true, "Los datos de la poliza son requeridos"],
-        unique: [true, "Los beneficiarios solo pertenecen a un cliente"],
     },
 }, {
     timestamps: true,

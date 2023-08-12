@@ -9,7 +9,7 @@ import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 export default function Beneficiarios({data}) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
   
-  const data1 = data;
+  console.log(data)
   
   //ver el error y modificar, esto queda pendiente
 
@@ -20,7 +20,7 @@ export default function Beneficiarios({data}) {
         modalFormBeneficiario && (
           <FormBeneficiario
             setModalFormBeneficiario={setModalFormBeneficiario}
-            data={data1}
+            data={data}
           />
         )
       }

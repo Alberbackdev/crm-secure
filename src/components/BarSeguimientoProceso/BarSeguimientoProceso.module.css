@@ -1,0 +1,44 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.process {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circleIndicator{
+    width: 41px;
+    height: 38px;
+    border-radius: 50%;
+    background: #2B308B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+}
+
+.circleIndicatorActive {
+    background: #289056;
+}
+
+.nameActive {
+    color: #289056;
+    font-weight: 500;
+}
+
+.nameInactive {
+    color: #5A81FA;
+    font-weight: 500;
+}
+
+.separator {
+    width: 72px;
+    height: 3px;
+    background: #0F843E;
+    margin: 0 8px;
+}

@@ -4,9 +4,10 @@ import style from './InputCodigoSeguro.module.css'
 import { useForm } from '@/src/utils/useForm';
 import { createPolizeAction } from '@/src/services/polizaServices';
 import { useRouter } from 'next/navigation';
+
 //This is form for new client
 
-export const InputCodigoSeguro = () => {
+export const InputCodigoSeguro = ({setPoliza}) => {
     const router = useRouter()
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm({ codigoPoliza: "" })
@@ -14,10 +15,11 @@ export const InputCodigoSeguro = () => {
     const sendCodigo = async(ev) => {
         try {
         const res = await createPolizeAction(ev, values, reset);
-        console.log(res)
+        console.log(res);
         
         if (res.status === 201) {
-          router.refresh();
+            const {data} = res.data
+          setPoliza({ codigoPoliza: data.codigoPoliza, _id: data._id });
         }
       } catch (error) {
         console.log(error)

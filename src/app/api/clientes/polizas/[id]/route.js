@@ -42,7 +42,7 @@ export async function DELETE(request, { params }) {
 
 export async function PUT( request, {params}) {
     await connectDB()
-    const id = params.id
+    const {id} = params
     const body = await request.json()
 
     try {

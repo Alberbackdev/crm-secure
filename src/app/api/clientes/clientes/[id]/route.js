@@ -5,10 +5,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, {params}) {
     await connectDB()
+    console.log(params)
     const id = params.id
     try {
-        const result = await ClientData.findById(id)
-        return NextResponse.json({data: result}, {status: 200})
+        const result = await ClientData.findById(id).populate('polize');
+        return NextResponse.json({data: result}, {status: 200});
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
             return NextResponse.json(

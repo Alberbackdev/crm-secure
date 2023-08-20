@@ -9,26 +9,37 @@ import { useEffect, useState } from "react";
 
 //This is form for new client
 
-export const FormClientData = ({poliza}) => {
+export const FormClientData = ({ poliza }) => {
   const [error, setError] = useState("");
   const router = useRouter();
   const params = useParams();
-  const { codigoPoliza, _id } = poliza
-  console.log( codigoPoliza,  _id);
+
+
+  console.log(poliza);
   //llama a la funcion para actualizar el estado del input
-  const { values, handleInputChange, reset } = useForm({polize: _id, name: "", lastname: "", cidentified: "", addres: "", phone: "", dateofbirth: "",})
-  console.log(values);
+  const { values, handleInputChange, reset } = useForm({
+    name: "",
+    lastname: "",
+    cidentified: "",
+    addres: "",
+    phone: "",
+    dateofbirth: "",
+  });
+
+  values.polize = poliza._id
+
+
   //actua como actualizador y reseteo de forms
   const sendClient = async (ev) => {
     try {
-      //console.log(values);
+      console.log(values);
       const res = await createClientAction(ev, values, reset);
       console.log(res);
       //const {data} = await res.json();
 
       if (res.status === 201) {
         router.push(
-          `/clientes/poliza/?codigoPoliza=${poliza.codigoPoliza}&idCliente=${res.data.data._id}`
+          `/clientes/poliza/${res.data.data._id}?codigoPoliza=${poliza.codigoPoliza}&polizaId=${poliza.codigoPoliza}`
         );
       }
     } catch (error) {
@@ -37,8 +48,8 @@ export const FormClientData = ({poliza}) => {
   };
 
   useEffect(() => {
-    console.log(params);
-  }, [params]);
+    console.log(params, poliza);
+  }, [params, poliza]);
 
   return (
     <div className={style.container}>

@@ -20,7 +20,7 @@ export default function ButtonsActions(poliza) {
             />
             Exportar
         </button>
-        <button type='button' onClick={() => router.push('/clientes/crear')}>
+        <button type='button' onClick={() => router.push('/clientes/cliente')}>
             <Image
                 priority
                 src="/add.png"

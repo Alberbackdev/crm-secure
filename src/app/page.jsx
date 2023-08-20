@@ -5,17 +5,17 @@ import { getPolizeAPI } from "../services/polizaServices";
 //Vista Principal
 export default async function HomePage() {
   const polizas = await getPolizeAPI();
-  const clients = await getClientsAPI();
+  const { data } = await getClientsAPI();
   const beneficiarios = await getBeneficiariosAPI();
   return (
     <>
       <div>HomePage</div>
       <div>---------------------------</div>
-      <div>{JSON.stringify(polizas)}</div>
+      <div>{JSON.stringify(polizas.data)}</div>
       <div>---------------------------</div>
-      <div>{JSON.stringify(beneficiarios)}</div>
+      <div>{JSON.stringify(beneficiarios.data)}</div>
       <div>---------------------------</div>
-      <div>{JSON.stringify(clients)}</div>
+      <div>{JSON.stringify(data)}</div>
     </>
   );
 }

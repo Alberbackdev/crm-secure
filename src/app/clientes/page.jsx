@@ -12,7 +12,7 @@ export default async function Lista() {
   return (
     <div style={{ marginLeft: "41px", marginTop: "3rem" }}>
       <ButtonsActions />
-      <Listado data={!res ? "No hay registros": res} />
+      <Listado data={!res ? "No hay registros": res.data} />
     </div>
   );
 }

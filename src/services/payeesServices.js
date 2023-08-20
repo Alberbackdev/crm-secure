@@ -1,18 +1,17 @@
 import axios from "axios";
+import { urlApiDev } from "./api";
 
 //READ
-export async function getBeneficiariosAPI() {
-    const res = await axios.get("http://localhost:3000/api/clientes/beneficiarios");
-    const data = await res.data
-    return data
+export async function getBeneficiariosAPI(params) {
+    return await axios.get(`${urlApiDev}/clientes/beneficiarios?id=${params}`)
+    .then(response => response)
 }
 
 //CREATE
 export async function createPayeeAction(ev, values, reset) {
     ev.preventDefault();
-    const res = await axios.post("/api/clientes/beneficiarios", values);
-    reset();
-    return res
+    return await axios.post(`${urlApiDev}/clientes/beneficiarios`, values)
+    .then(response => response );
 }
 
 
@@ -20,9 +19,8 @@ export async function createPayeeAction(ev, values, reset) {
 export async function updatePayeeAction(ev, values, reset, id) {
     console.log(values, id)
     ev.preventDefault();
-    const res = await axios.put(`/api/clientes/beneficiarios/${id}`, values);
-    reset();
-    return res;
+    return await axios.post(`${urlApiDev}/clientes/beneficiarios/${id}`, values)
+    .then(response => response);
 } 
 
 //DELETE

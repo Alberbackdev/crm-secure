@@ -10,8 +10,8 @@ export default function Listado({data}) {
   console.log(data)
   
   const deleteClient = async(ev) => {
-    const value = ev.target.getAttribute("value");
-    await deleteClientAction(ev, value);
+    const id = ev.target.getAttribute("value");
+    await deleteClientAction(ev, id);
     router.refresh();
   };
 
@@ -43,7 +43,7 @@ export default function Listado({data}) {
               </div>
               <p>Activo</p>
             </div>
-            <Link href={`/clientes/crear/${element._id}`}>
+            <Link href={`/clientes/cliente/${element._id}`} >
               <div className={style.dataUser}>
                 <p>{element.cidentified}</p>
                 <p>

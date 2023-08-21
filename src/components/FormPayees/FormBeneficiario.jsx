@@ -7,17 +7,17 @@ import { useRouter } from "next/navigation";
 
 //This is form for new client
 
-export const FormBeneficiario = ({ setModalFormBeneficiario, data }) => {
+export const FormBeneficiario = ({ setModalFormBeneficiario, param }) => {
   const router = useRouter()
-  console.log(data);
+  console.log(param);
   //llama a la funcion para actualizar el estado del input
   const { values, handleInputChange, reset } = useForm({
     name_payee: "",
     cidentified_payee: "",
     age_payee: "",
     dateofbirth: "",
-    cliente: `${data.cliente}`,
-    poliza: `${data.poliza}`,
+    cliente: `${param.cliente}`,
+    poliza: `${param.poliza}`,
   });
   //actua como actualizador y reseteo de forms
   

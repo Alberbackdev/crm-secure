@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import style from "./beneficiarios.module.css";
@@ -6,10 +6,10 @@ import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 
 
-export default function Beneficiarios({data}) {
+export default function Beneficiarios({poliza}) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
   
-  console.log(data)
+  console.log("InfoPoliza:", poliza)
   
   //ver el error y modificar, esto queda pendiente
 
@@ -20,7 +20,7 @@ export default function Beneficiarios({data}) {
         modalFormBeneficiario && (
           <FormBeneficiario
             setModalFormBeneficiario={setModalFormBeneficiario}
-            data={data}
+            poliza={poliza}
           />
         )
       }

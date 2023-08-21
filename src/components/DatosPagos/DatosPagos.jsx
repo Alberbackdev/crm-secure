@@ -5,6 +5,8 @@ import Mensualidad from './Mensualidad/Mensualidad';
 import style from './datosPagos.module.css';
 
 export default function DatosPagos() {
+
+    
     
   return (
     <div className={style.containerTopData}>

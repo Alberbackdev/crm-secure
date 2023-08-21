@@ -25,7 +25,6 @@ export const FormClientData = ({ poliza }) => {
     phone: "",
     dateofbirth: "",
   });
-
   values.polize = poliza._id
 
 
@@ -39,7 +38,7 @@ export const FormClientData = ({ poliza }) => {
 
       if (res.status === 201) {
         router.push(
-          `/clientes/poliza/${res.data.data._id}?codigoPoliza=${poliza.codigoPoliza}&polizaId=${poliza.codigoPoliza}`
+          `/clientes/poliza/${res.data.data._id}?codigoPoliza=${poliza.codigoPoliza}&polizaId=${poliza._id}`
         );
       }
     } catch (error) {

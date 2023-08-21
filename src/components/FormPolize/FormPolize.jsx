@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { useRouter } from "next/navigation";
 import style from "./formPolize.module.css";
 import { useForm } from "../../utils/useForm";
@@ -7,9 +7,10 @@ import { updatePolizeAction } from "../../services/polizaServices";
 
 //This is form for new client
 
-export const FormPolize = ({data}) => {
+export const FormPolize = ({poliza, client}) => {
   const router = useRouter();
-  console.log(data)
+  console.log("Poliza:", poliza.polizaId);
+  console.log("Cliente:", client);
   //llama a la funcion para actualizar el estado del las entradas
   const { values, handleInputChange, reset } = useForm({
     type_polize: "",
@@ -20,11 +21,11 @@ export const FormPolize = ({data}) => {
   //actua como actualizador y reseteo de forms
   const sendPolize = async (ev) => {
     try {
-      const res = await updatePolizeAction(ev, values, reset, data.poliza);
+      const res = await updatePolizeAction(ev, values, poliza.polizaId);
       console.log(res);
 
       if (res.status === 200) {
-        router.push(`/clientes/pago/`); //${}
+        router.push(`/clientes/pago/${client.id}?poliza=${poliza.polizaId}`);
         router.refresh();
       }
     } catch (error) {
@@ -90,7 +91,7 @@ export const FormPolize = ({data}) => {
           <input
             name="city_contract"
             type="text"
-            placeholder="Av. 6 entre calles 9 y 10..."
+            placeholder="Ejemplo: Valera"
             className={style.inputForm}
             value={values.city_contract}
             onChange={handleInputChange}

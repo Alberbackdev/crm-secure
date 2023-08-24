@@ -106,7 +106,7 @@ function FormResponsable() {
             <button type="button" className="btn-primary" onClick={() => router.push('/ventas')}>
                 Atras
             </button>              
-            <button type="button" className="btn-primary" onClick={() => {}}>
+            <button type="button" className="btn-primary" onClick={() => router.push('/ventas/servicio')}>
                 Siguiente
             </button>
         </div>

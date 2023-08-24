@@ -5,21 +5,46 @@
     border-radius: 20px;
     padding: 10px 20px;
     margin: 0px 41px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .title {
     color: #2B308B;
     font-size: 18px;
     font-weight: 600;
-    margin-top: 10px;
 }
 
 .contentTop {
     width: 313px;
-    height: 181px; 
+    height: auto; 
     border-radius: 20px;
     padding: 8px;
     border: 2px solid #DADADA;
+    margin-top: 5px;
+}
+
+.descripcion {
+    color: #404D61;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.data, .montoPagado {
+    color: #2B308B;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.montoPagado {
+    font-size: 16px;
+}
+
+.horizontal, .mesPagado, .mesPagado_center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contentCenter {
@@ -27,11 +52,41 @@
     height: 181px; 
     border-radius: 20px;
     padding: 8px;
-    border: 2px solid #DADADA;
-    margin: 1.5rem 0;
+}
+
+.montoEnMoneda { margin-top: 8px; }
+.mesPagado_center { border-top: 1px solid #DADADA; padding-top: 2px;}
+.monedaBs > p, .monedaDolar > p  {
+    color: #289056;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.monedaDolar > p {
+    color: #757D8A;
 }
 
 .contentBottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
 
+.confirmBtn {
+    border-radius: 25px;
+    background: #289056;
+    width: 200px;
+    color: #fff;
+    font-size: 16px;
+    height: 44px;
+}
+
+.cancelarBtn {
+    color: #757D8A;
+    font-size: 13px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 

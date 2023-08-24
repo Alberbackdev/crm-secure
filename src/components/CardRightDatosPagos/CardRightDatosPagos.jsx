@@ -1,9 +1,12 @@
 "use client"
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import style from './cardRightDatosPagos.module.css'
 
 function CardRightDatosPagos() {
   const router = useRouter();
+  const pathname = usePathname();
+  const isConfirmarPage = pathname.includes('confirmar');
+
 
   return (
     <div className={style.container}>
@@ -16,16 +19,19 @@ function CardRightDatosPagos() {
             </div>
             <p className={style.descripcion}>Numero de Referencia</p>
             <p className={style.data}>0973</p>
-            <div className={style.horizontal}>
-                <div>
-                  <p className={style.descripcion}>N° de Meses que Pago</p>
-                  <p className={style.data}>4</p> 
-                </div>  
-                <div>
-                  <p className={style.descripcion}>N° de Meses a Deber</p>
-                  <p className={style.data} style={{textAlign: 'right'}}>9</p> 
-                </div>           
-            </div>
+           {
+            isConfirmarPage && 
+              <div className={style.horizontal}>
+                  <div>
+                    <p className={style.descripcion}>N° de Meses que Pago</p>
+                    <p className={style.data}>4</p> 
+                  </div>  
+                  <div>
+                    <p className={style.descripcion}>N° de Meses a Deber</p>
+                    <p className={style.data} style={{textAlign: 'right'}}>9</p> 
+                  </div>           
+              </div>
+           }
             <div className={style.horizontal}>
                 <div>
                   <p className={style.descripcion}>Tipo de Plan</p>
@@ -38,23 +44,23 @@ function CardRightDatosPagos() {
             </div>           
         </div>
         <div className={style.contentCenter}>
-          <p className={style.titleCenter}>Monto y Pago</p>
+          <p className={style.title}>Monto y Pago</p>
             <div className={style.mesesPagados}>
                 <div className={style.mesPagado}>
-                  <p className={style.mes}>Enero</p>
-                  <p className={style.monto}>250.00</p>
+                  <p className={style.descripcion}>Enero</p>
+                  <p className={style.montoPagado}>250.00</p>
                 </div>
                 <div className={style.mesPagado}>
-                  <p className={style.mes}>Febrero</p>
-                  <p className={style.monto}>250.00</p>
+                  <p className={style.descripcion}>Febrero</p>
+                  <p className={style.montoPagado}>250.00</p>
                 </div>
                 <div className={style.mesPagado}>
-                  <p className={style.mes}>Marzo</p>
-                  <p className={style.monto}>250.00</p>
+                  <p className={style.descripcion}>Marzo</p>
+                  <p className={style.montoPagado}>250.00</p>
                 </div>
                 <div className={style.mesPagado}>
-                  <p className={style.mes}>Abril</p>
-                  <p className={style.monto}>250.00</p>
+                  <p className={style.descripcion}>Abril</p>
+                  <p className={style.montoPagado}>250.00</p>
                 </div>
             </div>
             <div className={style.montoEnMoneda}>
@@ -70,9 +76,11 @@ function CardRightDatosPagos() {
         </div>
         <div className={style.contentBottom}>
             <button type='button' onClick={() => router.push('/clientes/confirmar/')} className={style.confirmBtn}>
-              Confirmar
+              { isConfirmarPage ? 'Imprimir Contrato' : 'Confirmar'}
             </button>
-            <p className={style.cancelarBtn} onClick={() => router.push('/clientes/pagos')}>Cancelar</p>
+            <p className={style.cancelarBtn} onClick={() => router.push('/clientes/pago')}>
+              { isConfirmarPage ? 'Salir' : 'Cancelar'}
+            </p>
         </div>
     </div>
   )

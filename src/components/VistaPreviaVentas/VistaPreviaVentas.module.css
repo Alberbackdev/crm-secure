@@ -1,0 +1,94 @@
+.container {
+    width: 574px;
+    height: 370px;
+    border-radius: 20px;
+    padding: 8px;
+    background-color: #fff;
+}
+
+.successMessage {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    background: #CAFFE2;
+    height: 67px;
+    margin-bottom: 7px;
+}
+
+
+.circleContent {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 1rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blueMessage {
+    color: #2B308B;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.grayMessage {
+    color: #757D8A;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.titleInfo {
+    font-size: 16px;
+    font-weight: 500;
+    color: #404D61;
+}
+
+/*detalles Cliente*/
+.detallesCliente {
+    margin: 0 1rem
+}
+
+.title_detallesCliente {
+    color: #2B308B;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.dataCliente, .dataPoliza {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+
+.title_field {
+    color: #404D61;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.data_field {
+    color: #2B308B;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.right {
+    text-align: right;
+}
+
+.detallesPoliza{
+    margin: 0 1rem;
+    margin-top: 12px;
+}

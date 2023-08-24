@@ -2,12 +2,13 @@
 import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeguimientoProceso"
 import CardRightDatosVentas from "@/src/components/CardRightDatosVentas/CardRightDatosVentas"
 import ContainerPrinc from "@/src/components/LayoutFolder/Layout";
-import FormServicio from "@/src/components/ventas/FormServicio/FormServicio"
+import VistaPreviaVentas from "@/src/components/VistaPreviaVentas/VistaPreviaVentas"
 
-export default function Servicio() {
+
+export default function ConfirmarVenta() {
   return (
     <ContainerPrinc>
-      <BarSeguimientoProceso currentPage={'Servicio'} useBarTo={'Ventas'} />
+      <BarSeguimientoProceso currentPage={'Confirmacion'} useBarTo={'Ventas'} />
       <div
         style={{
           display: "flex",
@@ -16,7 +17,7 @@ export default function Servicio() {
           justifyContent: "space-evenly",
         }}
       >
-        <FormServicio />
+        <VistaPreviaVentas />
         <CardRightDatosVentas />
       </div>
     </ContainerPrinc>

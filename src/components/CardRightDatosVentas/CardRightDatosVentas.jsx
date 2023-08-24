@@ -45,10 +45,10 @@ function CardRightDatosVentas() {
                 </div>
             </div>
             <div className={style.contentBottom}>
-                <button type='button' onClick={() => router.push('/clientes/confirmar/')} className={style.confirmBtn}>
+                <button type='button' onClick={() => router.push('/ventas/confirmar')} className={style.confirmBtn} style={{backgroundColor: isConfirmarPage ? '#289056' : '#2B308B'}}>
                   { isConfirmarPage ? 'Descargar' : 'Confirmar'}
                 </button>
-                <p className={style.cancelarBtn} onClick={() => router.push('/clientes/pago')}>
+                <p className={style.cancelarBtn} onClick={() => router.push('/ventas/servicio')}>
                   { isConfirmarPage ? 'Salir' : 'Cancelar Venta'}
                 </p>
             </div>

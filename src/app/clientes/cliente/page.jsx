@@ -5,6 +5,7 @@ import { InputCodigoSeguro } from "../../../components/InputCodigoSeguro/InputCo
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { FormEditClientData } from "@/src/components/FormClientData/FormEditClientData";
+import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeguimientoProceso"
 
 //This is form for new client
 
@@ -17,11 +18,18 @@ export default function CrearCliente({params}) {
   console.log(res) */ 
   return (
     <>
+      <BarSeguimientoProceso currentPage={'Datos Principales'} useBarTo={'Clientes'} />
       {!id ? (
-        <>
-          <InputCodigoSeguro setPoliza={setPoliza} poliza={poliza} />
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-evenly",
+          }}
+        >
           <FormClientData poliza={poliza} />
-        </>
+          <InputCodigoSeguro setPoliza={setPoliza} poliza={poliza} />
+        </div>
       ) : (
         <FormEditClientData params={params} />
       )}

@@ -3,17 +3,17 @@ import {useSession} from "next-auth/react"
 import Image from 'next/image'
 import style from './header.module.css';
 import { NamePageHelper } from "../../utils/namePage"
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 
 export default function Header() {
   const {data: session} = useSession();
   const pathname = usePathname();
-  console.log(pathname)
+  
   return (
     <div className={style.header}>
       <div className={style.headerNamePage}>
-        <h2 className={style.namePage}>{NamePageHelper()}</h2>
+        <h2 className={style.namePage}>{NamePageHelper(pathname)}</h2>
         {pathname.length > 1 && <p className={style.pathPage}>{pathname}</p>}
       </div>
       <div className={style.contentAvatar}>

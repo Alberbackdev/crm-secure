@@ -9,6 +9,7 @@ import { useParams, usePathname } from "next/navigation";
 export default function Header() {
   const {data: session} = useSession();
   const pathname = usePathname();
+  console.log(pathname)
   return (
     <div className={style.header}>
       <div className={style.headerNamePage}>

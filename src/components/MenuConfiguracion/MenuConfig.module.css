@@ -6,12 +6,22 @@
     font-weight: 500;
     color: #696E82;
     font-size: 15px;
+    margin-left: -10px;
 }
 
 .title {
     font-size: 16px;
+    padding: 5px 10px;
 }
 
 .links {
-
+    margin: 10px 0;
+    transition: all .3s ease;
+    padding: 5px 10px;
+}
+.links:hover {
+    border-radius: 20px;
+    background: rgba(90, 129, 250, 0.20);
+    color: #5A81FA;
+    
 }

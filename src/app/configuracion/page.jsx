@@ -4,7 +4,7 @@ import ContainerPrinc from "../../components/LayoutFolder/Layout";
 
 
 
-export default function Profile() {
+export default function Configuracion() {
     const { data: session } = useSession()
     return (
         <ContainerPrinc>

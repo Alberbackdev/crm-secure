@@ -6,7 +6,7 @@ export const NamePageHelper = (pathname) => {
     if(pathname.includes('clientes')) return 'Clientes';
     if(pathname.includes('dashboard')) return 'Dashboard';
     if(pathname.includes('ventas')) return 'Ventas';
-    if (pathname === '/profile') return 'Ajustes';
+    if (pathname === '/configuracion') return 'Ajustes';
     if (pathname === '/login') return 'Inicio de Sesión';
     if (pathname === '/register') return 'Registrate';
 }

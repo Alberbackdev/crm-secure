@@ -82,7 +82,7 @@ export default function Sidebar() {
               </svg>
               Ventas
             </Link>
-            <Link href={"/profile"} className={activeLink}>
+            <Link href={"/configuracion"} className={activeLink}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

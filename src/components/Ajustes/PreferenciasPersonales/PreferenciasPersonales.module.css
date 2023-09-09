@@ -1,0 +1,69 @@
+.container {
+    width: 574px;
+    height: 520px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: .5rem;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.profilePicture {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #000;
+    margin-right: 10px;
+}
+
+.textBold {
+    color: #404D61;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.textInfo {
+    color: #696E82;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.group {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.groupChild { display: flex; flex-direction: column;}
+
+.groupChild > input {
+    width: 217px;
+    padding: 10px;
+    color: #404D61; 
+    font-weight: 500;
+}
+
+.buttons {
+    margin-top: .5rem;
+    display: flex; 
+    justify-content: center;
+}
+
+.buttons > button {
+    width: 195px;
+    padding: 13px 20px;
+    border-radius: 25px;
+    background: #289056;
+}

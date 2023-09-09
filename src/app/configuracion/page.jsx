@@ -1,4 +1,5 @@
 'use client';
+import PreferenciasPersonales from "@/src/components/Ajustes/PreferenciasPersonales/PreferenciasPersonales"
 import ContainerPrinc from "../../components/LayoutFolder/Layout";
 import MenuConfig from "@/src/components/MenuConfiguracion/MenuConfig"
 
@@ -16,7 +17,7 @@ export default function Configuracion() {
                 }}
             >
                <MenuConfig />
-               <h3>Lobero</h3>
+               <PreferenciasPersonales />
             </div>
         </ContainerPrinc>
     );

@@ -16,7 +16,7 @@ function MenuConfig() {
             <Link href={"/configuracion/dispositivos"} >
                 <p className={style.links}>Tus dispositivos</p>
             </Link>
-            <Link href={"/"} >
+            <Link href={"/configuracion/notificaciones"} >
                 <p className={style.links}>Notificaciones</p>
             </Link>
         </div>

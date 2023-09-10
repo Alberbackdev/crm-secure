@@ -1,0 +1,53 @@
+.container {
+    width: 574px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: .5rem;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: -1px;
+}
+
+.handleNotifications {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 1rem;
+    color: #5A81FA;
+    cursor: pointer;
+}
+
+.handleNotifications >p:nth-child(1) {
+    margin-right: 8px;
+}
+
+.selected {
+    color: #289056;
+    font-weight: 500;
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+}
+
+.notifications > h3 {
+    color: #404D61;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: -2px;
+}
+
+.messageInfo {
+    color: #696E82;  
+    font-size: 12px;
+    font-weight: 500;
+}

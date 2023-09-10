@@ -7,10 +7,10 @@ function MenuConfig() {
     <div className={style.content}> 
         <div className={style.config}>
             <p className={style.title}>PERSONAL</p>
-            <Link href={"/"} >
+            <Link href={"/configuracion"} >
                 <p className={style.links}>Preferencias Personales</p>
             </Link>
-            <Link href={"/"} >
+            <Link href={"/configuracion/seguridad"} >
                 <p className={style.links}>Contraseña e Inicio de sesion</p>
             </Link>
             <Link href={"/"} >

@@ -1,0 +1,60 @@
+.container {
+    width: 574px;
+    height: 460px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: .5rem;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: -1px;
+}
+
+.infoChangePassword {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.textBold {
+    color: #404D61;
+    font-size: 20px;
+}
+
+.textInfo {
+    color: #696E82;
+    font-size: 12px;
+}
+
+.groupChild > label {
+    color: #404D61; 
+    font-size: 16px;
+    font-weight: 500;
+}
+.groupChild { display: flex; flex-direction: column;}
+
+.groupChild > input {
+    width: 330px;
+    padding: 10px;
+    color: #404D61; 
+    font-weight: 500;
+    border: 1px solid #404D61;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex; 
+    justify-content: center;
+}
+
+.buttons > button {
+    width: 195px;
+    padding: 13px 20px;
+    border-radius: 25px;
+    background: #289056;
+}

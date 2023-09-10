@@ -27,7 +27,7 @@
 }
 
 .textInfo {
-    color: #696E82;
+    color: #B90F0F;
     font-size: 12px;
 }
 
@@ -56,9 +56,9 @@
     width: 195px;
     padding: 13px 20px;
     border-radius: 25px;
-    background: #289056;
+    background: #2B308B;
 }
 
-.buttons > button:nth-child(2) {
-    background: #2B308B;
+.buttons > button:nth-child(2) {   
+    background: #289056;
 }

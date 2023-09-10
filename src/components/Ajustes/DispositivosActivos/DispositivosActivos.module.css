@@ -1,0 +1,77 @@
+.container {
+    width: 574px;
+    height: 380px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: .5rem;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: -1px;
+}
+
+.textBold {
+    color: #404D61;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.textInfo {
+    color: #696E82;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.devicesConnected {
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 1px solid #DADADA;
+    overflow-y: auto;
+    height: 32px;
+    margin: 1rem 0;
+}
+
+.devicesConnected::-webkit-scrollbar-thumb {
+    background: #2B308B;
+    border-radius: 5px;
+}
+
+.devicesConnected::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa; 
+    border-radius: 5px;
+}
+
+.device {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #DADADA;
+    padding-bottom: 4px;
+}
+
+.device > p {
+    font-size: 12px;
+    color: #000;
+    margin-left: 1rem;
+}
+
+.warningMessage {
+    color: #696E82;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: .6rem;
+}
+
+.separatorline {
+    background-color: rgba(105, 110, 130, 0.25);
+    height: 1px;
+    width: 100%;
+}

@@ -1,10 +1,10 @@
 'use client';
-import PreferenciasPersonales from "@/src/components/Ajustes/PreferenciasPersonales/PreferenciasPersonales"
-import ContainerPrinc from "../../components/LayoutFolder/Layout";
 import MenuConfig from "@/src/components/MenuConfiguracion/MenuConfig"
+import DispositivosActivos from "@/src/components/Ajustes/DispositivosActivos/DispositivosActivos"
+import ContainerPrinc from "@/src/components/LayoutFolder/Layout"
 
 
-export default function Configuracion() {
+export default function Dispositivos() {
 
     return (
         <ContainerPrinc>
@@ -17,7 +17,7 @@ export default function Configuracion() {
                 }}
             >
                <MenuConfig />
-               <PreferenciasPersonales />
+               <DispositivosActivos />
             </div>
         </ContainerPrinc>
     );

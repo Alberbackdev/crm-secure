@@ -13,7 +13,7 @@ function MenuConfig() {
             <Link href={"/configuracion/seguridad"} >
                 <p className={style.links}>Contraseña e Inicio de sesion</p>
             </Link>
-            <Link href={"/"} >
+            <Link href={"/configuracion/dispositivos"} >
                 <p className={style.links}>Tus dispositivos</p>
             </Link>
             <Link href={"/"} >

@@ -6,16 +6,18 @@ import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
 import { createClientAction } from "@/src/services/clienteServices";
 import { useEffect, useState } from "react";
+import { InputCodigoSeguro } from "../InputCodigoSeguro/InputCodigoSeguro";
 
 //This is form for new client
 
-export const FormClientData = ({ poliza }) => {
+export const FormClientData = ({ setPoliza,
+poliza }) => {
   const [error, setError] = useState("");
   const router = useRouter();
   const params = useParams();
 
 
-  console.log(poliza);
+  //console.log(poliza);
   //llama a la funcion para actualizar el estado del input
   const { values, handleInputChange, reset } = useForm({
     name: "",
@@ -52,11 +54,12 @@ export const FormClientData = ({ poliza }) => {
 
   return (
     <div className={style.container}>
+      <h1 className={style.title}>
+        {!params.id ? "Nuevo Cliente" : "Actualizar Cliente"}
+      </h1>
+      <InputCodigoSeguro setPoliza={setPoliza} poliza={poliza} />
       <form onSubmit={sendClient} className={style.formContent}>
         {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-        <h1 className={style.title}>
-          {!params.id ? "Nuevo Cliente" : "Actualizar Cliente"}
-        </h1>
         <div className={style.group}>
           <div className={style.groupChild}>
             <label>Nombres</label>
@@ -64,7 +67,7 @@ export const FormClientData = ({ poliza }) => {
               name="name"
               type="text"
               placeholder="Patricia Godoy"
-              className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               required
               value={values.name}
               onChange={handleInputChange}

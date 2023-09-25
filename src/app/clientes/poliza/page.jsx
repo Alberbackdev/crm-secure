@@ -6,7 +6,7 @@ import { FormPolize } from "@/src/components/FormPolize/FormPolize"
 
 export default function CrearPoliza({ params, searchParams }) {
   
-  console.log(params, searchParams);
+  //console.log(params, searchParams);
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function CrearPoliza({ params, searchParams }) {
         }}
       > 
         <FormPolize poliza={searchParams} client={params} />
-        <Beneficiarios poliza={searchParams} />
+        <Beneficiarios poliza={searchParams} cliente={params} />
       </div>
       {/* <FormPayees />  MODAAAL */}
     </>

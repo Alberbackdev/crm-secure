@@ -22,7 +22,7 @@ export const InputCodigoSeguro = ({ setPoliza, poliza }) => {
   };
 
   return (
-    <div className={style.container}>
+    <div>
       <form onSubmit={sendCodigo} className={style.formContent}>
         <div className={style.group}>
           <div className={style.groupChild}>
@@ -30,20 +30,26 @@ export const InputCodigoSeguro = ({ setPoliza, poliza }) => {
             <input
               name="codigoPoliza"
               type="text"
-              placeholder="O-1000"
-              className="rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder={!values.poliza ? "O-1234" : values.poliza}
+              required
+              className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.codigoPoliza}
               onChange={handleInputChange}
             />
-            <button type="submit" className="btn-primary">
-              Guardar
+          </div>
+
+          <div className={style.buttons}>
+            <button
+              type="submit"
+              className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            >
+              {!poliza.codigoPoliza
+                ? "Guardar Poliza Nueva"
+                : `Poliza ${poliza.codigoPoliza} Creada`}
             </button>
           </div>
         </div>
       </form>
-      <div>
-        <h2>{poliza.codigoPoliza}</h2>
-      </div>
     </div>
   );
 };

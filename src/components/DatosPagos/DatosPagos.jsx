@@ -1,68 +1,87 @@
 "use client"
 
 
+import { useRouter } from 'next/navigation';
 import Mensualidad from './Mensualidad/Mensualidad';
+import styleMen from "./Mensualidad/mensualidad.module.css";
 import style from './datosPagos.module.css';
+import { useForm } from '@/src/utils/useForm';
+import { useState } from 'react';
 
-export default function DatosPagos() {
+export default function DatosPagos({ selectMeses, sendDataPagos }) {
+  const router = useRouter();
 
-    
-    
+  const { values, handleInputChange, reset } = useForm({
+    type_pay: "",
+    type_of_change: "",
+    date_pay: "",
+    status_pay: "",
+  });
+  console.log(values);
+
+  console.log(sendDataPagos);
+
+  sendDataPagos(values);
+
+  //utilizar sendDataPAgos, para llevar la data al componente padre
+  
+
   return (
     <div className={style.containerTopData}>
-            <h1 className={style.title}>Ingrese los Datos del Pago</h1>
-            <form className={style.formContent}>       
-                <div className={style.formGroup}>
-                    <div className={style.formChild}>
-                        <label htmlFor='formatoPago'>Formato de pago</label>
-                        <input 
-                            id="formatoPago" 
-                            name="type_polize" 
-                            type='text'
-                            placeholder='Transferencia 0973'
-                            className={style.inputForm}
-                            // value={type_polize}
-                            // onChange={(ev) => setType_polize(ev.target.value)}
-                        />                                                         
-                    </div>                     
-                    <div className={style.formChild}>
-                        <label htmlFor='cambioCoin'>Cambio Monetario</label>
-                        <input 
-                            id="cambioCoin" 
-                            name="type_polize" 
-                            type='text'
-                            className={style.inputForm}
-                            // value={type_polize}
-                            // onChange={(ev) => setType_polize(ev.target.value)}
-                        />                                                         
-                    </div>                  
-                </div>
-                <div className={style.formGroup}>
-                    <div className={style.formChild}>
-                        <label htmlFor='fechaPago'>Fecha de pago</label>
-                        <input 
-                            type='date'
-                            id="fechaPago" 
-                            name="type_polize" 
-                            className={style.inputForm}
-                            // value={type_polize}
-                            // onChange={(ev) => setType_polize(ev.target.value)}
-                        />                                                         
-                    </div> 
-                    <div className={style.formChild}>
-                        <label htmlFor='status'>Status</label>
-                        <input 
-                            type='text'
-                            id="status" 
-                            name="type_polize" 
-                            className={style.inputForm}
-                            placeholder='Activo'
-                            // value={type_polize}
-                            // onChange={(ev) => setType_polize(ev.target.value)}
-                        />                                                         
-                    </div>
-                </div>    
-            </form>
-        </div>       
-  )
+      <h1 className={style.title}>Ingrese los Datos del Pago</h1>
+      <form className={style.formContent}>
+        <div className={style.formGroup}>
+          <div className={style.formChild}>
+            <label htmlFor="formatoPago">Formato de pago</label>
+            <input
+              id="formatoPago"
+              name="type_pay"
+              type="text"
+              placeholder="Transferencia 0973"
+              className={style.inputForm}
+              value={values.type_pay}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={style.formChild}>
+            <label htmlFor="cambioCoin">Cambio Monetario</label>
+            <input
+              id="cambioCoin"
+              name="type_of_change"
+              type="text"
+              className={style.inputForm}
+              value={values.type_of_change}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+        <div className={style.formGroup}>
+          <div className={style.formChild}>
+            <label htmlFor="fechaPago">Fecha de pago</label>
+            <input
+              type="date"
+              id="fechaPago"
+              name="date_pay"
+              className={style.inputForm}
+              value={values.date_pay}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={style.formChild}>
+            <label htmlFor="status">Status</label>
+            <input
+              type="text"
+              id="status"
+              name="status_pay"
+              className={style.inputForm}
+              placeholder="Activo"
+              value={values.status_pay}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+      </form>
+      <Mensualidad selectMeses={selectMeses} />
+    </div>
+  );
 }

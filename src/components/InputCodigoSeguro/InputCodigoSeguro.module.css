@@ -17,8 +17,10 @@
 
 .group {
     display: flex;
+    flex-direction: row;
     width: 100%;
     justify-content: space-between;
+    border: 1px solid red;
 }
 .groupChild { display: flex; flex-direction: column;}
 
@@ -31,14 +33,16 @@
 .full_input > input{ padding: 10px; }
 
 .buttons {
-    margin-top: 1.5rem;
+    margin-top: 0.7rem;
     display: flex; 
     justify-content: space-between;
+    
 }
 
 .buttons > button {
-    width: 195px;
-    padding: 13px 20px;
+    margin: 10px 0;
+    width: 217px;
+    padding: 10px;
     border-radius: 25px;
 }
 

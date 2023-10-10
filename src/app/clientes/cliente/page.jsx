@@ -18,7 +18,10 @@ export default function CrearCliente({params}) {
   console.log(res) */ 
   return (
     <>
-      <BarSeguimientoProceso currentPage={'Datos Principales'} useBarTo={'Clientes'} />
+      <BarSeguimientoProceso
+        currentPage={"Datos Principales"}
+        useBarTo={"Clientes"}
+      />
       {!id ? (
         <div
           style={{
@@ -27,8 +30,7 @@ export default function CrearCliente({params}) {
             justifyContent: "space-evenly",
           }}
         >
-          <FormClientData poliza={poliza} />
-          <InputCodigoSeguro setPoliza={setPoliza} poliza={poliza} />
+          <FormClientData setPoliza={setPoliza} poliza={poliza} />
         </div>
       ) : (
         <FormEditClientData params={params} />

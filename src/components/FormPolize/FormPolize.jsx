@@ -9,8 +9,8 @@ import { updatePolizeAction } from "../../services/polizaServices";
 
 export const FormPolize = ({poliza, client}) => {
   const router = useRouter();
-  console.log("Poliza:", poliza.polizaId);
-  console.log("Cliente:", client);
+  //console.log("Poliza:", poliza.polizaId);
+  //console.log("Cliente:", client);
   //llama a la funcion para actualizar el estado del las entradas
   const { values, handleInputChange, reset } = useForm({
     type_polize: "",

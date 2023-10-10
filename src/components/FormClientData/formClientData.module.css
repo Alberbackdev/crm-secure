@@ -4,8 +4,9 @@
     background-color: #fff;
     border-radius: 20px;
     padding: 20px;
-    margin-top: 3rem;
-    margin-left: 41px;
+    margin-top: 1.5rem;
+    margin-left: 10rem;
+    margin-right: 15rem;
 }
 
 .title {
@@ -31,7 +32,7 @@
 .full_input > input{ padding: 10px; }
 
 .buttons {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     display: flex; 
     justify-content: space-between;
 }

@@ -6,10 +6,11 @@ import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 
 
-export default function Beneficiarios({poliza}) {
+export default function Beneficiarios({poliza, cliente}) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
   
   console.log("InfoPoliza:", poliza)
+  console.log("InfoCliente:", cliente);
   
   //ver el error y modificar, esto queda pendiente
 
@@ -21,6 +22,7 @@ export default function Beneficiarios({poliza}) {
           <FormBeneficiario
             setModalFormBeneficiario={setModalFormBeneficiario}
             poliza={poliza}
+            cliente={cliente}
           />
         )
       }

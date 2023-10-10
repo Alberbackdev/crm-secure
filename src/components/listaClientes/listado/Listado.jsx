@@ -4,16 +4,24 @@ import style from './listado.module.css'
 import Image from 'next/image';
 import { deleteClientAction } from '@/src/services/clienteServices';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux'
+import { putDataClientToUpdate } from '@/src/redux/slices/clientReducer'
+
 
 export default function Listado({data}) {
   const router = useRouter()
-  console.log(data)
+  const dispatch = useDispatch()
   
   const deleteClient = async(ev) => {
     const id = ev.target.getAttribute("value");
     await deleteClientAction(ev, id);
     router.refresh();
   };
+
+  const navigateToComponentSelected = (dataClient) => {
+    dispatch( putDataClientToUpdate(dataClient) );
+    router.push(`/clientes/cliente/${dataClient._id}`)
+  }
 
   return (
     <div className={style.listado}>
@@ -23,6 +31,7 @@ export default function Listado({data}) {
             <div className={style.cardTop}>
               <div className={style.icons}>
                 <Image
+                  onClick={() => navigateToComponentSelected(element)}
                   priority
                   src="/edit.png"
                   height={17}

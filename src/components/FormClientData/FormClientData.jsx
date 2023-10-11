@@ -7,13 +7,15 @@ import { useForm } from "@/src/utils/useForm";
 import { createClientAction } from "@/src/services/clienteServices";
 import { useEffect, useState } from "react";
 import { InputCodigoSeguro } from "../InputCodigoSeguro/InputCodigoSeguro";
-
+import { useDispatch } from 'react-redux'
+import { resetState } from '@/src/redux/slices/clientReducer'
 //This is form for new client
 
 export const FormClientData = ({ setPoliza,
 poliza }) => {
   const [error, setError] = useState("");
   const router = useRouter();
+  const dispatch = useDispatch()
   const params = useParams();
 
 
@@ -47,6 +49,12 @@ poliza }) => {
       console.log(error);
     }
   };
+
+  const cancelButton = () => {
+    reset();
+    dispatch(resetState())
+    router.push("/clientes");
+}
 
   useEffect(() => {
     console.log(params, poliza);
@@ -136,10 +144,7 @@ poliza }) => {
           <button
             type="button"
             className="btn-primary"
-            onClick={() => {
-              reset();
-              router.push("/clientes");
-            }}
+            onClick={cancelButton}
           >
             Cancelar
           </button>

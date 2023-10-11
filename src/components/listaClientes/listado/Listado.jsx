@@ -20,7 +20,7 @@ export default function Listado({data}) {
 
   const navigateToComponentSelected = (dataClient) => {
     dispatch( putDataClientToUpdate(dataClient) );
-    router.push(`/clientes/cliente/${dataClient._id}`)
+    router.push(`/clientes/cliente`)
   }
 
   return (

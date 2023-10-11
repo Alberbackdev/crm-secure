@@ -1,39 +1,31 @@
 "use client";
-
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
-import { createClientAction, getClientsAPI, updateClientAction } from "@/src/services/clienteServices";
+import { updateClientAction } from "@/src/services/clienteServices";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { resetState } from '@/src/redux/slices/clientReducer'
+import { getPolizeAPI } from "@/src/services/polizaServices"
 
 //This is form for new client
 
 export const FormEditClientData = ({ params }) => {
     const [error, setError] = useState("");
     const router = useRouter();
+    const dispatch = useDispatch();
 
-    console.log("Parametros:", params)
 
-    console.log('Este es el id:', params.id);
-    //llama a la funcion para actualizar el estado del input
-    const { values, handleInputChange, reset } = useForm({
-      name: "",
-      lastname: "",
-      cidentified: "",
-      addres: "",
-      phone: "",
-      dateofbirth: "",
-    });
-    //values.polize = poliza._id;
-
-    //actua como actualizador y reseteo de forms
-    const putClient = async (ev) => {
+    const { updatedAt, createdAt, ...rest } = useSelector((state) => state.client.data);
+    const { values, handleInputChange, reset } = useForm(rest); //llama a la funcion para actualizar el estado del input
+    
+    const putClient = async (ev) => { //actua como actualizador y reseteo de forms
         try {
-            //console.log(values);
+ 
             const res = await updateClientAction(ev, values, id);
             console.log(res);
-            //const {data} = await res.json();
+        
             if (res.status === 200) {
                 console.log('El registro se actualizó correctamente.');
                 router.push(
@@ -47,20 +39,28 @@ export const FormEditClientData = ({ params }) => {
         }
     };
 
-    useEffect(() => {
-        //traer datay completar el form
-        async function detalles() {
-            await getClientsAPI(params.id)
-        }
-        console.log("Parametro", params);
-    }, [params]);
+    const cancelButton = () => {
+        reset();
+        dispatch(resetState())
+        router.push("/clientes");
+    }
+
+    // useEffect(() => {        
+    //     if ( true ) {
+    //         async function getPolizeByuser() {
+    //             const {data} =  await getPolizeAPI(rest.polize); //Obtener data de la poliza del cliente a editar.
+    //             console.log('polizaByUser', data)
+    //         }
+    //         getPolizeByuser()
+    //     }
+    // }, []);
 
     return (
         <div className={style.container}>
             <form onSubmit={putClient} className={style.formContent}>
                 {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
                 <h1 className={style.title}>
-                    {!params.id ? "Nuevo Cliente" : "Actualizar Cliente"}
+                    Actualizar Cliente
                 </h1>
                 <div className={style.group}>
                     <div className={style.groupChild}>
@@ -138,10 +138,7 @@ export const FormEditClientData = ({ params }) => {
                     <button
                         type="button"
                         className="btn-primary"
-                        onClick={() => {
-                            reset();
-                            router.push("/clientes");
-                        }}
+                        onClick={cancelButton}
                     >
                         Cancelar
                     </button>

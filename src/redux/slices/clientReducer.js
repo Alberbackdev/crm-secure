@@ -28,10 +28,13 @@ export const clientReducer = createSlice({
                 updatingClientData: true,
                 data: action.payload
             }
+        },
+        resetState: (state, action) => {
+            return initialState
         }
     }
 })
 
 
-export const { putDataClientToUpdate } = clientReducer.actions;
+export const { putDataClientToUpdate, resetState } = clientReducer.actions;
 export default clientReducer.reducer;

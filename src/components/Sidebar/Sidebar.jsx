@@ -3,9 +3,12 @@ import Link from "next/link";
 import style from './sidebar.module.css'
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useDispatch } from 'react-redux'
+import { resetState } from '@/src/redux/slices/clientReducer'
 
 export default function Sidebar() {
     const { data: session } = useSession();
+    const dispatch = useDispatch()
     const router = useRouter();
     const inactiveLink ='flex gap-1 p-1';
     const activeLink = inactiveLink+' bg-white text-blue-900 rounded-lg';
@@ -30,7 +33,7 @@ export default function Sidebar() {
         </Link>
 
         {session ? (
-          <nav className="flex flex-col gap-2">
+          <nav className="flex flex-col gap-2" onClick={() => dispatch(resetState())}>
             <Link href={"/dashboard"} className={activeLink}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

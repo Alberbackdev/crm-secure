@@ -26,7 +26,7 @@ const namesPageVentas = [
 const namesPageClientes = [
     {
         namePage: 'Datos Principales',
-        urlPage: '/clientes'
+        urlPage: '/clientes/cliente'
     }, 
     {
         namePage: 'Poliza',

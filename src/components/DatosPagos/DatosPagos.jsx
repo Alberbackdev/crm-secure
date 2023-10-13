@@ -1,7 +1,6 @@
 "use client"
 
 
-import { useRouter } from 'next/navigation';
 import Mensualidad from './Mensualidad/Mensualidad';
 import styleMen from "./Mensualidad/mensualidad.module.css";
 import style from './datosPagos.module.css';
@@ -9,9 +8,8 @@ import { useForm } from '@/src/utils/useForm';
 import { useState } from 'react';
 
 export default function DatosPagos({ selectMeses, sendDataPagos }) {
-  const router = useRouter();
 
-  const { values, handleInputChange, reset } = useForm({
+  const { values, handleInputChange } = useForm({
     type_pay: "",
     type_of_change: "",
     date_pay: "",

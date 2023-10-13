@@ -89,14 +89,15 @@ function CardRightDatosPagos({ meses, dataP }) {
             <p className={style.montoPagado}>250.00</p>
           </div>
           <div className={style.mesPagado}>
-            {meses?.map((month, index) => (
-              <div className={style.cardMensualidad} key={index}>
-                <div className={style.cardMensualidad_mes}>
-                  <p className={style.descripcion}>{month}</p>
-                  <p className={style.montoPagado}>250.00</p>
-                </div>
+            {/* {meses.map((month, index) => (
+              
+            ))} */}
+            <div className={style.cardMensualidad}>
+              <div className={style.cardMensualidad_mes}>
+                <p className={style.descripcion}>{meses}</p>
+                <p className={style.montoPagado}>250.00</p>
               </div>
-            ))}
+            </div>
           </div>
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
@@ -126,7 +127,7 @@ function CardRightDatosPagos({ meses, dataP }) {
         </div>
       </div>
     </div>
-      );
+  );
 }
 
 export default CardRightDatosPagos

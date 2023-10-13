@@ -7,8 +7,8 @@ import { useState } from 'react';
 
 function Mensualidad({ selectMeses }) {
   const router = useRouter();
-  const [months, setMonths] = useState({});
-  const [amounts, setAmounts] = useState({});
+  const [months, setMonths] = useState([]);
+  const [amounts, setAmounts] = useState([]);
 
   selectMeses(months, amounts)
   

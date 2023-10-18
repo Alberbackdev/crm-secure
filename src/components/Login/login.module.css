@@ -42,3 +42,31 @@
     font-size: 18px;
     font-weight: 600;
 }
+.msgMobileInfo {
+    display: none;
+}
+
+/*Responsive Design*/
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 100%;      
+    }
+
+    .container > h2 {
+        margin-bottom: 0px;
+        font-size: 25px;
+    }
+
+    .msgMobileInfo {
+        display: inline-block;
+        color: #404D61;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 1.2rem;
+    }
+
+    .formLogin {
+        width: 80%;
+    }
+}

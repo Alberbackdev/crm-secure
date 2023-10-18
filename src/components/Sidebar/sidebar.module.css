@@ -5,3 +5,22 @@
     background: #2B308B;
     width: 250px;
 }
+
+.contentSidebarMobile {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid #DADBDC;
+    background: #FFF;
+    padding: 15px;
+    margin: auto;
+}
+
+.MobileLink {
+    border-bottom: 1px solid #c7c8ca;
+    padding-bottom: 3px;
+}

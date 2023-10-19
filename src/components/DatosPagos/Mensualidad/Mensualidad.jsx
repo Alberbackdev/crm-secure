@@ -52,12 +52,7 @@ function Mensualidad({ selectMeses }) {
                 <h4>{month}</h4>
                 <p>Recibimos Bs.</p>
               </div>
-              <input
-                type="checkbox"
-                value={month}
-                onChange={handleChange}
-                
-              />
+              <input type="checkbox" value={month} onChange={handleChange} />
             </div>
 
             <input
@@ -65,10 +60,11 @@ function Mensualidad({ selectMeses }) {
               placeholder="300.00"
               step=".01"
               onChange={handleChange}
+              min="0"
             />
           </div>
         ))}
-        <p>Meses seleccionados: {months.join(", ")}</p>
+        <p>Meses seleccionados: {months.join(', ')}</p>
       </div>
       {/* <div>
           <h1>Meses del año</h1>

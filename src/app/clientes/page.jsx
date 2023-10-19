@@ -1,7 +1,8 @@
 import ButtonsActions from "@/src/components/listaClientes/buttonsActions/ButtonsActions";
 import Listado from "@/src/components/listaClientes/listado/Listado";
 import { getClientsAPI } from "@/src/services/clienteServices";
-import { getPolizeAPI } from "@/src/services/polizaServices";
+import style from '@/src/styles/stylePages.module.css'
+// import { getPolizeAPI } from "@/src/services/polizaServices";
 
 //This is form for new client
 
@@ -10,7 +11,7 @@ export default async function Lista() {
 
 
   return (
-    <div style={{ marginLeft: "41px", marginTop: "3rem" }}>
+    <div className={style.mainPageClientes}>
       <ButtonsActions />
       <Listado data={!res ? "No hay registros": res.data} />
     </div>

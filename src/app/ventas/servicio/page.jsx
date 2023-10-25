@@ -12,7 +12,7 @@ export default function Servicio() {
         style={{
           display: "flex",
           width: "100%",
-          marginTop: "1.7rem",
+          marginTop: "1.3rem",
           justifyContent: "space-evenly",
         }}
       >

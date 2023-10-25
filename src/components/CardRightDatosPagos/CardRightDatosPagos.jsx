@@ -110,7 +110,8 @@ function CardRightDatosPagos({ meses, dataP }) {
             </div>
           </div>
         </div>
-        <div className={style.contentBottom}>
+      </div>
+      <div className={style.contentBottom}>
           <button
             type="button"
             onClick={() => router.push("/clientes/confirmar/")}
@@ -125,7 +126,6 @@ function CardRightDatosPagos({ meses, dataP }) {
             {isConfirmarPage ? "Salir" : "Cancelar"}
           </p>
         </div>
-      </div>
     </div>
   );
 }

@@ -6,11 +6,15 @@ import { deleteClientAction } from '@/src/services/clienteServices';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux'
 import { putDataClientToUpdate } from '@/src/redux/slices/clientReducer'
+import { useScreenSize } from '@/src/utils/useWidthScreen'
+import BarSearchMobile from '../../BarSearchMobile/BarSearchMobile'
 
 
 export default function Listado({data}) {
-  const router = useRouter()
-  const dispatch = useDispatch()
+  const { width } = useScreenSize();
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const isMobile = width <= 816;
   
   const deleteClient = async(ev) => {
     const id = ev.target.getAttribute("value");
@@ -25,6 +29,7 @@ export default function Listado({data}) {
 
   return (
     <div className={style.listado}>
+      {isMobile && <BarSearchMobile />}
       {data.map((element) => {
         return (
           <div className={style.card} key={element._id}>
@@ -52,7 +57,7 @@ export default function Listado({data}) {
               </div>
               <p>Activo</p>
             </div>
-            <Link href={`/clientes/cliente/${element._id}`} >
+            <Link href={`/clientes/cliente/${element._id}`} className={style.separator}>
               <div className={style.dataUser}>
                 <p>{element.cidentified}</p>
                 <p>

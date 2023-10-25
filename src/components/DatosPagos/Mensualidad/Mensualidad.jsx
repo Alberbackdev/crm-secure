@@ -1,17 +1,16 @@
-"use client"
+"use client";
 
-import { useRouter } from 'next/navigation';
-import style from './mensualidad.module.css'
-import { useState } from 'react';
-
+import { useRouter } from "next/navigation";
+import style from "./mensualidad.module.css";
+import { useState } from "react";
 
 function Mensualidad({ selectMeses }) {
   const router = useRouter();
   const [months, setMonths] = useState([]);
   const [amounts, setAmounts] = useState([]);
 
-  selectMeses(months, amounts)
-  
+  selectMeses(months, amounts);
+
   const monthsList = [
     "Enero",
     "Febrero",
@@ -30,6 +29,7 @@ function Mensualidad({ selectMeses }) {
   const handleChange = (event) => {
     const month = event.target.value;
     const amount = event.target.value;
+    console.log(month, amount)
     const updatedMonths = months.includes(month)
       ? months.filter((m) => m !== month)
       : [...months, month];
@@ -56,15 +56,18 @@ function Mensualidad({ selectMeses }) {
             </div>
 
             <input
+              name="monto"
               type="number"
               placeholder="300.00"
               step=".01"
+              value={month}
               onChange={handleChange}
               min="0"
             />
           </div>
         ))}
-        <p>Meses seleccionados: {months.join(', ')}</p>
+        <p>Meses seleccionados: {months.join(", ")}</p>
+        <p>Montos seleccionados: {amounts.join(", ")}</p>
       </div>
       {/* <div>
           <h1>Meses del año</h1>
@@ -95,4 +98,4 @@ function Mensualidad({ selectMeses }) {
   );
 }
 
-export default Mensualidad
+export default Mensualidad;

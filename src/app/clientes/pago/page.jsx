@@ -29,7 +29,7 @@ export default function Pagos({ params, searchParams }) {
         style={{
           display: "flex",
           width: "100%",
-          marginTop: "2rem",
+          marginTop: "1.3rem",
           justifyContent: "space-evenly",
         }}
       >

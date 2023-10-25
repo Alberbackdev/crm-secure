@@ -8,7 +8,6 @@
     align-items: center;
 }
 
-
 .namePage {
     color: #404D61;
     font-size: 40px;
@@ -44,4 +43,28 @@
     font-weight: 450;
     justify-content: center;
     flex-direction: column;
+}
+
+/*Responsive Design*/
+
+@media only screen and (max-width: 816px) {
+    .namePage {
+        font-size: 30px;     
+    }
+    .headerNamePage {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .headerNamePage > button {
+        border-radius: 25px;
+        background: #2B308B;
+        padding: 12px;
+        color: #fff;
+        width: 125px;        
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 }

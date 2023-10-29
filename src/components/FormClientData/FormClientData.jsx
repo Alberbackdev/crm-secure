@@ -1,19 +1,19 @@
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
-
 import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
-import { createClientAction } from "@/src/services/clienteServices";
 import { useEffect, useState } from "react";
 import { InputCodigoSeguro } from "../InputCodigoSeguro/InputCodigoSeguro";
-import { useDispatch } from 'react-redux'
-import { resetState } from '@/src/redux/slices/clientReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { dataToCreate, resetState } from '@/src/redux/slices/clientReducer'
+
 //This is form for new client
 
 export const FormClientData = ({ setPoliza,
 poliza }) => {
   const [error, setError] = useState("");
+  const valuesClient = useSelector(state => state.client.data) // state es el reducer y con el punto se accede al nombre se accede al slice
   const router = useRouter();
   const dispatch = useDispatch()
   const params = useParams();
@@ -21,33 +21,18 @@ poliza }) => {
 
   //console.log(poliza);
   //llama a la funcion para actualizar el estado del input
-  const { values, handleInputChange, reset } = useForm({
-    name: "",
-    lastname: "",
-    cidentified: "",
-    addres: "",
-    phone: "",
-    dateofbirth: "",
-  });
-  values.polize = poliza._id
+  const { values, handleInputChange, reset } = useForm(valuesClient);
 
 
   //actua como actualizador y reseteo de forms
-  const sendClient = async (ev) => {
-    try {
-      console.log(values);
-      const res = await createClientAction(ev, values, reset);
-      console.log(res);
-      //const {data} = await res.json();
+  const sendClient = (ev) => {
+    ev.preventDefault();
+    dispatch(dataToCreate(values));
+    router.push(`/clientes/poliza`);
+    //   const res = await createClientAction(ev, values, reset);
+    //   console.log(res);
+    //   //const {data} = await res.json();
 
-      if (res.status === 201) {
-        router.push(
-          `/clientes/poliza/${res.data.data._id}?codigoPoliza=${poliza.codigoPoliza}&polizaId=${poliza._id}`
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const cancelButton = () => {
@@ -63,9 +48,8 @@ poliza }) => {
   return (
     <div className={style.container}>
       <h1 className={style.title}>
-        {!params.id ? "Nuevo Cliente" : "Actualizar Cliente"}
+        Nuevo Cliente
       </h1>
-      <InputCodigoSeguro setPoliza={setPoliza} poliza={poliza} />
       <form onSubmit={sendClient} className={style.formContent}>
         {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
         <div className={style.group}>

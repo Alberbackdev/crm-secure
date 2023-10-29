@@ -5,17 +5,13 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     updatingClientData: false,
     data : {
-        _id: '',
+        //_id: '',
         name: '',
         lastname: '',
         cidentified: '',
         addres: '',
         phone: '',
         dateofbirth: '',
-        polize: '',
-        beneficiarios: [],
-        createdAt: '',
-        updatedAt: ''
     }
 }
 
@@ -29,6 +25,12 @@ export const clientReducer = createSlice({
                 data: action.payload
             }
         },
+        dataToCreate: (state, action) => {
+            return {
+                updatingClientData: false,
+                data: action.payload // data del formulario
+            }
+        },
         resetState: (state, action) => {
             return initialState
         }
@@ -36,5 +38,5 @@ export const clientReducer = createSlice({
 })
 
 
-export const { putDataClientToUpdate, resetState } = clientReducer.actions;
+export const { putDataClientToUpdate, resetState, dataToCreate } = clientReducer.actions;
 export default clientReducer.reducer;

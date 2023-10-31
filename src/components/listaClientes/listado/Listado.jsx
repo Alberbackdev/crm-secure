@@ -1,63 +1,65 @@
-"use client"
-import Link from 'next/link';
-import style from './listado.module.css'
-import Image from 'next/image';
-import { deleteClientAction } from '@/src/services/clienteServices';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux'
-import { putDataClientToUpdate } from '@/src/redux/slices/clientReducer'
-import { useScreenSize } from '@/src/utils/useWidthScreen'
-import BarSearchMobile from '../../BarSearchMobile/BarSearchMobile'
+"use client";
+import Link from "next/link";
+import style from "./listado.module.css";
+import Image from "next/image";
+import { deleteClientAction } from "@/src/services/clienteServices";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { putDataClientToUpdate } from "@/src/redux/slices/clientReducer";
+import { useScreenSize } from "@/src/utils/useWidthScreen";
+import BarSearchMobile from "../../BarSearchMobile/BarSearchMobile";
 
-
-export default function Listado({data}) {
+export default function Listado({ data }) {
   const { width } = useScreenSize();
   const router = useRouter();
   const dispatch = useDispatch();
   const isMobile = width <= 816;
-  
-  const deleteClient = async(ev) => {
+
+  const deleteClient = async (ev) => {
     const id = ev.target.getAttribute("value");
     await deleteClientAction(ev, id);
     router.refresh();
   };
 
   const navigateToComponentSelected = (dataClient) => {
-    dispatch( putDataClientToUpdate(dataClient) );
-    router.push(`/clientes/cliente`)
-  }
+    dispatch(putDataClientToUpdate(dataClient));
+    router.push(`/clientes/cliente`);
+  };
 
   return (
     <div className={style.listado}>
       {isMobile && <BarSearchMobile />}
-      {data.map((element) => {
-        return (
-          <div className={style.card} key={element._id}>
-            <div className={style.cardTop}>
-              <div className={style.icons}>
-                <Image
-                  onClick={() => navigateToComponentSelected(element)}
-                  priority
-                  src="/edit.png"
-                  height={17}
-                  width={17}
-                  style={{ marginRight: "10px" }}
-                  alt="Follow us on Twitter"
-                />
-                <button onClick={deleteClient}>
+      {!data ? (
+        <h2>No hay registros</h2>
+      ) : (
+        data.map((element) => {
+          return (
+            <div className={style.card} key={element._id}>
+              <div className={style.cardTop}>
+                <div className={style.icons}>
                   <Image
+                    onClick={() => navigateToComponentSelected(element)}
                     priority
-                    src="/trash.png"
+                    src="/edit.png"
                     height={17}
                     width={17}
-                    value={element._id}
-                    alt="Delete"
+                    style={{ marginRight: "10px" }}
+                    alt="Follow us on Twitter"
                   />
-                </button>
+                  <button onClick={deleteClient}>
+                    <Image
+                      priority
+                      src="/trash.png"
+                      height={17}
+                      width={17}
+                      value={element._id}
+                      alt="Delete"
+                    />
+                  </button>
+                </div>
+                <p>Activo</p>
               </div>
-              <p>Activo</p>
-            </div>
-            <Link href={`/clientes/cliente/${element._id}`} className={style.separator}>
+
               <div className={style.dataUser}>
                 <p>{element.cidentified}</p>
                 <p>
@@ -80,11 +82,10 @@ export default function Listado({data}) {
                   <p>{element.phone}</p>
                 </div>
               </div>
-            </Link>
-          </div>
-        );
-      })}
+            </div>
+          );
+        })
+      )}
     </div>
   );
 }
-

@@ -9,7 +9,6 @@ function Mensualidad({ selectMeses }) {
   const [months, setMonths] = useState([]);
   const [amounts, setAmounts] = useState([]);
 
-  selectMeses(months, amounts);
 
   const monthsList = [
     "Enero",
@@ -26,19 +25,30 @@ function Mensualidad({ selectMeses }) {
     "Diciembre",
   ];
 
-  const handleChange = (event) => {
-    const month = event.target.value;
-    const amount = event.target.value;
-    console.log(month, amount)
-    const updatedMonths = months.includes(month)
-      ? months.filter((m) => m !== month)
-      : [...months, month];
-    const updatedAmounts = amounts.includes(amount)
-      ? amounts.filter((a) => a !== amount)
-      : [...amounts, amount];
-    setMonths(updatedMonths);
-    setAmounts(updatedAmounts);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "month") {
+      if (months.includes(value)) {
+        setMonths(months.filter((month) => month !== value));
+      } else {
+        setMonths([...months, value]);
+      }
+    }
+    
+    if (name === "amount") {
+      setAmounts(value);
+    }
   };
+
+  console.log(amounts);
+  const amountObjects = months.map((month) => ({
+    month,
+    amount: amounts[month],
+  }));
+  //amountObjects.sort((a, b) => a.month.localeCompare(b.month));
+
+  console.log(amountObjects)
 
   return (
     <div className={style.container}>
@@ -52,22 +62,26 @@ function Mensualidad({ selectMeses }) {
                 <h4>{month}</h4>
                 <p>Recibimos Bs.</p>
               </div>
-              <input type="checkbox" value={month} onChange={handleChange} />
+              <input
+                name="month"
+                type="checkbox"
+                value={month}
+                onChange={handleChange}
+              />
             </div>
 
             <input
-              name="monto"
+              name="amount"
               type="number"
               placeholder="300.00"
               step=".01"
-              value={month}
+              value={amounts[month]}
               onChange={handleChange}
               min="0"
             />
           </div>
         ))}
         <p>Meses seleccionados: {months.join(", ")}</p>
-        <p>Montos seleccionados: {amounts.join(", ")}</p>
       </div>
       {/* <div>
           <h1>Meses del año</h1>

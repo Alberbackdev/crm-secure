@@ -17,6 +17,7 @@ export default function ContainerPrinc({ children }) {
         {" "}
         {/* Sidebar DESKTOP AND MOBILE */}
         {/* {isMobile ? <MobileDesign /> : <Sidebar />} */}
+        <Sidebar />
       </div>
       <div className={style.children}>
         {" "}

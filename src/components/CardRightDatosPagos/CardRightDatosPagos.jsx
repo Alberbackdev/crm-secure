@@ -8,9 +8,10 @@ function CardRightDatosPagos({ meses, dataP }) {
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
 
-  console.log(meses, dataP);
+  console.log(meses);
+  console.log(dataP);
 
-
+//hacer que aparezca el mes y el monto
 
   const sendPolize = async (ev) => {
     try {
@@ -76,27 +77,27 @@ function CardRightDatosPagos({ meses, dataP }) {
       <div className={style.contentCenter}>
         <p className={style.title}>Monto y Pago</p>
         <div className={style.mesesPagados}>
-          <div className={style.mesPagado}>
-            <p className={style.descripcion}>{meses}</p>
-            <p className={style.montoPagado}>250.00</p>
-          </div>
-          <div className={style.mesPagado}>
-            <p className={style.descripcion}>Febrero</p>
-            <p className={style.montoPagado}>250.00</p>
-          </div>
+            {meses?.map((l) => (
+              <div className={style.mesPagado} key={l}>
+                <p className={style.descripcion}>{l}</p>
+                <p className={style.montoPagado}>250.00</p>
+              </div>
+            ))}
+
           <div className={style.mesPagado}>
             <p className={style.descripcion}>Marzo</p>
             <p className={style.montoPagado}>250.00</p>
           </div>
           <div className={style.mesPagado}>
-            {meses?.map((month, index) => (
-              <div className={style.cardMensualidad} key={index}>
-                <div className={style.cardMensualidad_mes}>
-                  <p className={style.descripcion}>{month}</p>
-                  <p className={style.montoPagado}>250.00</p>
-                </div>
+            {/* {meses.map((month, index) => (
+              
+            ))} */}
+            <div className={style.cardMensualidad}>
+              <div className={style.cardMensualidad_mes}>
+                <p className={style.descripcion}>{meses}</p>
+                <p className={style.montoPagado}>250.00</p>
               </div>
-            ))}
+            </div>
           </div>
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
@@ -126,7 +127,7 @@ function CardRightDatosPagos({ meses, dataP }) {
           </p>
         </div>
     </div>
-      );
+  );
 }
 
 export default CardRightDatosPagos

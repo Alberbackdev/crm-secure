@@ -1,17 +1,15 @@
-"use client"
+"use client";
 
-import { useRouter } from 'next/navigation';
-import style from './mensualidad.module.css'
-import { useState } from 'react';
-
+import { useRouter } from "next/navigation";
+import style from "./mensualidad.module.css";
+import { useState } from "react";
 
 function Mensualidad({ selectMeses }) {
   const router = useRouter();
   const [months, setMonths] = useState([]);
   const [amounts, setAmounts] = useState([]);
 
-  selectMeses(months, amounts)
-  
+
   const monthsList = [
     "Enero",
     "Febrero",
@@ -27,18 +25,30 @@ function Mensualidad({ selectMeses }) {
     "Diciembre",
   ];
 
-  const handleChange = (event) => {
-    const month = event.target.value;
-    const amount = event.target.value;
-    const updatedMonths = months.includes(month)
-      ? months.filter((m) => m !== month)
-      : [...months, month];
-    const updatedAmounts = amounts.includes(amount)
-      ? amounts.filter((a) => a !== amount)
-      : [...amounts, amount];
-    setMonths(updatedMonths);
-    setAmounts(updatedAmounts);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "month") {
+      if (months.includes(value)) {
+        setMonths(months.filter((month) => month !== value));
+      } else {
+        setMonths([...months, value]);
+      }
+    }
+    
+    if (name === "amount") {
+      setAmounts(value);
+    }
   };
+
+  console.log(amounts);
+  const amountObjects = months.map((month) => ({
+    month,
+    amount: amounts[month],
+  }));
+  //amountObjects.sort((a, b) => a.month.localeCompare(b.month));
+
+  console.log(amountObjects)
 
   return (
     <div className={style.container}>
@@ -53,18 +63,21 @@ function Mensualidad({ selectMeses }) {
                 <p>Recibimos Bs.</p>
               </div>
               <input
+                name="month"
                 type="checkbox"
                 value={month}
                 onChange={handleChange}
-                
               />
             </div>
 
             <input
+              name="amount"
               type="number"
               placeholder="300.00"
               step=".01"
+              value={amounts[month]}
               onChange={handleChange}
+              min="0"
             />
           </div>
         ))}
@@ -99,4 +112,4 @@ function Mensualidad({ selectMeses }) {
   );
 }
 
-export default Mensualidad
+export default Mensualidad;

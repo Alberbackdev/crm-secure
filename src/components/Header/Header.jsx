@@ -3,11 +3,12 @@ import {useSession} from "next-auth/react"
 import Image from 'next/image'
 import style from './header.module.css';
 import { NamePageHelper } from "../../utils/namePage"
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useScreenSize } from "@/src/utils/useWidthScreen"
 
 
 export default function Header() {
+  const router = useRouter();
   const {data: session} = useSession();
   const pathname = usePathname();
 

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import style from './BarSeguimientoProceso.module.css';
 import { useRouter } from "next/navigation";
 import { useSelector } from 'react-redux'
+import { useScreenSize } from '@/src/utils/useWidthScreen'
 
 
 const namesPageVentas = [
@@ -44,10 +45,13 @@ const namesPageClientes = [
 
 
 function BarSeguimientoProceso({currentPage, useBarTo}) {
+  const { width } = useScreenSize();
+  const router = useRouter();
+  const isMobile = width <= 816;
   const updatingClientData = useSelector((state) => state.client.updatingClientData) // boolean value
+
   const listaARecorrer = useBarTo === 'Ventas' ? namesPageVentas : namesPageClientes;
   const indexCurrentPage = listaARecorrer.map(page => page.namePage).indexOf(currentPage);
-  const router = useRouter();
 
   return (
     <div className={style.content}> 
@@ -56,7 +60,7 @@ function BarSeguimientoProceso({currentPage, useBarTo}) {
                 <>
                     <div className={style.process} key={page.namePage} onClick={() => updatingClientData && router.push(page.urlPage)}> {/* Si estan actualizando data permitir que pueda navegar entre las secciones */}
                         <div className={`${style.circleIndicator} ${index <= indexCurrentPage ? style.circleIndicatorActive : null}`}>
-                            <Image src='/checkWhiteIcon.png' alt='check White Icon' width={16} height={13} />
+                            <Image src='/checkWhiteIcon.png' alt='check White Icon' width={isMobile ? 12 : 16} height={isMobile ? 12 : 13} />
                         </div>
                         <p className={`${index <= indexCurrentPage ? style.nameActive : style.nameInactive}`}>{page.namePage}</p>
                     </div>

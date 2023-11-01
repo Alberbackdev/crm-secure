@@ -20,7 +20,7 @@ export default function CrearCliente({params}) {
         currentPage={"Datos Principales"}
         useBarTo={"Clientes"}
       />
-      {/* { !isUpdatingClientData ? (
+      { !isUpdatingClientData ? (
         <div
           style={{
             display: "flex",
@@ -32,7 +32,7 @@ export default function CrearCliente({params}) {
         </div>
       ) : (
         <FormEditClientData params={params} />
-      )} */}
+      )}
     </>
   );
 }

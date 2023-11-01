@@ -7,13 +7,13 @@ import style from '@/src/styles/stylePages.module.css'
 //This is form for new client
 
 export default async function Lista() {
-  const res = await getClientsAPI();
+  //const res = await getClientsAPI();
 
 
   return (
     <div className={style.mainPageClientes}>
       <ButtonsActions />
-      <Listado data={!res ? "No hay registros": res.data} />
+      <Listado /* data={!res ? "No hay registros": res.data}  *//>
     </div>
   );
 }

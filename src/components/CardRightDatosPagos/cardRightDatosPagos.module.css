@@ -76,7 +76,7 @@
 
 .confirmBtn {
     border-radius: 25px;
-    background: #289056;
+    background: #289056 !important;
     width: 200px;
     color: #fff;
     font-size: 16px;
@@ -97,6 +97,11 @@
         margin-left: 0rem;
         margin: auto;
         margin-top: .8rem;
+        margin-bottom: 5rem;
+    }
+    .confirmBtn {
+        width: 130px;
+        font-size: 13px;
     }
 }
  

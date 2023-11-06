@@ -35,7 +35,7 @@ function VistaPreviaPago() {
                     <p className={style.data_field}>Yulihanny Patricia Mendez Aldana</p>
                 </div>
                 <div className={style.field}>
-                    <p className={style.title_field}>Cedula de Identidad</p>
+                    <p className={`${style.title_field} ${style.cedulaResponsive}`}>Cedula de Identidad</p>
                     <p className={`${style.data_field} ${style.right}`}>V-5785881</p>
                 </div>
             </div>

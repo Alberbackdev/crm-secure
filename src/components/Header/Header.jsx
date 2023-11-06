@@ -14,24 +14,24 @@ export default function Header() {
 
   const { width } = useScreenSize();
   const isMobile = width <= 816;
-  
+
   return (
     <div className={style.header}>
       <div className={style.headerNamePage}>
         <h2 className={style.namePage}>{NamePageHelper(pathname)}</h2>
-        { (pathname.length > 1 && !isMobile) 
-            ? <p className={style.pathPage}>{pathname}</p>
-            :
-              <button type='button' onClick={() => router.push('/clientes/cliente')}>
-                  <Image
-                      priority
-                      src="/add.png"
-                      height={24}
-                      width={24}
-                      alt="Follow us on Twitter"
-                  />
-                  Registrar
-              </button>
+        { ( pathname.length > 1 && !isMobile ) && <p className={style.pathPage}>{pathname}</p> }
+        {
+          pathname === '/clientes' && isMobile &&
+          <button type='button' onClick={() => router.push('/clientes/cliente')}>
+              <Image
+                  priority
+                  src="/add.png"
+                  height={24}
+                  width={24}
+                  alt="Follow us on Twitter"
+              />
+              Registrar
+          </button>
         }
       </div>
       {

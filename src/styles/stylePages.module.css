@@ -3,12 +3,14 @@
     margin-top: 3rem;
 }
 
-.polizaPage {
+.polizaPage, .pagoPage {
     display: flex;
     width: 100%;
     margin-top: 1.3rem;
     justify-content: space-around;
 }
+
+.pagoPage {justify-content:space-evenly;}
 
 
 /*Responsive Design*/
@@ -22,4 +24,5 @@
         flex-direction: column-reverse;
         margin-bottom: 5rem;
     }
+    .pagoPage { flex-direction: column; margin-bottom: 5rem;}
 }

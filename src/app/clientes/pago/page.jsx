@@ -1,9 +1,9 @@
 "use client";
+import { useState } from "react";
 import ContainerSelectDatosPagos from "@/src/components/ContainerSelectDatosPagos/ContainerSelectDatosPagos"
 import CardRightDatosPagos from "@/src/components/CardRightDatosPagos/CardRightDatosPagos"
 import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeguimientoProceso"
-import { useState } from "react";
-
+import style from '@/src/styles/stylePages.module.css'
 
 export default function Pagos({ params, searchParams }) {
   const [meses, setMeses] = useState();
@@ -25,14 +25,7 @@ export default function Pagos({ params, searchParams }) {
     <>
       <BarSeguimientoProceso currentPage={"Pago"} useBarTo={"Clientes"} />
 
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          marginTop: "1.3rem",
-          justifyContent: "space-evenly",
-        }}
-      >
+      <div className={style.pagoPage}>
         <ContainerSelectDatosPagos
           selectMeses={selectMeses}
           sendDataPagos={sendDataPagos}

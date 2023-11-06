@@ -20,7 +20,7 @@
 
 /*Ventas pages*/
 
-.pageDifuntoVenta {
+.pageDifuntoVenta, .pageResponsableVenta {
     display: flex;
     width: 100%;
     margin-top: 1.7rem;
@@ -43,5 +43,5 @@
         flex-direction: column;
         margin-top: .8rem;
     }
-    .pageDifuntoVenta {flex-direction: column-reverse;}
+    .pageDifuntoVenta, .pageResponsableVenta {flex-direction: column-reverse;}
 }

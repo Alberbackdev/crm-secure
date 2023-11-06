@@ -22,7 +22,7 @@ function FormResponsable() {
                 // onChange={handleInputChange}
             />
         </div>
-        <div className={style.group}>
+        <div className={`${style.group} ${style.flexInputs}`}>
             <div className={style.groupChild}>
                 <label>Cedula de Identidad</label>                          
                 <input
@@ -46,7 +46,7 @@ function FormResponsable() {
                 />
             </div>
         </div>
-        <div className={style.group}>
+        <div className={`${style.group} ${style.flexInputs}`}>
             <div className={style.groupChild}>
                 <label>Parentesco</label>                          
                 <input

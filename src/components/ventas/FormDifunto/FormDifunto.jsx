@@ -23,7 +23,7 @@ function FormDifunto() {
                         // onChange={handleInputChange}
                     />
                 </div>
-                <div className={style.group}>
+                <div className={`${style.group} ${style.threeInputs}`}>
                     <div className={style.groupChild}>
                         <label>Cedula de Identidad</label>                          
                         <input
@@ -47,7 +47,7 @@ function FormDifunto() {
                         />
                     </div>
                 </div>
-                <div className={style.group}>
+                <div className={`${style.group} ${style.threeInputs}`}>
                     <div className={`${style.groupChild} ${style.typeNumber}`}>
                         <label>Edad</label>                          
                         <input

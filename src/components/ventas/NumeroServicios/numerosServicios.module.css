@@ -20,3 +20,9 @@
     border: 1px solid #404D61;
 }
 .container > input::placeholder {color: #000;}
+
+@media only screen and (max-width: 816px) {
+    .container {       
+        margin: auto;
+    }
+}

@@ -62,3 +62,21 @@
 .buttons > button:nth-child(2) {   
     background: #289056;
 }
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;  
+        margin: auto;
+        margin-bottom: 5rem;
+    }
+    .buttons > button {
+        width: 100px;  
+        font-size: 15px;
+    }
+    .groupChild > input {
+        width: auto;
+    }
+
+    .title {font-size: 22px;}
+}

@@ -72,8 +72,8 @@
     .container {
         width: 95%;
         height: auto;  
-        margin-left: 0px;
-        margin-top: 0rem;
+        margin: auto;
+        margin-bottom: 5rem;
     }
     
     .groupChild > input {

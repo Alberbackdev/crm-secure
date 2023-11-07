@@ -27,6 +27,13 @@
     justify-content: space-evenly;
 } 
 
+.pageServicioVentas {
+    display: flex;
+    width: 100%;
+    margin-top: 1.3rem;
+    justify-content: space-evenly;
+}
+
 /*Responsive Design*/
 @media only screen and (max-width: 816px) {
     .mainPageClientes {
@@ -44,4 +51,8 @@
         margin-top: .8rem;
     }
     .pageDifuntoVenta, .pageResponsableVenta {flex-direction: column-reverse;}
+
+    .pageServicioVentas {
+        flex-direction: column;        
+    }
 }

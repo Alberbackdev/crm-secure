@@ -88,3 +88,19 @@
     cursor: pointer;
 }
 
+.contentNumServicios {
+    margin-left: -61px;
+}
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;  
+        margin: auto;
+        margin-bottom: 5rem;
+        align-items: center;
+    }
+    .contentNumServicios {
+        margin-left: 0px;
+    }    
+}

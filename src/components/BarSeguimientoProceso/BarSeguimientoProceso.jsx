@@ -8,11 +8,11 @@ import { useScreenSize } from '@/src/utils/useWidthScreen'
 
 const namesPageVentas = [
     {
-        namePage: 'Datos Difunto',
+        namePage: 'Difunto',
         urlPage: '/ventas'
     }, 
     {
-        namePage: 'Datos Responsable',
+        namePage: 'Responsable',
         urlPage: '/ventas/responsable'
     }, 
     {

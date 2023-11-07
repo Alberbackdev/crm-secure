@@ -11,7 +11,7 @@ function CardRightDatosVentas() {
 
     return (
         <div className={style.container}>
-            <div style={{marginLeft: '-61px'}}> 
+            <div className={style.contentNumServicios}> 
                 <NumerosServicios />
             </div>
 

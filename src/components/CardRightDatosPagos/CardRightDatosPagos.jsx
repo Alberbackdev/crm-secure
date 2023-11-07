@@ -31,6 +31,12 @@ function CardRightDatosPagos({ meses, dataP }) {
   status_pay: "";
   type_of_change: "";
   type_pay: ""; */
+  const total = meses.reduce(
+    (acumulador, actual) => acumulador + actual.value,
+    0
+  );
+
+  const totalDolar = total / dataP.type_of_change
 
   return (
     <div className={style.container}>
@@ -77,55 +83,40 @@ function CardRightDatosPagos({ meses, dataP }) {
       <div className={style.contentCenter}>
         <p className={style.title}>Monto y Pago</p>
         <div className={style.mesesPagados}>
-            {meses?.map((l) => (
-              <div className={style.mesPagado} key={l}>
-                <p className={style.descripcion}>{l}</p>
-                <p className={style.montoPagado}>250.00</p>
-              </div>
-            ))}
-
-          <div className={style.mesPagado}>
-            <p className={style.descripcion}>Marzo</p>
-            <p className={style.montoPagado}>250.00</p>
-          </div>
-          <div className={style.mesPagado}>
-            {/* {meses.map((month, index) => (
-              
-            ))} */}
-            <div className={style.cardMensualidad}>
-              <div className={style.cardMensualidad_mes}>
-                <p className={style.descripcion}>{meses}</p>
-                <p className={style.montoPagado}>250.00</p>
-              </div>
+          {meses?.map((l) => (
+            <div className={style.mesPagado} key={l}>
+              <p className={style.descripcion}>{l.mes}</p>
+              <p className={style.montoPagado}>{l.value}</p>
             </div>
-          </div>
+          ))}
+
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
               <p>Precio Total Bs</p>
-              <p>750.00</p>
+              {total}
             </div>
             <div className={`${style.mesPagado_center} ${style.monedaDolar}`}>
               <p>Precio $</p>
-              <p>32.10 $</p>
+              <p>{totalDolar}</p>
             </div>
           </div>
         </div>
       </div>
       <div className={style.contentBottom}>
-          <button
-            type="button"
-            onClick={() => router.push("/clientes/confirmar/")}
-            className={style.confirmBtn}
-          >
-            {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
-          </button>
-          <p
-            className={style.cancelarBtn}
-            onClick={() => router.push("/clientes/pago")}
-          >
-            {isConfirmarPage ? "Salir" : "Cancelar"}
-          </p>
-        </div>
+        <button
+          type="button"
+          onClick={() => router.push("/clientes/confirmar/")}
+          className={style.confirmBtn}
+        >
+          {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
+        </button>
+        <p
+          className={style.cancelarBtn}
+          onClick={() => router.push("/clientes/pago")}
+        >
+          {isConfirmarPage ? "Salir" : "Cancelar"}
+        </p>
+      </div>
     </div>
   );
 }

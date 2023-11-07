@@ -1,23 +1,29 @@
 "use client"
 
 
+import { precioBCV } from '@/src/utils/getDolarPrice';
 import Mensualidad from './Mensualidad/Mensualidad';
 import styleMen from "./Mensualidad/mensualidad.module.css";
 import style from './datosPagos.module.css';
 import { useForm } from '@/src/utils/useForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DatosPagos({ selectMeses, sendDataPagos }) {
+  const precio = async(precioBCV) => {await precioBCV}
+    
+  console.log(selectMeses)
+
+  console.log(precio);
 
   const { values, handleInputChange } = useForm({
     type_pay: "",
-    type_of_change: "",
+    type_of_change: precioBCV,
     date_pay: "",
     status_pay: "",
   });
-  console.log(values);
+  values.month_pay = selectMeses;
 
-  console.log(sendDataPagos);
+  console.log(values);
 
   sendDataPagos(values);
 

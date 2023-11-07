@@ -1,14 +1,10 @@
-"use client";
-
 import { useRouter } from "next/navigation";
-import style from "./mensualidad.module.css";
 import { useState } from "react";
+import style from "./mensualidad.module.css";
 
 function Mensualidad({ selectMeses }) {
   const router = useRouter();
-  const [months, setMonths] = useState([]);
-  const [amounts, setAmounts] = useState([]);
-
+  const [data, setData] = useState([]);
 
   const monthsList = [
     "Enero",
@@ -25,81 +21,64 @@ function Mensualidad({ selectMeses }) {
     "Diciembre",
   ];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "month") {
-      if (months.includes(value)) {
-        setMonths(months.filter((month) => month !== value));
+  const handleChange = (event) => {
+    
+    const { name, value } = event.target;
+    
+    if (name === "mes") {
+      if (data.some((obj) => obj.mes === value)) {
+        // Month already exists, remove it if deselected
+        setData(data.filter((obj) => obj.mes !== value));
       } else {
-        setMonths([...months, value]);
+        // Add the new month and amount
+        const obj = { [name]: value };
+        setData([...data, obj]);
       }
     }
-    
-    if (name === "amount") {
-      setAmounts(value);
+      
+    if (name == "monto") {
+      const lastElement = data[data.length - 1];
+      lastElement.value = parseFloat(value);
     }
+    selectMeses(data);
   };
-
-  console.log(amounts);
-  const amountObjects = months.map((month) => ({
-    month,
-    amount: amounts[month],
-  }));
-  //amountObjects.sort((a, b) => a.month.localeCompare(b.month));
-
-  console.log(amountObjects)
+  
+  console.log(data)
+  
+ 
 
   return (
     <div className={style.container}>
       <h3 className={style.title}>Mensualidad</h3>
 
       <div className={style.boxes}>
-        {monthsList.map((month, index) => (
-          <div className={style.cardMensualidad} key={index}>
+        {monthsList.map((month, i) => (
+          <div className={style.cardMensualidad} key={i}>
             <div className={style.cardMensualidad_top}>
               <div className={style.cardMensualidad_mes}>
                 <h4>{month}</h4>
-                <p>Recibimos Bs.</p>
+                <p>Recibimos Bs.D</p>
               </div>
               <input
-                name="month"
                 type="checkbox"
+                name="mes"
                 value={month}
                 onChange={handleChange}
               />
             </div>
 
             <input
-              name="amount"
               type="number"
-              placeholder="300.00"
+              name="monto"
+              placeholder="200"
               step=".01"
-              value={amounts[month]}
-              onChange={handleChange}
               min="0"
+              onChange={handleChange}
+              disabled={!data.some((obj) => obj.mes === month)}
             />
           </div>
         ))}
-        <p>Meses seleccionados: {months.join(", ")}</p>
       </div>
-      {/* <div>
-          <h1>Meses del año</h1>
-          <ul>
-            {monthsList.map((month, index) => (
-              <li key={index}>
-                <input
-                  type="checkbox"
-                  value={month}
-                  onChange={handleChange}
-                  checked={months.includes(month)}
-                />
-                {month}
-              </li>
-            ))}
-          </ul>
-          <p>Meses seleccionados: {months.join(", ")}</p>
-        </div> */}
 
       <button
         type="button"

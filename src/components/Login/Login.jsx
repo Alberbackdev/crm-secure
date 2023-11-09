@@ -29,6 +29,7 @@ export default function Login() {
 
   return (
     <div className={style.container}>
+      
       <h2>{isMobile ? 'Bienvenido!' : 'Inicio de Sesión'}</h2>
       <p  className={style.msgMobileInfo}>Inicia Sesion para continuar</p>
       <form onSubmit={handleSubmit} className={style.formLogin}>

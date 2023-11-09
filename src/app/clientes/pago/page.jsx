@@ -5,20 +5,19 @@ import CardRightDatosPagos from "@/src/components/CardRightDatosPagos/CardRightD
 import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeguimientoProceso"
 import style from '@/src/styles/stylePages.module.css'
 
-export default function Pagos({ params, searchParams }) {
-  const [meses, setMeses] = useState();
-  const [dataP, setDataP] = useState();
-  //console.log("Params:", params);
-  //console.log("searchParams:", searchParams);
+export default function Pagos() {
+  const [meses, setMeses] = useState([]);
+  const [dataP, setDataP] = useState([]);
+  
   
   const selectMeses = (meses) => {
     console.log(meses);
     setMeses(meses);
   };
 
-  const sendDataPagos = (dataP) => {
-    console.log(dataP);
-    setDataP(dataP);
+  const sendDataPagos = (dataPa) => {
+    //console.log(dataPa);
+    setDataP(dataPa);
   };
 
   return (

@@ -4,4 +4,4 @@ import { getMonitor } from "consulta-dolar-venezuela";
 
 
 //getMonitor("BCV", "lastUpdate").then($ => { console.log($) }); /*Obtener la ultima actualizacion del dólar en BCV*/
-export const precioBCV = getMonitor("bcv", "price", false).then($ => { console.log($) }); /*Obtener el valor del dólar en BCV*/
+export const precioBCV = getMonitor("bcv", "price", false).then(precioDolar => { console.log({precioDolar}); return precioDolar }); /*Obtener el valor del dólar en BCV*/

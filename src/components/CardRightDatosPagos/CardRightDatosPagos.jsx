@@ -93,11 +93,11 @@ function CardRightDatosPagos({ meses, dataP }) {
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
               <p>Precio Total Bs</p>
-              {total}
+              {total && total}
             </div>
             <div className={`${style.mesPagado_center} ${style.monedaDolar}`}>
               <p>Precio $</p>
-              <p>{totalDolar}</p>
+              <p>{totalDolar ? totalDolar : '0$'}</p>
             </div>
           </div>
         </div>

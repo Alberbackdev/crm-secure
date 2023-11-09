@@ -8,9 +8,6 @@ function CardRightDatosPagos({ meses, dataP }) {
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
 
-  console.log(meses);
-  console.log(dataP);
-
 //hacer que aparezca el mes y el monto
 
   const sendPolize = async (ev) => {
@@ -31,11 +28,8 @@ function CardRightDatosPagos({ meses, dataP }) {
   status_pay: "";
   type_of_change: "";
   type_pay: ""; */
-  const total = meses.reduce(
-    (acumulador, actual) => acumulador + actual.value,
-    0
-  );
 
+  const total = meses.length ? meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0) : 0;
   const totalDolar = total / dataP.type_of_change
 
   return (
@@ -93,11 +87,11 @@ function CardRightDatosPagos({ meses, dataP }) {
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
               <p>Precio Total Bs</p>
-              {total && total}
+              {total + ' Bs'}
             </div>
             <div className={`${style.mesPagado_center} ${style.monedaDolar}`}>
               <p>Precio $</p>
-              <p>{totalDolar ? totalDolar : '0$'}</p>
+              <p>{totalDolar ? totalDolar.toFixed(2) : '0$'}</p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import style from "./mensualidad.module.css";
 
 function Mensualidad({ selectMeses }) {
   const router = useRouter();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
 
   const monthsList = [
     "Enero",
@@ -21,32 +21,26 @@ function Mensualidad({ selectMeses }) {
     "Diciembre",
   ];
 
-  const handleChange = (event) => {
-    
+  const handleChange = (event, month) => {
     const { name, value } = event.target;
-    
-    if (name === "mes") {
-      if (data.some((obj) => obj.mes === value)) {
-        // Month already exists, remove it if deselected
-        setData(data.filter((obj) => obj.mes !== value));
-      } else {
-        // Add the new month and amount
-        const obj = { [name]: value };
-        setData([...data, obj]);
-      }
+    const isMonthInTheArray = name === 'mes' && data.find(mes => mes?.mes === value);
+
+    if (isMonthInTheArray) { // Condicion para comprobar si seleccionan un mes dos veces, en caso de que si, removerlo.
+      const removerMes = data.filter(mes => mes.mes !== value);
+      selectMeses(removerMes);
+      document.getElementById(`inputMonth=${month}`).value = ''; // resetar el input del monto.
+      return setData(removerMes);
+    } 
+    if(name === 'mes') { // Condicion para agregar un mes
+      return setData([...data, {mes: value, value: '0.00'}])
     }
-      
-    if (name == "monto") {
-      const lastElement = data[data.length - 1];
-      lastElement.value = parseFloat(value);
-    }
-    selectMeses(data);
+    // Agregar monto a un mes.
+    const putMontoAMes = data.map(mes => mes.mes === month ? ({...mes, value: value}) : mes);
+    setData(putMontoAMes);
+    selectMeses(putMontoAMes)
   };
   
-  console.log(data)
   
- 
-
   return (
     <div className={style.container}>
       <h3 className={style.title}>Mensualidad</h3>
@@ -63,18 +57,19 @@ function Mensualidad({ selectMeses }) {
                 type="checkbox"
                 name="mes"
                 value={month}
-                onChange={handleChange}
+                onChange={(event) =>  handleChange(event, month)}
               />
             </div>
 
             <input
+              id={`inputMonth=${month}`}
               type="number"
               name="monto"
               placeholder="200"
-              step=".01"
+              step=".01" 
               min="0"
-              onChange={handleChange}
-              disabled={!data.some((obj) => obj.mes === month)}
+              onChange={(event) =>  handleChange(event, month)}
+              disabled={!data.some((meses) => meses?.mes === month)}
             />
           </div>
         ))}

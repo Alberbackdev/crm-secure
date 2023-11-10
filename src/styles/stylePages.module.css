@@ -5,8 +5,16 @@
 .confirmarPageCliente {
     display: flex;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     justify-content: space-evenly;
+}
+
+.facturaPage {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .5rem;
 }
 
 .polizaPage, .pagoPage {

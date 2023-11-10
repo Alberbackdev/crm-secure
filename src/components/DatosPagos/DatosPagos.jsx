@@ -11,7 +11,7 @@ import { dataToCreate } from '@/src/redux/slices/pagoReducer';
 export default function DatosPagos({ selectMeses, meses }) {
   const valuesPago = useSelector(state => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
   const dispatch = useDispatch();
-  const { values, handleInputChange, reset } = useForm(valuesPago);
+  const { values, handleInputChange } = useForm(valuesPago);
   
   useEffect(() => {
     if(meses.length) {

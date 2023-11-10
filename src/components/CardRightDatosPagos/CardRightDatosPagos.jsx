@@ -1,5 +1,5 @@
 "use client"
-import { useRouter, usePathname, useParams } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import style from './cardRightDatosPagos.module.css'
 import { useSelector } from 'react-redux';
 
@@ -10,6 +10,7 @@ function CardRightDatosPagos({ meses }) {
   const router = useRouter();
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
+  const isFacturaPage = pathname === '/facturas/cliente';aa
 
   const total = valuesPago.full_payment_bs
   const totalDolar = valuesPago.full_payment_dollar;
@@ -78,19 +79,22 @@ function CardRightDatosPagos({ meses }) {
           </div>
         </div>
       </div>
-      <div className={style.contentBottom}>
-        <button type="submit" className={style.confirmBtn}
-          onClick={() => router.push("/clientes/confirmar/")}
-        >
-          {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
-        </button>
-        <p
-          className={style.cancelarBtn}
-          onClick={() => router.push("/clientes/pago")}
-        >
-          {isConfirmarPage ? "Salir" : "Cancelar"}
-        </p>
-      </div>
+      {
+        !isFacturaPage &&
+        <div className={style.contentBottom}>
+          <button type="submit" className={style.confirmBtn}
+            onClick={() => isConfirmarPage ? router.push("/facturas/cliente") : router.push("/clientes/confirmar")}
+          >
+            {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
+          </button>
+          <p
+            className={style.cancelarBtn}
+            onClick={() => isConfirmarPage ? router.push("/clientes") :  router.push("/clientes/pago")}
+          >
+            {isConfirmarPage ? "Salir" : "Cancelar"}
+          </p>
+        </div>
+      }
     </div>
   );
 }

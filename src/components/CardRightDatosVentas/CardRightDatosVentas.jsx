@@ -7,6 +7,7 @@ import NumerosServicios from "@/src/components/ventas/NumeroServicios/NumerosSer
 function CardRightDatosVentas() {
     const router = useRouter();
     const pathname = usePathname();
+    const isFacturaPage = pathname === '/facturas/ventas';
     const isConfirmarPage = pathname.includes('confirmar');
 
     return (
@@ -44,14 +45,16 @@ function CardRightDatosVentas() {
                     </div>               
                 </div>
             </div>
-            <div className={style.contentBottom}>
-                <button type='button' onClick={() => router.push('/ventas/confirmar')} className={style.confirmBtn} style={{backgroundColor: isConfirmarPage ? '#289056' : '#2B308B'}}>
-                  { isConfirmarPage ? 'Descargar' : 'Confirmar'}
-                </button>
-                <p className={style.cancelarBtn} onClick={() => router.push('/ventas/servicio')}>
-                  { isConfirmarPage ? 'Salir' : 'Cancelar Venta'}
-                </p>
-            </div>
+            {!isFacturaPage && 
+              <div className={style.contentBottom}>
+                  <button type='button' onClick={() => isConfirmarPage ? router.push('/facturas/ventas') : router.push('/ventas/servicio')} className={style.confirmBtn} style={{backgroundColor: isConfirmarPage ? '#289056' : '#2B308B'}}>
+                    { isConfirmarPage ? 'Descargar' : 'Confirmar'}
+                  </button>
+                  <p className={style.cancelarBtn} onClick={() => router.push('/ventas/servicio')}>
+                    { isConfirmarPage ? 'Salir' : 'Cancelar Venta'}
+                  </p>
+              </div>
+            }
         </div>
       )
 }

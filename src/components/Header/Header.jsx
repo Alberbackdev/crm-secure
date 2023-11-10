@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from './header.module.css';
 import { NamePageHelper } from "../../utils/namePage"
 import { usePathname, useRouter } from "next/navigation";
-//import { useScreenSize } from "@/src/utils/useWidthScreen"
+import { useScreenSize } from "@/src/utils/useWidthScreen"
 
 
 export default function Header() {

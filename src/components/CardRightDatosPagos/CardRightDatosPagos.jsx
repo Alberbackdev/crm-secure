@@ -10,7 +10,7 @@ function CardRightDatosPagos({ meses }) {
   const router = useRouter();
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
-  const isFacturaPage = pathname === '/facturas/cliente';aa
+  const isFacturaPage = pathname === '/facturas/cliente';
 
   const total = valuesPago.full_payment_bs
   const totalDolar = valuesPago.full_payment_dollar;

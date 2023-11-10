@@ -8,26 +8,11 @@ export async function getClientsAPI(id) {
 
 
 //Crea un client
-export async function createClientAction(ev, values, reset) {
+export async function createClientAction(ev, values) {
     ev.preventDefault();
     return await axios.post(`${urlApiDev}/clientes/clientes`, values)
     .then(response => response)
 }
-
-/* export async function createClientAction(ev, values, reset) {
-    ev.preventDefault();
-    const res = await fetch("/api/clientes/clientes", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-            "Content-Type": "application/json",
-        }
-
-    });
-    reset();
-    return res;
-}
- */
 
 //hacer que actualice cada campo
 export async function updateClientAction(ev, values, id) {

@@ -4,23 +4,18 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 //Pagos
 const paySchema = new Schema({
     type_pay: {
-        type: String,
-        required: [true, "El tipo de pago es requerido"],
+        type: String
     },
     number_pay: { 
-        type: String, 
-        required: [true, "El numero de pago es requerido"],
-        unique: true,
+        type: String
     },
     date_pay: { 
-        type: String, 
-        required: [true, "El fecha de pago es requerido"],
+        type: String
     },
     type_of_change: { 
-        type: String, 
-        required: [true, "El tipo de cambio es requerido"],
+        type: String
     },
-    month_pay: [{ type: String, require: true }],
+    month_pay: [{ type: Array, require: true }],
     status_pay: { 
         type: String, 
         required: [true, "El status del cliente es requerido"],

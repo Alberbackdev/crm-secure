@@ -1,8 +1,7 @@
 import axios from "axios";
 
-export async function createPagoAction(ev, values, reset) {
+export async function createPagoAction(ev, values) {
     ev.preventDefault();
-    const res = await axios.post("/api/clientes/pago", values);
-    reset();
+    const res = await axios.post("/api/clientes/pagos", values);
     return res
 }

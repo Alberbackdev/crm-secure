@@ -4,7 +4,6 @@ import { useRouter, useParams } from "next/navigation";
 import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
 import { useEffect, useState } from "react";
-import { InputCodigoSeguro } from "../InputCodigoSeguro/InputCodigoSeguro";
 import { useDispatch, useSelector } from 'react-redux'
 import { dataToCreate, resetState } from '@/src/redux/slices/clientReducer'
 
@@ -15,7 +14,6 @@ export const FormClientData = () => {
   const valuesClient = useSelector(state => state.client.data) // state es el reducer y con el punto se accede al nombre se accede al slice
   const router = useRouter();
   const dispatch = useDispatch()
-  const params = useParams();
 
 
   //console.log(poliza);

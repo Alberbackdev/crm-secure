@@ -1,6 +1,9 @@
 "use client"
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useParams } from 'next/navigation'
 import style from './cardRightDatosPagos.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from '@/src/utils/useForm';
+import { putDataPagoToUpdate } from '@/src/redux/slices/pagoReducer';
 
 //componendte para confirmar los datos de pago
 function CardRightDatosPagos({ meses, dataP }) {
@@ -8,29 +11,11 @@ function CardRightDatosPagos({ meses, dataP }) {
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
 
-//hacer que aparezca el mes y el monto
-
-  const sendPolize = async (ev) => {
-    try {
-      const res = await updatePolizeAction(ev, values, poliza.polizaId);
-      console.log(res);
-
-      if (res.status === 200) {
-        router.push(`/clientes/pago/${client.id}?poliza=${poliza.polizaId}`);
-        router.refresh();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  /* date_pay: "";
-  status_pay: "";
-  type_of_change: "";
-  type_pay: ""; */
-
-  const total = meses.length ? meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0) : 0;
-  const totalDolar = total / dataP.type_of_change
+  /* const total = meses?.length
+    ? meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0)
+    : 0;
+  const totalDolar = total / dataP?.type_of_change;
+   */
 
   return (
     <div className={style.container}>
@@ -87,20 +72,18 @@ function CardRightDatosPagos({ meses, dataP }) {
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
               <p>Precio Total Bs</p>
-              {total + ' Bs'}
+              {/* {total + " Bs"} */}
             </div>
             <div className={`${style.mesPagado_center} ${style.monedaDolar}`}>
               <p>Precio $</p>
-              <p>{totalDolar ? totalDolar.toFixed(2) : '0$'}</p>
+              <p>{/* {totalDolar ? totalDolar.toFixed(2) : "0$"} */}</p>
             </div>
           </div>
         </div>
       </div>
       <div className={style.contentBottom}>
-        <button
-          type="button"
+        <button type="submit" className={style.confirmBtn}
           onClick={() => router.push("/clientes/confirmar/")}
-          className={style.confirmBtn}
         >
           {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
         </button>

@@ -15,9 +15,9 @@ export default function Pagos() {
     setMeses(meses);
   };
 
-  const sendDataPagos = (dataPa) => {
-    //console.log(dataPa);
-    setDataP(dataPa);
+  const sendDataPagos = (dataP) => {
+    console.log(dataP);
+    setDataP(dataP);
   };
 
   return (
@@ -27,6 +27,7 @@ export default function Pagos() {
       <div className={style.pagoPage}>
         <ContainerSelectDatosPagos
           selectMeses={selectMeses}
+          meses={meses}
           sendDataPagos={sendDataPagos}
         />
         <CardRightDatosPagos meses={meses} dataP={dataP} />

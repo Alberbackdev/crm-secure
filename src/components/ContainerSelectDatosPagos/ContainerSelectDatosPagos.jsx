@@ -5,10 +5,10 @@ import DatosPagos from '../DatosPagos/DatosPagos'
 import Mensualidad from '../DatosPagos/Mensualidad/Mensualidad'
 import style from './containerDatosPagos.module.css'
 
-function ContainerSelectDatosPagos({ selectMeses, sendDataPagos }) {
+function ContainerSelectDatosPagos({ selectMeses, meses, sendDataPagos }) {
   return (
     <div className={style.container}>
-      <DatosPagos selectMeses={selectMeses} sendDataPagos={sendDataPagos} />
+      <DatosPagos selectMeses={selectMeses} meses={meses} sendDataPagos={sendDataPagos} />
       {/* <Mensualidad /> */}
     </div>
   );

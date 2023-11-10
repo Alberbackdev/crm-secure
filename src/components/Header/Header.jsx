@@ -3,22 +3,23 @@ import {useSession} from "next-auth/react"
 import Image from 'next/image'
 import style from './header.module.css';
 import { NamePageHelper } from "../../utils/namePage"
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 //import { useScreenSize } from "@/src/utils/useWidthScreen"
 
 
 export default function Header() {
+  const router = useRouter();
   const {data: session} = useSession();
   const pathname = usePathname();
 
-  //const { width } = useScreenSize();
-  //const isMobile = width <= 816;
+  const { width } = useScreenSize();
+  const isMobile = width <= 816;
   
   return (
     <div className={style.header}>
       <div className={style.headerNamePage}>
         <h2 className={style.namePage}>{NamePageHelper(pathname)}</h2>
-        { (pathname.length > 1 /* && !isMobile */) 
+        { (pathname.length > 1 && !isMobile) 
             ? <p className={style.pathPage}>{pathname}</p>
             :
               <button type='button' onClick={() => router.push('/clientes/cliente')}>

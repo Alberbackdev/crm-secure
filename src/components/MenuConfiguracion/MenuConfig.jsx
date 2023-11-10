@@ -11,16 +11,16 @@ function MenuConfig() {
                 <p className={style.links}>Preferencias Personales</p>
             </Link>
             <Link href={"/configuracion/seguridad"} >
-                <p className={style.links}>Contraseña e Inicio de sesion</p>
+                <p className={style.links}>Contraseña e Inicio de sesión</p>
             </Link>
-            <Link href={"/configuracion/dispositivos"} >
+            {/* <Link href={"/configuracion/dispositivos"} >
                 <p className={style.links}>Tus dispositivos</p>
             </Link>
             <Link href={"/configuracion/notificaciones"} >
                 <p className={style.links}>Notificaciones</p>
-            </Link>
+            </Link> */}
         </div>
-        <div className={style.config}>
+        {/* <div className={style.config}>
             <p className={style.title}>EMPRESA</p>
             <Link href={"/"} >
                 <p className={style.links}>Ajuste de la empresa</p>
@@ -37,7 +37,7 @@ function MenuConfig() {
             <Link href={"/"} >
                 <p className={style.links}>Alertas</p>
             </Link>
-        </div>
+        </div> */}
     </div>
   )
 }

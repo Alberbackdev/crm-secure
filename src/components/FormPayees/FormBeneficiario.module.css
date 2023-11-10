@@ -64,3 +64,24 @@
     background: #CEDEFF;
     color: #000;
 }
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;   
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin: auto;
+        margin-top: .8rem;
+
+    }
+    .title {
+        font-size: 23px;
+        margin-bottom: 18px;
+    }
+    .buttons > button {
+        width: 125px;
+        padding: 13px 20px;
+        border-radius: 25px;
+    }
+}

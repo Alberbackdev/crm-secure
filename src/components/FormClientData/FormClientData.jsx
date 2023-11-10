@@ -4,19 +4,16 @@ import { useRouter, useParams } from "next/navigation";
 import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
 import { useEffect, useState } from "react";
-import { InputCodigoSeguro } from "../InputCodigoSeguro/InputCodigoSeguro";
 import { useDispatch, useSelector } from 'react-redux'
 import { dataToCreate, resetState } from '@/src/redux/slices/clientReducer'
 
 //This is form for new client
 
-export const FormClientData = ({ setPoliza,
-poliza }) => {
+export const FormClientData = () => {
   const [error, setError] = useState("");
   const valuesClient = useSelector(state => state.client.data) // state es el reducer y con el punto se accede al nombre se accede al slice
   const router = useRouter();
   const dispatch = useDispatch()
-  const params = useParams();
 
 
   //console.log(poliza);
@@ -41,9 +38,6 @@ poliza }) => {
     router.push("/clientes");
 }
 
-  useEffect(() => {
-    console.log(params, poliza);
-  }, [params, poliza]);
 
   return (
     <div className={style.container}>
@@ -51,7 +45,7 @@ poliza }) => {
         Nuevo Cliente
       </h1>
       <form onSubmit={sendClient} className={style.formContent}>
-        {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
+        {error && <div className="p-2 mb-2 text-white bg-red-500">{error}</div>}
         <div className={style.group}>
           <div className={style.groupChild}>
             <label>Nombres</label>
@@ -102,7 +96,7 @@ poliza }) => {
         </div>
         <div className={style.group}>
           <div className={style.groupChild}>
-            <label>Cedula de Identidad</label>
+            <label>Cédula</label>
             <input
               name="cidentified"
               type="number"
@@ -113,7 +107,7 @@ poliza }) => {
             />
           </div>
           <div className={style.groupChild}>
-            <label> Numero de Telefono</label>
+            <label>Teléfono</label>
             <input
               name="phone"
               type="number"

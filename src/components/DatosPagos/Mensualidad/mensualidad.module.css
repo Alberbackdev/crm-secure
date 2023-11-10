@@ -82,5 +82,16 @@
     font-weight: 600;
 }
 
-
+@media only screen and (max-width: 816px) {
+    .boxes {
+        height: 230px;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 12px;
+    }
+    .container {
+        height: auto;
+    }
+}
    

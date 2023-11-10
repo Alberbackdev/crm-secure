@@ -34,3 +34,29 @@
     width: 240px;
     padding: 10px;
 }
+
+@media only screen and (max-width: 816px) {
+    .containerTopData {
+        width: 95%;
+        height: auto;   
+        margin: auto;
+        margin-top: .8rem;
+
+    }
+
+    .inputForm {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .formContent{
+        margin-top: 0px;
+        display: block;
+    }
+    
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+}

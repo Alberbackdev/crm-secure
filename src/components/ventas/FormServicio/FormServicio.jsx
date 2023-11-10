@@ -22,7 +22,7 @@ function FormServicio() {
                     // onChange={handleInputChange}
                 />
             </div>
-            <div className={style.group}>
+            <div className={`${style.group} ${style.threeInputs}`}>
                 <div className={style.groupChild}>
                     <label>Por Bs</label>                          
                     <input

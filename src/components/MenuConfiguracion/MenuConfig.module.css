@@ -1,7 +1,3 @@
-.content {
-
-}
-
 .config {
     font-weight: 500;
     color: #696E82;
@@ -24,4 +20,11 @@
     background: rgba(90, 129, 250, 0.20);
     color: #5A81FA;
     
+}
+
+@media only screen and (max-width: 816px) {
+    .content {
+        margin-top: -1rem;
+        margin-left: 1rem;
+    }
 }

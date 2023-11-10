@@ -1,6 +1,6 @@
 .container {
     width: 574px;
-    height: 505px;
+    height: auto;
     border-radius: 20px;
     padding: 8px;
     background-color: #fff;
@@ -13,6 +13,7 @@
     background: #CAFFE2;
     height: 67px;
     margin-bottom: 7px;
+    padding-left: 1rem;
 }
 
 
@@ -26,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: -.5rem;
 }
 
 .blueMessage {
@@ -114,7 +116,6 @@
 }
 
 .listaBeneficiarios{
-   /* background-color: red; */
    height: 70px;
    padding-right: 4px;
    overflow: auto;
@@ -130,6 +131,11 @@
     height: 8px;
     background-color: #aaa; 
     border-radius: 5px;
+}
+
+.heightAuto {
+    height: auto;
+    overflow: hidden;
 }
 
 .row {
@@ -157,4 +163,20 @@
     color: #2B308B;
     font-size: 12px;
     font-weight: 500;
+}
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;   
+        margin: auto;
+        margin-top: 0rem;
+    }
+    .cedulaResponsive {
+        text-align: right;
+    }
+    .blueMessage {
+        font-size: 14px;
+    }
+    .grayMessage {font-size: 9px;}
 }

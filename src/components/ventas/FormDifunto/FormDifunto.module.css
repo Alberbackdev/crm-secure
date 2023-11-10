@@ -46,3 +46,21 @@
     border-radius: 25px;
     color: #fff;
 }
+
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;  
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 5.3rem;
+    }
+    .threeInputs {
+        flex-direction: column;
+    }
+
+    .groupChild > input {
+        width: 
+        100%;
+    }
+}

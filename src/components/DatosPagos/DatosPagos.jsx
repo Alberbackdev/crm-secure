@@ -1,29 +1,35 @@
 "use client"
-
-
+import { precioBCV } from '@/src/utils/getDolarPrice';
 import Mensualidad from './Mensualidad/Mensualidad';
-import styleMen from "./Mensualidad/mensualidad.module.css";
 import style from './datosPagos.module.css';
 import { useForm } from '@/src/utils/useForm';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { dataToCreate } from '@/src/redux/slices/pagoReducer';
 
-export default function DatosPagos({ selectMeses, sendDataPagos }) {
 
-  const { values, handleInputChange } = useForm({
-    type_pay: "",
-    type_of_change: "",
-    date_pay: "",
-    status_pay: "",
-  });
-  console.log(values);
-
-  console.log(sendDataPagos);
-
-  sendDataPagos(values);
-
-  //utilizar sendDataPAgos, para llevar la data al componente padre
+export default function DatosPagos({ selectMeses, meses }) {
+  const valuesPago = useSelector(state => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
+  const dispatch = useDispatch();
+  const { values, handleInputChange } = useForm(valuesPago);
   
-
+  useEffect(() => {
+    if(meses.length) {
+      const total = meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0);
+      const totalDolar = total / values?.type_of_change;
+      const dataToSend = {...values, full_payment_bs: total, full_payment_dollar: totalDolar, month_pay: meses};
+      dispatch(dataToCreate(dataToSend));
+    }
+  }, [meses])
+  
+  useEffect(() => {
+    async function getPrecioBCV () {
+      const precioDolar = await precioBCV;
+      handleInputChange({target: {name: 'type_of_change', value: precioDolar}})
+    }
+    getPrecioBCV()
+  }, [])
+    
   return (
     <div className={style.containerTopData}>
       <h1 className={style.title}>Ingrese los Datos del Pago</h1>
@@ -42,7 +48,7 @@ export default function DatosPagos({ selectMeses, sendDataPagos }) {
             />
           </div>
           <div className={style.formChild}>
-            <label htmlFor="cambioCoin">Cambio Monetario</label>
+            <label htmlFor="cambioCoin">Cambio Monetario | BCV</label>
             <input
               id="cambioCoin"
               name="type_of_change"
@@ -50,6 +56,7 @@ export default function DatosPagos({ selectMeses, sendDataPagos }) {
               className={style.inputForm}
               value={values.type_of_change}
               onChange={handleInputChange}
+              disabled
             />
           </div>
         </div>

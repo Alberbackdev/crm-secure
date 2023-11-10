@@ -7,3 +7,13 @@
     margin: 0px 41px;
 }
 
+@media only screen and (max-width: 816px) {
+    .container {
+        width: 95%;
+        height: auto;   
+        margin: auto;
+        margin-top: .8rem;
+        margin-bottom: 1rem;
+    }
+}
+

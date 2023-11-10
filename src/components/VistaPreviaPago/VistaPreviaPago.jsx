@@ -1,20 +1,27 @@
 "use client";
+import { usePathname } from 'next/navigation'
 import style from './vistaPreviaPago.module.css'
 import Image from 'next/image';
 
 function VistaPreviaPago() {
+  const pathname = usePathname();
+  const isFacturaPage = pathname === '/facturas/cliente';
+
   return (
     <div className={style.container}>
        <div className={style.successMessage}>
-            <div className={style.circleContent}>
-                <Image
-                    priority
-                    src="/successIcon.png"
-                    height={20}
-                    width={20}
-                    alt="Follow us on Twitter"
-                />
-            </div>
+            {
+                !isFacturaPage &&
+                <div className={style.circleContent}>
+                    <Image
+                        priority
+                        src="/successIcon.png"
+                        height={20}
+                        width={20}
+                        alt="Follow us on Twitter"
+                    />
+                </div>
+            }
             <div>
                 <p className={style.blueMessage}>Tu Registro ha Finalizado con Exito!</p>
                 <p className={style.grayMessage}>Los datos ingresados han sido registrados correctamente!</p>
@@ -35,7 +42,7 @@ function VistaPreviaPago() {
                     <p className={style.data_field}>Yulihanny Patricia Mendez Aldana</p>
                 </div>
                 <div className={style.field}>
-                    <p className={style.title_field}>Cedula de Identidad</p>
+                    <p className={`${style.title_field} ${style.cedulaResponsive}`}>Cedula de Identidad</p>
                     <p className={`${style.data_field} ${style.right}`}>V-5785881</p>
                 </div>
             </div>
@@ -82,7 +89,7 @@ function VistaPreviaPago() {
 
        <div className={style.contentBeneficiarios}>
             <p className={style.titleInfo}>Lista de Beneficiarios</p>
-            <div className={style.listaBeneficiarios}>
+            <div className={`${style.listaBeneficiarios} ${isFacturaPage ? style.heightAuto: ''}`}>
                 <div className={style.row}>
                     <div className={style.row_content}>
                         <p>Datos</p>

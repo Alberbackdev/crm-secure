@@ -24,7 +24,7 @@ function VistaPreviaVentas() {
                 <p className={style.title_detallesCliente}>Detalles de la Venta</p>
                 <p className={style.titleInfo}>Datos del Difunto</p>
     
-                <div className={style.dataCliente}>
+                <div className={`${style.dataCliente} ${style.threeInputs}`}>
                     <div className={style.field}>
                         <p className={style.title_field}>Nombres Y Apellidos</p>
                         <p className={style.data_field}>Yulihanny Patricia Mendez Aldana</p>
@@ -43,7 +43,7 @@ function VistaPreviaVentas() {
            <div className={style.detallesPoliza}>
                 <p className={style.titleInfo}>Datos del Responsable del Servicio</p>
     
-                <div className={style.dataPoliza}>
+                <div className={`${style.dataPoliza} ${style.threeInputs}`}>
                     <div className={style.field}>
                         <p className={style.title_field}>Nombres Y Apellidos</p>
                         <p className={style.data_field}>Maria Grabiela Garcia Moron</p>

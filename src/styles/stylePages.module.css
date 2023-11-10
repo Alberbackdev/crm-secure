@@ -2,14 +2,65 @@
     margin-left: 41px; 
     margin-top: 3rem;
 }
+.confirmarPageCliente {
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: space-evenly;
+}
 
+.facturaPage {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .5rem;
+}
 
+.polizaPage, .pagoPage {
+    display: flex;
+    width: 100%;
+    margin-top: 1.3rem;
+    justify-content: space-around;
+}
 
+.pagoPage {justify-content:space-evenly;}
+
+/*Ventas pages*/
+
+.pageDifuntoVenta, .pageResponsableVenta, .pageConfirmarVentas, .configPage, .pageClaveConfig {
+    display: flex;
+    width: 100%;
+    margin-top: 1.7rem;
+    justify-content: space-evenly;
+} 
+
+.pageServicioVentas {
+    display: flex;
+    width: 100%;
+    margin-top: 1.3rem;
+    justify-content: space-evenly;
+}
 
 /*Responsive Design*/
 @media only screen and (max-width: 816px) {
     .mainPageClientes {
         margin-left: 0; 
         margin-top: 0;
+    }
+
+    .polizaPage {
+        flex-direction: column-reverse;
+        margin-bottom: 5rem;
+    }
+    .pagoPage { flex-direction: column; margin-bottom: 5rem;}
+    .confirmarPageCliente {
+        flex-direction: column;
+        margin-top: .8rem;
+    }
+    .pageDifuntoVenta, .pageResponsableVenta {flex-direction: column-reverse;}
+
+    .pageServicioVentas, .pageConfirmarVentas, .configPage, .pageClaveConfig {
+        flex-direction: column;        
     }
 }

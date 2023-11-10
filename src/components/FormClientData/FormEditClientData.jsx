@@ -112,7 +112,7 @@ export const FormEditClientData = ({ params }) => {
                 </div>
                 <div className={style.group}>
                     <div className={style.groupChild}>
-                        <label>Cedula de Identidad</label>
+                        <label>Cédula</label>
                         <input
                             name="cidentified"
                             type="number"
@@ -123,7 +123,7 @@ export const FormEditClientData = ({ params }) => {
                         />
                     </div>
                     <div className={style.groupChild}>
-                        <label> Numero de Telefono</label>
+                        <label>Teléfono</label>
                         <input
                             name="phone"
                             type="number"

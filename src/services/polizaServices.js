@@ -12,7 +12,7 @@ export async function getPolizeAPI(id) {
 }
 
 //CREATE
-export async function createPolizeAction(ev, values, reset) {
+export async function createPolizeAction(ev, values) {
     ev.preventDefault();
     return await axios.post(`${urlApiDev}/clientes/polizas`, values)
     .then(response => response);

@@ -3,20 +3,13 @@ import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeg
 import CardRightDatosVentas from "@/src/components/CardRightDatosVentas/CardRightDatosVentas"
 import ContainerPrinc from "@/src/components/LayoutFolder/Layout";
 import VistaPreviaVentas from "@/src/components/VistaPreviaVentas/VistaPreviaVentas"
-
+import style from '@/src/styles/stylePages.module.css'
 
 export default function ConfirmarVenta() {
   return (
     <ContainerPrinc>
       <BarSeguimientoProceso currentPage={'Confirmacion'} useBarTo={'Ventas'} />
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          marginTop: "1.7rem",
-          justifyContent: "space-evenly",
-        }}
-      >
+      <div className={style.pageConfirmarVentas}>
         <VistaPreviaVentas />
         <CardRightDatosVentas />
       </div>

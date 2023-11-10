@@ -43,3 +43,22 @@
     background: #0F843E;
     margin: 0 8px;
 }
+
+@media only screen and (max-width: 816px) {
+    .content {
+        width: 100%;
+        padding: 5px;
+    }
+    .circleIndicator{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;      
+        margin-right: 3px;
+    }
+    .nameInactive, .nameActive {
+        font-size: 9px;
+    }
+    .separator {
+        width: 10px;
+    }
+}

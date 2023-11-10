@@ -10,8 +10,8 @@ const initialState = {
     type_of_change:'',
     month_pay:[],
     status_pay:'',
-    full_payment_bs:'',
-    full_payment_dollar:''
+    full_payment_bs: 0,
+    full_payment_dollar: 0
   }
 }
 

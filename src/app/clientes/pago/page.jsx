@@ -7,18 +7,7 @@ import style from '@/src/styles/stylePages.module.css'
 
 export default function Pagos() {
   const [meses, setMeses] = useState([]);
-  const [dataP, setDataP] = useState([]);
-  
-  
-  const selectMeses = (meses) => {
-    console.log(meses);
-    setMeses(meses);
-  };
-
-  const sendDataPagos = (dataP) => {
-    console.log(dataP);
-    setDataP(dataP);
-  };
+  const selectMeses = (meses) => setMeses(meses);
 
   return (
     <>
@@ -28,9 +17,8 @@ export default function Pagos() {
         <ContainerSelectDatosPagos
           selectMeses={selectMeses}
           meses={meses}
-          sendDataPagos={sendDataPagos}
         />
-        <CardRightDatosPagos meses={meses} dataP={dataP} />
+        <CardRightDatosPagos meses={meses} />
       </div>
     </>
   );

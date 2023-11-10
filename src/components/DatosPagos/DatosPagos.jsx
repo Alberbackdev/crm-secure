@@ -1,57 +1,27 @@
 "use client"
-
-
 import { precioBCV } from '@/src/utils/getDolarPrice';
 import Mensualidad from './Mensualidad/Mensualidad';
-// import styleMen from "./Mensualidad/mensualidad.module.css";
 import style from './datosPagos.module.css';
 import { useForm } from '@/src/utils/useForm';
-import { useEffect, useState,  } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetState } from '@/src/redux/slices/pagoReducer';
+import { dataToCreate } from '@/src/redux/slices/pagoReducer';
 
-export default function DatosPagos({ selectMeses, meses, sendDataPagos }) {
-  const [error, setError] = useState("");
+
+export default function DatosPagos({ selectMeses, meses }) {
   const valuesPago = useSelector(state => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
-  const router = useRouter();
   const dispatch = useDispatch();
-  const params = useParams();
-
-  
-  console.log(meses);
-  //llama a la funcion para actualizar el estado del input
   const { values, handleInputChange, reset } = useForm(valuesPago);
   
+  useEffect(() => {
+    if(meses.length) {
+      const total = meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0);
+      const totalDolar = total / values?.type_of_change;
+      const dataToSend = {...values, full_payment_bs: total, full_payment_dollar: totalDolar, month_pay: meses};
+      dispatch(dataToCreate(dataToSend));
+    }
+  }, [meses])
   
-  Object.assign(values.month_pay, {
-    meses,
-  });
-  const total = meses?.length
-    ? meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0)
-    : 0;
-  const totalDolar = total / values?.type_of_change;
-
-  
-
-  values.full_payment_bs = total;
-  values.full_payment_dollar = totalDolar;
-
-  
-  console.log(values);
-  
-  //values.month_pay = meses;
-  sendDataPagos(values);
-  
-  //actua como actualizador y reseteo de forms
-  const sendPago = (ev) => {
-    console.log(values);
-    ev.preventDefault();
-    dispatch(dataToCreate(values));
-  };
-  
- 
-
   useEffect(() => {
     async function getPrecioBCV () {
       const precioDolar = await precioBCV;
@@ -59,15 +29,11 @@ export default function DatosPagos({ selectMeses, meses, sendDataPagos }) {
     }
     getPrecioBCV()
   }, [])
-  
-
-  //utilizar sendDataPAgos, para llevar la data al componente padre
-  
-
+    
   return (
     <div className={style.containerTopData}>
       <h1 className={style.title}>Ingrese los Datos del Pago</h1>
-      <form onSubmit={sendPago} className={style.formContent}>
+      <form className={style.formContent}>
         <div className={style.formGroup}>
           <div className={style.formChild}>
             <label htmlFor="formatoPago">Formato de pago</label>

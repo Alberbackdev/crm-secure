@@ -1,21 +1,18 @@
 "use client"
 import { useRouter, usePathname, useParams } from 'next/navigation'
 import style from './cardRightDatosPagos.module.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from '@/src/utils/useForm';
-import { putDataPagoToUpdate } from '@/src/redux/slices/pagoReducer';
+import { useSelector } from 'react-redux';
+
 
 //componendte para confirmar los datos de pago
-function CardRightDatosPagos({ meses, dataP }) {
+function CardRightDatosPagos({ meses }) {
+  const valuesPago = useSelector(state => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
   const router = useRouter();
   const pathname = usePathname();
   const isConfirmarPage = pathname.includes("confirmar");
 
-  /* const total = meses?.length
-    ? meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0)
-    : 0;
-  const totalDolar = total / dataP?.type_of_change;
-   */
+  const total = valuesPago.full_payment_bs
+  const totalDolar = valuesPago.full_payment_dollar;
 
   return (
     <div className={style.container}>
@@ -25,12 +22,12 @@ function CardRightDatosPagos({ meses, dataP }) {
         <div>
           <p className={style.descripcion}>Fecha</p>
           <p className={style.data}>
-            {!dataP?.date_pay ? " " : dataP.date_pay}
+            {valuesPago.date_pay}
           </p>
         </div>
         <p className={style.descripcion}>Tipo de Cambio</p>
         <p className={style.data}>
-          {!dataP?.type_of_change ? " " : dataP.type_of_change}
+          {valuesPago.type_of_change}
         </p>
         {isConfirmarPage && (
           <div className={style.horizontal}>
@@ -54,7 +51,7 @@ function CardRightDatosPagos({ meses, dataP }) {
           <div>
             <p className={style.descripcion}>Formato de Pago</p>
             <p className={style.data}>
-              {!dataP?.type_pay ? " " : dataP.type_pay}
+              {valuesPago.type_pay}
             </p>
           </div>
         </div>
@@ -72,11 +69,11 @@ function CardRightDatosPagos({ meses, dataP }) {
           <div className={style.montoEnMoneda}>
             <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
               <p>Precio Total Bs</p>
-              {/* {total + " Bs"} */}
+              {total + "Bs"}
             </div>
             <div className={`${style.mesPagado_center} ${style.monedaDolar}`}>
               <p>Precio $</p>
-              <p>{/* {totalDolar ? totalDolar.toFixed(2) : "0$"} */}</p>
+              <p>{totalDolar.toFixed(2) + "$"}</p>
             </div>
           </div>
         </div>

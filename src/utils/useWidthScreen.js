@@ -5,6 +5,7 @@ export const useScreenSize = () => {
   const [height, setHeight] = useState(window.innerHeight);
 
   const handleResize = () => {
+  
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   };

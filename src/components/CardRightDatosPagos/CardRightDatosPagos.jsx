@@ -19,6 +19,9 @@ function CardRightDatosPagos({ meses }) {
   const total = valuesPago.full_payment_bs;
   const totalDolar = valuesPago.full_payment_dollar;
 
+  console.log(valuesPoliza);
+  
+
   const sendPolize = async (ev) => {
     try {
       const cliente = await createClientAction(ev, valuesClient);
@@ -45,22 +48,39 @@ function CardRightDatosPagos({ meses }) {
       <h4 className={style.title}>Datos del Pago</h4>
 
       <div className={style.contentTop}>
-        <div>
-          <p className={style.descripcion}>Fecha</p>
-          <p className={style.data}>{valuesPago.date_pay}</p>
+        <div className={style.horizontal}>
+          <div>
+            <p className={style.descripcion}>Fecha</p>
+            <p className={style.data}>{valuesPago.date_pay}</p>
+          </div>
+          <div>
+            <p className={style.descripcion}>Nombre y Apellido</p>
+            <p className={style.data}>
+              {!valuesPago.month_pay ? 0 : valuesPago.month_pay.length}
+            </p>
+          </div>
         </div>
-        <p className={style.descripcion}>Tipo de Cambio</p>
-        <p className={style.data}>{valuesPago.type_of_change}</p>
+        <div className={style.horizontal}>
+          <div>
+            <p className={style.descripcion}>Tipo de Cambio</p>
+            <p className={style.data}>{valuesPago.type_of_change}</p>
+          </div>
+        </div>
+
         {isConfirmarPage && (
           <div className={style.horizontal}>
             <div>
               <p className={style.descripcion}>N° de Meses que Pago</p>
-              <p className={style.data}>4</p>
+              <p className={style.data}>
+                {!valuesPago.month_pay ? 0 : valuesPago.month_pay.length}
+              </p>
             </div>
             <div>
-              <p className={style.descripcion}>N° de Meses a Deber</p>
+              <p className={style.descripcion}>Codigo de Poliza</p>
               <p className={style.data} style={{ textAlign: "right" }}>
-                9
+                {!valuesPoliza.codigoPoliza
+                  ? undefined
+                  : valuesPoliza.codigoPoliza}
               </p>
             </div>
           </div>
@@ -68,19 +88,23 @@ function CardRightDatosPagos({ meses }) {
         <div className={style.horizontal}>
           <div>
             <p className={style.descripcion}>Tipo de Plan</p>
-            <p className={style.data}>Basico</p>
+            <p className={style.data}>
+              {!valuesPoliza.type_polize ? "" : valuesPoliza.type_polize}
+            </p>
           </div>
           <div>
             <p className={style.descripcion}>Formato de Pago</p>
-            <p className={style.data}>{valuesPago.type_pay}</p>
+            <p className={style.data}>
+              {!valuesPago.type_pay ? undefined : valuesPago.type_pay}
+            </p>
           </div>
         </div>
       </div>
       <div className={style.contentCenter}>
         <p className={style.title}>Monto y Pago</p>
         <div className={style.mesesPagados}>
-          {meses?.map((l) => (
-            <div className={style.mesPagado} key={l}>
+          {valuesPago.month_pay?.map((l, i) => (
+            <div className={style.mesPagado} key={i}>
               <p className={style.descripcion}>{l.mes}</p>
               <p className={style.montoPagado}>{l.value}</p>
             </div>

@@ -1,16 +1,10 @@
-"use client"
+"use client";
 import {useSession} from "next-auth/react"
 import Image from 'next/image'
 import style from './header.module.css';
 import { NamePageHelper } from "../../utils/namePage"
 import { usePathname, useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
-
-const useScreenSize = dynamic(() => import("@/src/utils/useWidthScreen"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>
-});
-
+import { useScreenSize } from "@/src/utils/useWidthScreen"
 
 export default function Header() {
   const router = useRouter();

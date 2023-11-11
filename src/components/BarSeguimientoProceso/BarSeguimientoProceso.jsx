@@ -4,6 +4,7 @@ import style from './BarSeguimientoProceso.module.css';
 import { useRouter } from "next/navigation";
 import { useSelector } from 'react-redux'
 import { useScreenSize } from '@/src/utils/useWidthScreen'
+import React from 'react';
 
 
 const namesPageVentas = [
@@ -54,22 +55,41 @@ function BarSeguimientoProceso({currentPage, useBarTo}) {
   const indexCurrentPage = listaARecorrer.map(page => page.namePage).indexOf(currentPage);
 
   return (
-    <div className={style.content}> 
-        {
-            listaARecorrer.map((page, index) => (
-                <>
-                    <div className={style.process} key={index} onClick={() => updatingClientData && router.push(page.urlPage)}> {/* Si estan actualizando data permitir que pueda navegar entre las secciones */}
-                        <div className={`${style.circleIndicator} ${index <= indexCurrentPage ? style.circleIndicatorActive : null}`}>
-                            <Image src='/checkWhiteIcon.png' alt='check White Icon' width={isMobile ? 12 : 16} height={isMobile ? 12 : 13} />
-                        </div>
-                        <p className={`${index <= indexCurrentPage ? style.nameActive : style.nameInactive}`}>{page.namePage}</p>
-                    </div>
-                    { index < 3 && <div className={style.separator}></div>}
-                </>
-            ))
-        }
+    <div className={style.content}>
+      {listaARecorrer.map((page, index) => (
+        <React.Fragment key={index}>
+          <div
+            className={style.process}
+            onClick={() => updatingClientData && router.push(page.urlPage)}
+          >
+            {/* Si estan actualizando data permitir que pueda navegar entre las secciones */}
+            <div
+              className={`${style.circleIndicator} ${
+                index <= indexCurrentPage ? style.circleIndicatorActive : null
+              }`}
+            >
+              <Image
+                src="/checkWhiteIcon.png"
+                alt="check White Icon"
+                width={isMobile ? 12 : 16}
+                height={isMobile ? 12 : 13}
+              />
+            </div>
+            <p
+              className={`${
+                index <= indexCurrentPage
+                  ? style.nameActive
+                  : style.nameInactive
+              }`}
+            >
+              {page.namePage}
+            </p>
+          </div>
+          {index < 3 && <div className={style.separator}></div>}
+        </React.Fragment>
+      ))}
     </div>
-  )
+  );
 }
 
 export default BarSeguimientoProceso

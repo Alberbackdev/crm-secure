@@ -4,14 +4,14 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import style from "./login.module.css";
 import Link from "next/link";
-//import { useScreenSize } from "@/src/utils/useWidthScreen"
+import { useScreenSize } from "@/src/utils/useWidthScreen"
 
 export default function Login() {
   const [error, setError] = useState("");
   const router = useRouter();
-  //const { width } = useScreenSize();
+  const { width } = useScreenSize();
 
-  //const //isMobile = width <= 816;
+  const isMobile = width <= 816;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ export default function Login() {
   return (
     <div className={style.container}>
       
-      {/* <h2>{isMobile ? 'Bienvenido!' : 'Inicio de Sesión'}</h2> */}
+      <h2>{isMobile ? 'Bienvenido!' : 'Inicio de Sesión'}</h2>
       <p  className={style.msgMobileInfo}>Inicia Sesion para continuar</p>
       <form onSubmit={handleSubmit} className={style.formLogin}>
         {error && <div className="p-2 mb-2 text-white bg-red-500">{error}</div>}

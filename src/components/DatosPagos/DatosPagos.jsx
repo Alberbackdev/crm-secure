@@ -20,7 +20,7 @@ export default function DatosPagos({ selectMeses, meses }) {
       const dataToSend = {...values, full_payment_bs: total, full_payment_dollar: totalDolar, month_pay: meses};
       dispatch(dataToCreate(dataToSend));
     }
-  }, [meses])
+  }, [])
   
   useEffect(() => {
     async function getPrecioBCV () {

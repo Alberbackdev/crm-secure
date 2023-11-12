@@ -10,9 +10,9 @@ export async function getClientsAPI(id) {
 //Crea un client
 export async function createClientAction(ev, values) {
     ev.preventDefault();
-    return await axios.post(`${urlApiDev}/clientes/clientes`, values)
-    .then(response => response)
+    return await axios.post(`${urlApiDev}/clientes/clientes`, values).then(response => response)
 }
+
 
 //hacer que actualice cada campo
 export async function updateClientAction(ev, values, id) {

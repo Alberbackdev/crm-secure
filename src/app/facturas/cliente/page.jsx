@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import CardRightDatosPagos from '@/src/components/CardRightDatosPagos/CardRightDatosPagos'
 import VistaPreviaPago from '@/src/components/VistaPreviaPago/VistaPreviaPago'
 import style from '@/src/styles/stylePages.module.css'

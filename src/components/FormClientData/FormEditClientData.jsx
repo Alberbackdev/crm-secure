@@ -29,7 +29,7 @@ export const FormEditClientData = ({ params }) => {
             if (res.status === 200) {
                 console.log('El registro se actualizó correctamente.');
                 router.push(
-                  `/clientes/poliza/${res.data.data._id}?codigoPoliza=${poliza.codigoPoliza}&polizaId=${poliza.codigoPoliza}`
+                  `/clientes/poliza`
                 );
             } else {
                 console.log('Ocurrió un error al actualizar el registro.')
@@ -58,7 +58,7 @@ export const FormEditClientData = ({ params }) => {
     return (
         <div className={style.container}>
             <form onSubmit={putClient} className={style.formContent}>
-                {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
+                {error && <div className="p-2 mb-2 text-white bg-red-500">{error}</div>}
                 <h1 className={style.title}>
                     Actualizar Cliente
                 </h1>

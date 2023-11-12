@@ -20,7 +20,6 @@ function CardRightDatosPagos({ meses }) {
   const totalDolar = valuesPago.full_payment_dollar;
 
   console.log(valuesPoliza);
-  
 
   const sendPolize = async (ev) => {
     try {
@@ -34,9 +33,9 @@ function CardRightDatosPagos({ meses }) {
         cpoliza.status === 201 &&
         cpago.status === 201
       ) {
-          isConfirmarPage
-            ? router.push("/facturas/cliente")
-            : router.push("/clientes/confirmar");
+        isConfirmarPage
+          ? router.push("/facturas/cliente")
+          : router.push("/clientes/confirmar");
       }
     } catch (error) {
       console.log(error);
@@ -54,42 +53,53 @@ function CardRightDatosPagos({ meses }) {
             <p className={style.data}>{valuesPago.date_pay}</p>
           </div>
           <div>
-            <p className={style.descripcion}>Nombre y Apellido</p>
-            <p className={style.data}>
-              {!valuesPago.month_pay ? 0 : valuesPago.month_pay.length}
-            </p>
-          </div>
-        </div>
-        <div className={style.horizontal}>
-          <div>
             <p className={style.descripcion}>Tipo de Cambio</p>
             <p className={style.data}>{valuesPago.type_of_change}</p>
           </div>
         </div>
 
         {isConfirmarPage && (
-          <div className={style.horizontal}>
-            <div>
-              <p className={style.descripcion}>N° de Meses que Pago</p>
-              <p className={style.data}>
-                {!valuesPago.month_pay ? 0 : valuesPago.month_pay.length}
-              </p>
+          <>
+            <div className={style.horizontal}>
+              <div>
+                <p className={style.descripcion}>N° de Meses que Pago</p>
+                <p className={style.data}>
+                  {!valuesPago.month_pay ? 0 : valuesPago.month_pay.length}
+                </p>
+              </div>
+
+              <div>
+                <p className={style.descripcion}>Codigo de Poliza</p>
+                <p className={style.data} style={{ textAlign: "right" }}>
+                  {!valuesPoliza.codigoPoliza
+                    ? undefined
+                    : valuesPoliza.codigoPoliza}
+                </p>
+              </div>
             </div>
-            <div>
-              <p className={style.descripcion}>Codigo de Poliza</p>
-              <p className={style.data} style={{ textAlign: "right" }}>
-                {!valuesPoliza.codigoPoliza
-                  ? undefined
-                  : valuesPoliza.codigoPoliza}
-              </p>
+            <div className={style.horizontal}>
+              <div>
+                <p className={style.descripcion}>Nombre y Apellido</p>
+                <p className={style.data}>{valuesClient.name + " " + valuesClient.lastname}</p>
+              </div>
+              <div className={style.field}>
+                <p className={style.descripcion}>Status</p>
+                <p className={style.data}>
+                  {!valuesPoliza.status_pay
+                    ? "undefined"
+                    : valuesPoliza.status_pay}
+                </p>
+              </div>
             </div>
-          </div>
+          </>
         )}
         <div className={style.horizontal}>
           <div>
             <p className={style.descripcion}>Tipo de Plan</p>
             <p className={style.data}>
-              {!valuesPoliza.type_polize ? "" : valuesPoliza.type_polize}
+              {!valuesPoliza.type_polize
+                ? "undefined"
+                : valuesPoliza.type_polize}
             </p>
           </div>
           <div>

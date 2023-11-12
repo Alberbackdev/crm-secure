@@ -10,6 +10,10 @@ function VistaPreviaPago() {
   const valuesPago = useSelector((state) => state.pago.data);
   const pathname = usePathname();
   const isFacturaPage = pathname === "/facturas/cliente";
+  const fechaActual = new Date();
+  const fechaNAci = new Date(valuesClient.dateofbirth);
+  const edadActual = fechaActual.getFullYear() - fechaNAci.getFullYear();
+  console.log(edadActual)
 
   return (
     <div className={style.container}>
@@ -76,7 +80,7 @@ function VistaPreviaPago() {
           </div>
           <div className={style.field}>
             <p className={`${style.title_field} ${style.right}`}>Edad</p>
-            <p className={`${style.data_field} ${style.right}`}>32 Años</p>
+            <p className={`${style.data_field} ${style.right}`}>{edadActual == NaN ? "0": edadActual}</p>
           </div>
         </div>
       </div>
@@ -97,12 +101,6 @@ function VistaPreviaPago() {
               {!valuesPoliza.city_contract
                 ? "undefined"
                 : valuesPoliza.city_contract}
-            </p>
-          </div>
-          <div className={style.field}>
-            <p className={style.title_field}>Status</p>
-            <p className={`${style.data_field} ${style.right}`}>
-              {!valuesPoliza.status_pay ? "undefined" : valuesPoliza.status_pay}
             </p>
           </div>
         </div>

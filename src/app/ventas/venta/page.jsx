@@ -12,7 +12,7 @@ export default function Ventas() {
       <BarSeguimientoProceso currentPage={'Datos Del Difunto'} useBarTo={'Ventas'} />
       <div className={style.pageDifuntoVenta}>
         <FormDifunto />
-        <NumerosServicios />
+        {/* <NumerosServicios /> */}
       </div>
     </>
   );

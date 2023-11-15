@@ -12,7 +12,7 @@ export default async function Lista() {
   return (
     <div className={style.mainPageClientes}>
       <ButtonsActions />
-      {/* <Listado data={!res ? "No hay registros": res.data}  /> */}
+      <Listado data={!res ? "No hay registros": res.docs}  />
     </div>
   );
 }

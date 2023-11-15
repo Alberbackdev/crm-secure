@@ -2,7 +2,7 @@ import ContainerPrinc from "@/src/components/LayoutFolder/Layout";
 import "../globals.css";
 
 export const metadata = {
-  title: "Clientes",
+  title: "Ventas",
   description: "Aseguradora Misericordia CRM",
 };
 

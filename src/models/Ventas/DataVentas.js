@@ -5,41 +5,41 @@ const { Schema, model, models } = require("mongoose");
 const ventasSchema = new Schema({
     nroservicio: {
         type: String,
-        required: [true, "El Numero de servicio es requerido"],
+        //required: [true, "El Numero de servicio es requerido"],
         unique: true,
     },
     fullname: {
         type: String,
-        required: [true, "El nombre completo es requerido"],
+        //required: [true, "El nombre completo es requerido"],
     },
     cidentified: {
         type: String,
-        required: [true, "La cedula de identidad es requerido"],
+        //required: [true, "La cedula de identidad es requerido"],
         unique: true,
     },
     edad: {
         type: String,
-        required: [true, "La Edad es requerida"],
+        //required: [true, "La Edad es requerida"],
     },
     nrohijos: {
         type: String,
-        required: [true, "Debe ingresar el numero de hijos"],
+        //required: [true, "Debe ingresar el numero de hijos"],
     },
     dateofbirth: {
         type: String,
-        required: [true, "La Fecha de Nacimiento es requerido"],
+        //required: [true, "La Fecha de Nacimiento es requerido"],
     },
     addres: {
         type: String,
-        required: [true, "La dirección es requerido"],
+        //required: [true, "La dirección es requerido"],
     },
-    lugarfallecimiento: {
+    dielocation: {
         type: String,
-        required: [true, "La dirección es requerido"],
+        //required: [true, "La dirección es requerido"],
     },
     phone: {
         type: String,
-        required: [true, "El telefono es requerido"],
+        //required: [true, "El telefono es requerido"],
     }
 }, {
     timestamps: true,

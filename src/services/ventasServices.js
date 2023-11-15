@@ -5,5 +5,5 @@ import { urlApiDev } from "./api";
 
 export async function getVentasAPI(id) {
     return await axios.get(`${urlApiDev}/ventas`)
-    .then( response => response)
+    .then( response => response.data.listaventas)
 }

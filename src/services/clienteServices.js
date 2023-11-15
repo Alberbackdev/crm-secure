@@ -2,7 +2,7 @@ import axios from "axios";
 import { urlApiDev } from "./api";
 
 export async function getClientsAPI(id) {
-    return await axios.get(`${urlApiDev}/clientes/${!id ? 'clientes/' : `clientes/${id}`}`)
+    return await axios.get(`${urlApiDev}/clientes/${!id ? 'clientes' : `clientes/${id}`}`)
     .then( response => response)
 }
 

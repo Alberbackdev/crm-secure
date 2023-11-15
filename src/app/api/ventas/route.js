@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
   await connectDB();
-  const listaventas = await Venta.paginate({});
-  return NextResponse.json( {listaventas}, { status: 200 });
+  const listaventas = await Venta.find();
+  return NextResponse.json( listaventas, { status: 200 });
 }
 
 export async function POST(req, res) {

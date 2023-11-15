@@ -14,6 +14,7 @@ export default function Listado({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const isMobile = width <= 816;
+  console.log(data)
 
   const deleteClient = async (ev) => {
     const id = ev.target.getAttribute("value");
@@ -87,5 +88,5 @@ export default function Listado({ data }) {
         })
       )}
     </div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 
 import BarSeguimientoProceso from "@/src/components/BarSeguimientoProceso/BarSeguimientoProceso"
 import FormDifunto from "@/src/components/ventas/FormDifunto/FormDifunto";
-import NumerosServicios from "@/src/components/ventas/NumeroServicios/NumerosServicios";
+//import NumerosServicios from "@/src/components/ventas/NumeroServicios/NumerosServicios";
 import style from '@/src/styles/stylePages.module.css'
 
 //registar /actualizar venta

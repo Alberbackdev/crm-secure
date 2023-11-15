@@ -46,7 +46,7 @@ const ventasSchema = new Schema({
     versionKey: false
 })
 
-ventasSchema.plugin(mongoosePaginate)
+/* ventasSchema.plugin(mongoosePaginate) */
 
 //esto elimina el error overwrite model
 export const Venta = models.Venta || model('Venta', ventasSchema);

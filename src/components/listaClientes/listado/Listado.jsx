@@ -16,7 +16,7 @@ export default function Listado({ data }) {
   const isMobile = width <= 816;
   console.log(data)
 
-  const deleteClient = async (ev) => {
+  const deleteCard = async (ev) => {
     const id = ev.target.getAttribute("value");
     await deleteClientAction(ev, id);
     router.refresh();
@@ -47,7 +47,7 @@ export default function Listado({ data }) {
                     style={{ marginRight: "10px" }}
                     alt="Follow us on Twitter"
                   />
-                  <button onClick={deleteClient}>
+                  <button onClick={deleteCard}>
                     <Image
                       priority
                       src="/trash.png"
@@ -79,7 +79,7 @@ export default function Listado({ data }) {
                   />
                 </div>
                 <div className={style.dateCard}>
-                  <p>Telefono</p>
+                  <p>Teléfono</p>
                   <p>{element.phone}</p>
                 </div>
               </div>

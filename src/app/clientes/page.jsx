@@ -8,7 +8,7 @@ import { getPolizeAPI } from "@/src/services/polizaServices";
 
 export default async function Lista() {
   const res = await getClientsAPI();
-  console.log(res)
+  //console.log(res)
 
 
   return (

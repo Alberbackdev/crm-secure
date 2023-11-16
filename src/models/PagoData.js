@@ -27,6 +27,14 @@ const paySchema = new Schema({
     full_payment_dollar: { 
         type: String, 
         required: [true, "El total del pago en USD es requerido"],
+    },
+    clientId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Client'
+    },
+    polizaId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Polize'
     }
 }, {
     timestamps: true,

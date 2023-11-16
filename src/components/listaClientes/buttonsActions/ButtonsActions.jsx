@@ -12,7 +12,7 @@ export default function ButtonsActions(poliza) {
     if (pathname === "/clientes") {
       router.push("/clientes/cliente");
     } else {
-      router.push("/ventas/venta");
+      router.push("/ventas/difunto");
     }
   };
 

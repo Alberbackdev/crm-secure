@@ -1,5 +1,5 @@
 import { connectDB } from "@/src/lib/mongodb";
-import { Venta } from "@/src/models/Ventas/DataVentas";
+import { Venta } from "@/src/models/Ventas/DataDifunto";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 

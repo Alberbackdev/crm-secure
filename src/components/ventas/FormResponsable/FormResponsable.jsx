@@ -1,10 +1,35 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import style from './formResponsable.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useForm } from '@/src/utils/useForm';
 
 function FormResponsable() {
-    const router = useRouter()
-    const values = {};
+    const [error, setError] = useState("");
+    const valuesVentas = useSelector((state) => state.ventas.data); // state es el reducer y con el punto se accede al nombre se accede al slice
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+    //console.log(poliza);
+    //llama a la funcion para actualizar el estado del input
+    const { values, handleInputChange, reset } = useForm(valuesVentas);
+
+    //actua como actualizador y reseteo de forms
+    const sendClient = (ev) => {
+      ev.preventDefault();
+      dispatch(dataToCreate(values));
+      router.push("/ventas/servicio"); //next page process
+      //   const res = await createClientAction(ev, values, reset);
+      //   console.log(res);
+      //   //const {data} = await res.json();
+    };
+
+    const cancelButton = () => {
+      reset();
+      dispatch(resetState());
+      router.push("/ventas/difunto");
+    };
 
 
   return (
@@ -103,7 +128,7 @@ function FormResponsable() {
             />
         </div>     
         <div className={style.buttons}>   
-            <button type="button" className="btn-primary" onClick={() => router.push('/ventas')}>
+            <button type="button" className="btn-primary" onClick={() => router.push('/ventas/venta')}>
                 Atras
             </button>              
             <button type="button" className="btn-primary" onClick={() => router.push('/ventas/servicio')}>

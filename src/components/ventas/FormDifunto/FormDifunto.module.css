@@ -35,18 +35,22 @@
 }
 
 .buttons {
-    margin-top: -0.3rem;
+    margin-top: 2rem;
     display: flex; 
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .buttons > button {
     width: 195px;
     padding: 13px 20px;
     border-radius: 25px;
-    color: #fff;
 }
 
+.buttons > button:nth-child(1) {
+    border: 1px solid #5A81FA;
+    background: #CEDEFF;
+    color: #000;
+}
 @media only screen and (max-width: 816px) {
     .container {
         width: 95%;

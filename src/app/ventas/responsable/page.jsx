@@ -11,7 +11,7 @@ export default function Responsable() {
       <BarSeguimientoProceso currentPage={'Datos Responsable del Servicio'} useBarTo={'Ventas'} />
       <div className={style.pageResponsableVenta}>
         <FormResponsable />
-        <NumerosServicios />
+        {/* <NumerosServicios /> */}
       </div>
     </>
   );

@@ -15,7 +15,7 @@ export async function POST(req, res) {
     try {
         const body = await req.json()
         const newClient = await ClientData.create(body)
-        return NextResponse.json({data:newClient}, {status: 201})
+        return NextResponse.json({newClient}, {status: 201})
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
             return NextResponse.json(

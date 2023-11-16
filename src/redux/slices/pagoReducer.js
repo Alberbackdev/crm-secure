@@ -11,7 +11,9 @@ const initialState = {
     month_pay:[],
     status_pay:'',
     full_payment_bs: 0,
-    full_payment_dollar: 0
+    full_payment_dollar: 0,
+    clientId: "",
+    polizaId: ''
   }
 }
 

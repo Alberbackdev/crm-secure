@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { resetState } from '@/src/redux/slices/clientReducer'
 import { getPolizeAPI } from "@/src/services/polizaServices"
+import { putDataPolizaToUpdate } from "@/src/redux/slices/polizaReducer"
 
 //This is form for new client
 
@@ -21,16 +22,15 @@ export const FormEditClientData = ({ params }) => {
     const { values, handleInputChange, reset } = useForm(rest); //llama a la funcion para actualizar el estado del input
     
     const putClient = async (ev) => { //actua como actualizador y reseteo de forms
+        ev.preventDefault();
         try {
  
-            const res = await updateClientAction(ev, values, id);
+            const res = await updateClientAction(values);
             console.log(res);
         
             if (res.status === 200) {
                 console.log('El registro se actualizó correctamente.');
-                router.push(
-                  `/clientes/poliza`
-                );
+                router.push(`/clientes/poliza`);
             } else {
                 console.log('Ocurrió un error al actualizar el registro.')
             }
@@ -45,15 +45,13 @@ export const FormEditClientData = ({ params }) => {
         router.push("/clientes");
     }
 
-    // useEffect(() => {        
-    //     if ( true ) {
-    //         async function getPolizeByuser() {
-    //             const {data} =  await getPolizeAPI(rest.polize); //Obtener data de la poliza del cliente a editar.
-    //             console.log('polizaByUser', data)
-    //         }
-    //         getPolizeByuser()
-    //     }
-    // }, []);
+    useEffect(() => {        
+        async function getPolizeByuser() {
+            const {data} =  await getPolizeAPI(values._id); //Obtener data de la poliza del cliente a editar.
+            dispatch(putDataPolizaToUpdate(data.data))
+        }
+        getPolizeByuser()
+    }, []);
 
     return (
         <div className={style.container}>

@@ -5,6 +5,10 @@ import { useForm } from "../../utils/useForm";
 import { TypePolizeOptions, VendedoresOptions } from "../../utils/optionsForm";
 import { dataToCreate } from "@/src/redux/slices/polizaReducer"
 import { useDispatch,useSelector } from "react-redux"
+import { useEffect } from "react"
+import { putDataPagoToUpdate } from "@/src/redux/slices/pagoReducer"
+import { updatePolizeAction } from "@/src/services/polizaServices"
+import { getPagoAPI } from "@/src/services/pagoServices"
 
 
 //This is form for new client
@@ -12,26 +16,48 @@ import { useDispatch,useSelector } from "react-redux"
 export const FormPolize = () => {
   const router = useRouter();
   const dispatch = useDispatch()
-  const valuesPoliza = useSelector(state => state.poliza.data)
+  const valuesPoliza = useSelector(state => state.poliza)
 
-  const { values, handleInputChange, reset } = useForm(valuesPoliza);
-  //actua como actualizador y reseteo de forms
-  const sendPolize = (ev) => {
+  const { values, handleInputChange } = useForm(valuesPoliza.data);
+
+  const sendPolize = async (ev) => {
     ev.preventDefault()
-    dispatch(dataToCreate(values));
-    router.push(`/clientes/pago`);
-    // try {
-    //   const res = await updatePolizeAction(ev, values, poliza.polizaId);
-    //   console.log(res);
+    if(!valuesPoliza.updatingPolizaData){ // No edicion
+      dispatch(dataToCreate(values));
+      return router.push(`/clientes/pago`);
+    }
+    // Codigo de edicion
+    try {
+      const {data, status} = await updatePolizeAction(values);
+      console.log('proceso de update',data);
 
-    //   if (res.status === 200) {
-    //     router.push(`/clientes/pago/${client.id}?poliza=${poliza.polizaId}`);
-    //     router.refresh();
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      if (status === 200) router.push(`/clientes/pago`);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    if ( valuesPoliza.updatingPolizaData ) {
+      async function getPagoByUser() {
+          const {data} =  await getPagoAPI(values.clientId); //Obtener data del pago del cliente a editar.
+          const estructuraDatos = { 
+            type_pay:'',
+            date_pay:'',
+            type_of_change:'',
+            month_pay: data.pagos.month_pay[0],
+            status_pay:'',
+            full_payment_bs: 0,
+            full_payment_dollar: 0,
+            clientId: data.pagos.clientId,
+            polizaId: data.pagos.polizaId
+          }
+          dispatch(putDataPagoToUpdate(estructuraDatos))
+      }
+      getPagoByUser()
+    }
+  }, [])
+  
 
   const tiposLabel = TypePolizeOptions.map((l, i) => (
     <option value={l.value} key={i}>

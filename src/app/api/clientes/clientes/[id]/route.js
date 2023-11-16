@@ -40,7 +40,7 @@ export async function DELETE(request, { params }) {
     }
 }
 
-export async function PUT( request, {params}) {
+export async function PATCH( request, {params}) {
     await connectDB()
     const id = params.id
     const body = await request.json()

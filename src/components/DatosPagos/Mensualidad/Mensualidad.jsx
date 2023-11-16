@@ -1,25 +1,20 @@
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./mensualidad.module.css";
+import { useSelector } from "react-redux"
 
 function Mensualidad({ selectMeses }) {
-  const router = useRouter();
-  const [data, setData] = useState([]); 
+  const valuesPago = useSelector(state => state.pago); // state es el reducer y con el punto se accede al nombre se accede al slice
 
-  const monthsList = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
+  const router = useRouter();
+  const [data, setData] = useState(valuesPago.data.month_pay); // Los meses con monto traidos de la BD, sino por defecto un array vacio
+  const [monthsList, setMonthsList] = useState([
+    {nombreMes: "Enero", monto: ""},
+    {nombreMes: "Febrero", monto: ""},
+    {nombreMes: "Marzo", monto: ""},
+    {nombreMes: "Abril", monto: ""},
+  ])
+
 
   const handleChange = (event, month) => {
     const { name, value } = event.target;
@@ -40,6 +35,20 @@ function Mensualidad({ selectMeses }) {
     selectMeses(putMontoAMes)
   };
   
+
+  useEffect(() => {
+    const dataTransformadaAGuardar = [];
+    for (const elemento of monthsList) { // data = {mes: 'Enero', value: '200'}
+      const comprobarMesPagado = data.find(month => month.mes === elemento.nombreMes);
+
+      elemento.nombreMes === comprobarMesPagado?.mes 
+        ? dataTransformadaAGuardar.push(({nombreMes: comprobarMesPagado.mes, monto: comprobarMesPagado.value})) 
+        : dataTransformadaAGuardar.push(elemento) 
+    }
+    setMonthsList(dataTransformadaAGuardar)
+
+  }, [])
+  
   
   return (
     <div className={style.container}>
@@ -50,14 +59,15 @@ function Mensualidad({ selectMeses }) {
           <div className={style.cardMensualidad} key={i}>
             <div className={style.cardMensualidad_top}>
               <div className={style.cardMensualidad_mes}>
-                <h4>{month}</h4>
+                <h4>{month.nombreMes}</h4>
                 <p>Recibimos Bs.D</p>
               </div>
               <input
                 type="checkbox"
                 name="mes"
-                value={month}
-                onChange={(event) =>  handleChange(event, month)}
+                checked={month.monto ? true : false}
+                value={month.nombreMes}
+                onChange={(event) =>  handleChange(event, month.nombreMes)}
               />
             </div>
 
@@ -68,8 +78,9 @@ function Mensualidad({ selectMeses }) {
               placeholder="200"
               step=".01" 
               min="0"
-              onChange={(event) =>  handleChange(event, month)}
-              disabled={!data.some((meses) => meses?.mes === month)}
+              value={month.monto}
+              onChange={(event) =>  handleChange(event, month.nombreMes)}
+              disabled={!data.some((iteration) => iteration?.mes === month.nombreMes) || (month.monto && valuesPago.updatingPagoData) }
             />
           </div>
         ))}

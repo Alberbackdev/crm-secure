@@ -15,7 +15,7 @@ export async function GET(req, res) {
 export async function POST(req, res) {
     await connectDB()
     try {
-        const body = await req.json()
+        const body = req.json()
         const newPolize = await Polize.create(body)
         return NextResponse.json({ data: newPolize }, { status: 201 })
     } catch (error) {

@@ -10,7 +10,8 @@ const initialState = {
     type_polize: "",
     seller: "",
     dateofcontract: "",
-    city_contract: ""
+    city_contract: "",
+    clientId: ""
   }
 };
 

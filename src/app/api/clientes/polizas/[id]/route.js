@@ -7,9 +7,8 @@ import { NextResponse } from "next/server";
 export async function GET(request, {params}) {
     await connectDB()
     const id = params.id
-    console.log(id)
     try {
-        const result = await Polize.findById(id)
+        const result = await Polize.findOne({clientId: id})
         return NextResponse.json({data: result}, {status: 200})
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {

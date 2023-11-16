@@ -15,10 +15,9 @@ export async function createClientAction(ev, values) {
 
 
 //hacer que actualice cada campo
-export async function updateClientAction(ev, values, id) {
-    console.log(values, id)
-    ev.preventDefault();
-    return await axios.patch(`${urlApiDev}/clientes/clientes/${id}`, values)
+export async function updateClientAction(values) {
+    console.log(values)
+    return await axios.patch(`${urlApiDev}/clientes/clientes/${values._id}`, values)
     .then(response => response)
 }
 

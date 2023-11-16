@@ -16,22 +16,21 @@ function CardRightDatosPagos({ meses }) {
   const isConfirmarPage = pathname.includes("confirmar");
   const isFacturaPage = pathname === "/facturas/cliente";
 
-  const total = valuesPago.full_payment_bs;
-  const totalDolar = valuesPago.full_payment_dollar;
+  const total = +valuesPago.full_payment_bs;
+  const totalDolar = +valuesPago.full_payment_dollar;
 
-  console.log(valuesPoliza);
+  console.log(valuesPago);
 
-  const sendPolize = async (ev) => {
+  const sendPolize = async (ev) => { // verificar si estan editando apra que no trate de crear egistros
     try {
-      const cliente = await createClientAction(ev, valuesClient);
-      const cpoliza = await createPolizeAction(ev, valuesPoliza);
-      const cpago = await createPagoAction(ev, valuesPago);
-      console.log(cliente.status, cpoliza.status, cpago.status);
+      const { data, status: statusCliente } = await createClientAction(ev, valuesClient); 
+      const {data: dataPoliza, status: statusPoliza } = await createPolizeAction(ev, {...valuesPoliza, clientId: data.newClient._id});
+      const {status: statusPago} = await createPagoAction(ev, {...valuesPago, clientId: data.newClient._id, polizaId: dataPoliza.data._id});
 
       if (
-        cliente.status === 201 &&
-        cpoliza.status === 201 &&
-        cpago.status === 201
+        statusCliente === 201 &&
+        statusPoliza === 201 &&
+        statusPago === 201
       ) {
         isConfirmarPage
           ? router.push("/facturas/cliente")

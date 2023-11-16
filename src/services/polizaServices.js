@@ -19,10 +19,9 @@ export async function createPolizeAction(ev, values) {
     } 
 
 //UPDATE
-export async function updatePolizeAction(ev, values, id) {
-    console.log(values, id)
-    ev.preventDefault();
-    return await axios.patch(`${urlApiDev}/clientes/polizas/${id}`, values)
+export async function updatePolizeAction(values) {
+    console.log(values)
+    return await axios.patch(`${urlApiDev}/clientes/polizas/${values._id}`, values)
     .then(response => response);
 } 
 

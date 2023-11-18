@@ -31,12 +31,12 @@ export const clientReducer = createSlice({
                 data: action.payload // data del formulario
             }
         },
-        resetState: (state, action) => {
+        resetClientSlice: (state, action) => {
             return initialState
         }
     }
 })
 
 
-export const { putDataClientToUpdate, resetState, dataToCreate } = clientReducer.actions;
+export const { putDataClientToUpdate, resetClientSlice, dataToCreate } = clientReducer.actions;
 export default clientReducer.reducer;

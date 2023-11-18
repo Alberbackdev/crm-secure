@@ -6,7 +6,7 @@ import { TypePolizeOptions, VendedoresOptions } from "../../utils/optionsForm";
 import { dataToCreate } from "@/src/redux/slices/polizaReducer"
 import { useDispatch,useSelector } from "react-redux"
 import { useEffect } from "react"
-import { putDataPagoToUpdate } from "@/src/redux/slices/pagoReducer"
+import { putMontoToMesesPagados } from "@/src/redux/slices/pagoReducer"
 import { updatePolizeAction } from "@/src/services/polizaServices"
 import { getPagoAPI } from "@/src/services/pagoServices"
 
@@ -45,14 +45,14 @@ export const FormPolize = () => {
             type_pay:'',
             date_pay:'',
             type_of_change:'',
-            month_pay: data.pagos.month_pay[0],
+            month_pay: data.pagos.month_pay.flat(),
             status_pay:'',
             full_payment_bs: 0,
             full_payment_dollar: 0,
             clientId: data.pagos.clientId,
             polizaId: data.pagos.polizaId
           }
-          dispatch(putDataPagoToUpdate(estructuraDatos))
+          dispatch(putMontoToMesesPagados(estructuraDatos))
       }
       getPagoByUser()
     }
@@ -122,6 +122,7 @@ export const FormPolize = () => {
           <input
             name='dateofcontract'
             type='date'
+            required
             className={style.inputForm}
             value={values.dateofcontract}
             onChange={handleInputChange}
@@ -134,6 +135,7 @@ export const FormPolize = () => {
             name='city_contract'
             type='text'
             placeholder='Ejemplo: Valera'
+            required
             className={style.inputForm}
             value={values.city_contract}
             onChange={handleInputChange}

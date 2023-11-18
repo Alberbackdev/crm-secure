@@ -5,22 +5,24 @@ import style from './datosPagos.module.css';
 import { useForm } from '@/src/utils/useForm';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dataToCreate } from '@/src/redux/slices/pagoReducer';
+import { dataToCreate, putDataPagoToUpdate } from '@/src/redux/slices/pagoReducer';
 
 
-export default function DatosPagos({ selectMeses, meses }) {
-  const valuesPago = useSelector(state => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
+export default function DatosPagos() {
+  const { data, updatingPagoData }  = useSelector(state => state.pago); // state es el reducer y con el punto se accede al nombre se accede al slice
   const dispatch = useDispatch();
-  const { values, handleInputChange } = useForm(valuesPago);
+  const { values, handleInputChange } = useForm(data);
   
   useEffect(() => {
-    if(meses.length) {
-      const total = meses.reduce((acumulador, actual) => acumulador + +actual?.value, 0);
-      const totalDolar = total / values?.type_of_change;
-      const dataToSend = {...values, full_payment_bs: total, full_payment_dollar: totalDolar, month_pay: meses};
-      dispatch(dataToCreate(dataToSend));
+    if( data.month_pay.length ||!updatingPagoData ) {
+      const total = data.month_pay.reduce((acumulador, actual) => acumulador + +actual?.monto, 0);
+      const totalDolar = values?.type_of_change ? total / values?.type_of_change : '';
+      const dataToSend = {...values, full_payment_bs: total, full_payment_dollar: totalDolar, month_pay: data.month_pay};
+      updatingPagoData
+        ? dispatch(putDataPagoToUpdate(dataToSend))
+        : dispatch(dataToCreate(dataToSend));
     }
-  }, [dispatch, meses, values])
+  }, [data.month_pay, values])
   
   useEffect(() => {
     async function getPrecioBCV () {
@@ -41,6 +43,7 @@ export default function DatosPagos({ selectMeses, meses }) {
               id="formatoPago"
               name="type_pay"
               type="text"
+              required
               placeholder="Transferencia 0973"
               className={style.inputForm}
               value={values.type_pay}
@@ -67,6 +70,7 @@ export default function DatosPagos({ selectMeses, meses }) {
               type="date"
               id="fechaPago"
               name="date_pay"
+              required
               className={style.inputForm}
               value={values.date_pay}
               onChange={handleInputChange}
@@ -78,6 +82,7 @@ export default function DatosPagos({ selectMeses, meses }) {
               type="text"
               id="status"
               name="status_pay"
+              required
               className={style.inputForm}
               placeholder="Activo"
               value={values.status_pay}
@@ -86,7 +91,7 @@ export default function DatosPagos({ selectMeses, meses }) {
           </div>
         </div>
       </form>
-      <Mensualidad selectMeses={selectMeses} />
+      <Mensualidad />
     </div>
   );
 }

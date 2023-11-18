@@ -31,12 +31,12 @@ export const polizaReducer = createSlice({
                 data: action.payload // data del formulario
             }
         },
-        resetState: (state, action) => {
+        resetPolizaSlice: (state, action) => {
             return initialState
         }
     }
 })
 
 
-export const { putDataPolizaToUpdate, resetState, dataToCreate } = polizaReducer.actions;
+export const { putDataPolizaToUpdate, resetPolizaSlice, dataToCreate } = polizaReducer.actions;
 export default polizaReducer.reducer;

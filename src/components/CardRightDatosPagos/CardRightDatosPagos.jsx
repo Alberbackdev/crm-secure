@@ -1,45 +1,60 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
 import style from "./cardRightDatosPagos.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createClientAction } from "@/src/services/clienteServices";
 import { createPolizeAction } from "@/src/services/polizaServices";
 import { createPagoAction } from "@/src/services/pagoServices";
+import { resetPagoSlice } from "@/src/redux/slices/pagoReducer"
+import { resetPolizaSlice } from "@/src/redux/slices/polizaReducer"
 
 //componendte para confirmar los datos de pago
-function CardRightDatosPagos({ meses }) {
-  const valuesClient = useSelector((state) => state.client.data);
-  const valuesPoliza = useSelector((state) => state.poliza.data);
-  const valuesPago = useSelector((state) => state.pago.data); // state es el reducer y con el punto se accede al nombre se accede al slice
+function CardRightDatosPagos() {
   const router = useRouter();
   const pathname = usePathname();
+  const dispatch = useDispatch();
   const isConfirmarPage = pathname.includes("confirmar");
   const isFacturaPage = pathname === "/facturas/cliente";
 
+  const valuesClient = useSelector((state) => state.client.data);
+  const valuesPoliza = useSelector((state) => state.poliza.data);
+  const  { updatingPagoData, data: valuesPago } = useSelector((state) => state.pago); // state es el reducer y con el punto se accede al nombre se accede al slice
+ 
   const total = +valuesPago.full_payment_bs;
   const totalDolar = +valuesPago.full_payment_dollar;
 
-  console.log(valuesPago);
+  const cleanAllSlices = () => { // limpiar los slices    
+    dispatch(resetClientSlice());
+    dispatch(resetPolizaSlice());
+    dispatch(resetPagoSlice());
+  }
 
-  const sendPolize = async (ev) => { // verificar si estan editando apra que no trate de crear egistros
+  const nextButton = async () => { // verificar si estan editando para que no trate de crear registros
     try {
-      const { data, status: statusCliente } = await createClientAction(ev, valuesClient); 
-      const {data: dataPoliza, status: statusPoliza } = await createPolizeAction(ev, {...valuesPoliza, clientId: data.newClient._id});
-      const {status: statusPago} = await createPagoAction(ev, {...valuesPago, clientId: data.newClient._id, polizaId: dataPoliza.data._id});
-
-      if (
-        statusCliente === 201 &&
-        statusPoliza === 201 &&
-        statusPago === 201
-      ) {
-        isConfirmarPage
-          ? router.push("/facturas/cliente")
-          : router.push("/clientes/confirmar");
+      if(updatingPagoData) { // aca hacer el registro solamente de pago
+        await createPagoAction({...valuesPago, clientId: valuesClient._id, polizaId: valuesPoliza._id});
+      } else { // aca estan creando, por ende se hacen los tres registros
+        const { data } = await createClientAction(valuesClient); 
+        const {data: dataPoliza} = await createPolizeAction({...valuesPoliza, clientId: data.newClient._id});
+        await createPagoAction({...valuesPago, clientId: data.newClient._id, polizaId: dataPoliza.data._id});
       }
+
+      isConfirmarPage
+        ? router.push("/facturas/cliente")
+        : router.push("/clientes/confirmar");     
     } catch (error) {
       console.log(error);
     }
   };
+
+  const cancelButton = () => {
+    if(isConfirmarPage) {
+      cleanAllSlices();
+      router.push("/clientes")
+    } else {
+      router.push("/clientes/pago")
+    }
+  }
 
   return (
     <div className={style.container}>
@@ -53,7 +68,7 @@ function CardRightDatosPagos({ meses }) {
           </div>
           <div>
             <p className={style.descripcion}>Tipo de Cambio</p>
-            <p className={style.data}>{valuesPago.type_of_change}</p>
+            <p className={style.data} style={{textAlign: "right"}}>{valuesPago.type_of_change}</p>
           </div>
         </div>
 
@@ -70,9 +85,7 @@ function CardRightDatosPagos({ meses }) {
               <div>
                 <p className={style.descripcion}>Codigo de Poliza</p>
                 <p className={style.data} style={{ textAlign: "right" }}>
-                  {!valuesPoliza.codigoPoliza
-                    ? undefined
-                    : valuesPoliza.codigoPoliza}
+                  {valuesPoliza.codigoPoliza}
                 </p>
               </div>
             </div>
@@ -84,9 +97,7 @@ function CardRightDatosPagos({ meses }) {
               <div className={style.field}>
                 <p className={style.descripcion}>Status</p>
                 <p className={style.data}>
-                  {!valuesPoliza.status_pay
-                    ? "undefined"
-                    : valuesPoliza.status_pay}
+                  {valuesPago.status_pay}
                 </p>
               </div>
             </div>
@@ -96,15 +107,13 @@ function CardRightDatosPagos({ meses }) {
           <div>
             <p className={style.descripcion}>Tipo de Plan</p>
             <p className={style.data}>
-              {!valuesPoliza.type_polize
-                ? "undefined"
-                : valuesPoliza.type_polize}
+              {valuesPoliza.type_polize}
             </p>
           </div>
           <div>
-            <p className={style.descripcion}>Formato de Pago</p>
+            <p className={style.descripcion} style={{textAlign: "right"}}>Formato de Pago</p>
             <p className={style.data}>
-              {!valuesPago.type_pay ? undefined : valuesPago.type_pay}
+              {valuesPago.type_pay}
             </p>
           </div>
         </div>
@@ -114,8 +123,8 @@ function CardRightDatosPagos({ meses }) {
         <div className={style.mesesPagados}>
           {valuesPago.month_pay?.map((l, i) => (
             <div className={style.mesPagado} key={i}>
-              <p className={style.descripcion}>{l.mes}</p>
-              <p className={style.montoPagado}>{l.value}</p>
+              <p className={style.descripcion}>{l.nombreMes}</p>
+              <p className={style.montoPagado}>{l.monto}</p>
             </div>
           ))}
 
@@ -136,17 +145,13 @@ function CardRightDatosPagos({ meses }) {
           <button
             type="submit"
             className={style.confirmBtn}
-            onClick={sendPolize}
+            onClick={nextButton}
           >
             {isConfirmarPage ? "Imprimir Contrato" : "Confirmar"}
           </button>
           <p
             className={style.cancelarBtn}
-            onClick={() =>
-              isConfirmarPage
-                ? router.push("/clientes")
-                : router.push("/clientes/pago")
-            }
+            onClick={cancelButton}            
           >
             {isConfirmarPage ? "Salir" : "Cancelar"}
           </p>

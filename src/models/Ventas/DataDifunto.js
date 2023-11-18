@@ -3,11 +3,6 @@ const { Schema, model, models } = require("mongoose");
 
 //Data of client-contract
 const difuntoSchema = new Schema({
-    nroservicio: {
-        type: String,
-        //required: [true, "El Numero de servicio es requerido"],
-        unique: [true, "El Numero de servicio ya existe"],
-    },
     fullname: {
         type: String,
         //required: [true, "El nombre completo es requerido"],
@@ -49,4 +44,4 @@ const difuntoSchema = new Schema({
 /* ventasSchema.plugin(mongoosePaginate) */
 
 //esto elimina el error overwrite model
-export const Difunto = models.Difunto || model('Difunto', difuntoSchema);
+export default models.Difunto || model('Difunto', difuntoSchema);

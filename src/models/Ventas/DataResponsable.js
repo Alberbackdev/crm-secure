@@ -39,8 +39,7 @@ const responsableSchema = new Schema(
     versionKey: false,
   }
 );
-
 /* ventasSchema.plugin(mongoosePaginate) */
 
 //esto elimina el error overwrite model
-export const Responsable = models.Responsable || model("Responsable", responsableSchema);
+export default models.Responsable || model("Responsable", responsableSchema);

@@ -4,6 +4,11 @@ const { Schema, model, models } = require("mongoose");
 //Data of client-contract
 const servicioSchema = new Schema(
   {
+    nroservicio: {
+      type: String,
+      //required: [true, "El Numero de servicio es requerido"],
+      unique: [true, "El Numero de servicio ya existe"],
+    },
     tipodeataud: {
       type: String,
       //required: [true, "El nombre completo es requerido"],

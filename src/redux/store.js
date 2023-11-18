@@ -2,7 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import clientReducer from './slices/clientReducer'
 import polizaReducer from './slices/polizaReducer'
 import pagoReducer from './slices/pagoReducer'
-import ventaReducer from './slices/ventasSlice/ventaReducer'
+import difuntoReducer from './slices/ventasSlice/difuntoReducer'
+import responsableReducer from './slices/ventasSlice/responsableReducer'
 
 
 
@@ -11,6 +12,7 @@ export const store = configureStore({
         client: clientReducer,
         poliza: polizaReducer,
         pago: pagoReducer,
-        ventas: ventaReducer,
+        difunto: difuntoReducer,
+        responsable: responsableReducer,
     }
 })

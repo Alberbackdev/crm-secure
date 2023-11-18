@@ -7,12 +7,12 @@ const payeesSchema = new Schema({
     cidentified_payee: { type: String, require: true },
     dateofbirth: { type: String, require: true },
     age_payee: { type: String, require: true },
-    cliente: {
+    clienteId: {
         type: Schema.Types.ObjectId,
         ref: 'Client', 
 
     },
-    poliza: {
+    polizaId: {
         type: Schema.Types.ObjectId,
         ref: 'Polize',
     },

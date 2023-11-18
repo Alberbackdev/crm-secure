@@ -7,8 +7,7 @@ export async function getPagoAPI(id) {
 }
 
 
-export async function createPagoAction(ev, values) {
-    ev.preventDefault();
+export async function createPagoAction(values) {
     const res = await axios.post(`${urlApiDev}/clientes/pagos`, values);
     return res
 }

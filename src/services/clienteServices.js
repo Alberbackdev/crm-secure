@@ -8,8 +8,7 @@ export async function getClientsAPI(id) {
 
 
 //Crea un client
-export async function createClientAction(ev, values) {
-    ev.preventDefault();
+export async function createClientAction(values) {
     return await axios.post(`${urlApiDev}/clientes/clientes`, values).then(response => response)
 }
 

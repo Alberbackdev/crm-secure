@@ -3,10 +3,10 @@
 import DatosPagos from '../DatosPagos/DatosPagos'
 import style from './containerDatosPagos.module.css'
 
-function ContainerSelectDatosPagos({ selectMeses, meses  }) {
+function ContainerSelectDatosPagos() {
   return (
     <div className={style.container}>
-      <DatosPagos selectMeses={selectMeses} meses={meses} />
+      <DatosPagos />
     </div>
   );
 }

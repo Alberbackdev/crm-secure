@@ -6,7 +6,7 @@ import { TypePolizeOptions, VendedoresOptions } from "../../utils/optionsForm";
 import { dataToCreate } from "@/src/redux/slices/polizaReducer"
 import { useDispatch,useSelector } from "react-redux"
 import { useEffect } from "react"
-import { putDataPagoToUpdate } from "@/src/redux/slices/pagoReducer"
+import { putMontoToMesesPagados } from "@/src/redux/slices/pagoReducer"
 import { updatePolizeAction } from "@/src/services/polizaServices"
 import { getPagoAPI } from "@/src/services/pagoServices"
 
@@ -45,14 +45,14 @@ export const FormPolize = () => {
             type_pay:'',
             date_pay:'',
             type_of_change:'',
-            month_pay: data.pagos.month_pay[0],
+            month_pay: data.pagos.month_pay.flat(),
             status_pay:'',
             full_payment_bs: 0,
             full_payment_dollar: 0,
             clientId: data.pagos.clientId,
             polizaId: data.pagos.polizaId
           }
-          dispatch(putDataPagoToUpdate(estructuraDatos))
+          dispatch(putMontoToMesesPagados(estructuraDatos))
       }
       getPagoByUser()
     }
@@ -75,19 +75,19 @@ export const FormPolize = () => {
       <h1 className={style.title}>Ingrese los Datos de la Poliza</h1>
       <form onSubmit={sendPolize} className={style.formContent}>
       <div className={style.group}>
-          <div className={style.groupChild}>
+        <div className={style.groupChild}>
             <label>Codigo de Poliza</label>
             <input
               name='codigoPoliza'
               type='text'
               placeholder={!values.poliza ? "O-1234" : values.poliza}
               required
-              className=' rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+              className={style.inputForm}
               value={values.codigoPoliza}
               onChange={handleInputChange}
             />
-          </div>
-          <div className={style.groupChild}>
+        </div>
+        <div className={style.groupChild}>
             <label>Tipo de Plan</label>
             <select
               name='type_polize'
@@ -100,8 +100,7 @@ export const FormPolize = () => {
               {tiposLabel}
             </select>
         </div>
-
-        </div>
+      </div>
         
         <div className={style.field}>
           <label>Nombre del Cobrador/Vendedor</label>
@@ -122,6 +121,7 @@ export const FormPolize = () => {
           <input
             name='dateofcontract'
             type='date'
+            required
             className={style.inputForm}
             value={values.dateofcontract}
             onChange={handleInputChange}
@@ -134,6 +134,7 @@ export const FormPolize = () => {
             name='city_contract'
             type='text'
             placeholder='Ejemplo: Valera'
+            required
             className={style.inputForm}
             value={values.city_contract}
             onChange={handleInputChange}

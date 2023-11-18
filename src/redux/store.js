@@ -4,7 +4,7 @@ import polizaReducer from './slices/polizaReducer'
 import pagoReducer from './slices/pagoReducer'
 import difuntoReducer from './slices/ventasSlice/difuntoReducer'
 import responsableReducer from './slices/ventasSlice/responsableReducer'
-
+import beneficiarioReducer from './slices/beneficiarioReducer'
 
 
 export const store = configureStore({
@@ -14,5 +14,6 @@ export const store = configureStore({
         pago: pagoReducer,
         difunto: difuntoReducer,
         responsable: responsableReducer,
+        beneficiario: beneficiarioReducer
     }
 })

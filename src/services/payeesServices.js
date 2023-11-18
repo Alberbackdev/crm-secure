@@ -11,8 +11,7 @@ export async function getBeneficiariosAPI(id) {
 }
 
 //CREATE
-export async function createPayeeAction(ev, values, reset) {
-    ev.preventDefault();
+export async function createPayeeAction(values) {
     return await axios.post(`${urlApiDev}/clientes/beneficiarios`, values)
     .then(response => response );
 }

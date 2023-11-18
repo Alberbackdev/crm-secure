@@ -1,44 +1,28 @@
 "use client";
 
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../utils/useForm";
-import { createPayeeAction } from "../../services/payeesServices";
 import style from "./FormBeneficiario.module.css";
-import { useRouter } from "next/navigation";
+import { putDataBeneficiarios, updateBeneficiarioInArray } from "@/src/redux/slices/beneficiarioReducer"
 
-//This is form for new client
 
-export const FormBeneficiario = ({ setModalFormBeneficiario, poliza, cliente }) => {
-  const router = useRouter()
-  console.log(poliza, cliente);
-  //llama a la funcion para actualizar el estado del input
-  const { values, handleInputChange, reset } = useForm({
-    name_payee: "",
-    cidentified_payee: "",
-    age_payee: "",
-    dateofbirth: "",
-    cliente: `${cliente.id}`,
-    poliza: `${poliza.polizaId}`,
-  });
-  //actua como actualizador y reseteo de forms
-  
-  const sendPayees = async(ev) => {
-    try {
-        const res = await createPayeeAction(ev, values, reset);
-        console.log(res)
-        //const {data} = await res.json();
-        
-        if (res.status === 201) {
-          router.refresh();
-        }
-      } catch (error) {
-        console.log(error)
-      }
-  }
+export const FormBeneficiario = ({ setModalFormBeneficiario }) => {
+  const {updateBeneficiario, dataBeneficiarioToUpdate} = useSelector((state) => state.beneficiario);
+  const dispatch = useDispatch();
+  const { values, handleInputChange, reset } = useForm(dataBeneficiarioToUpdate);
 
   const cerrarModal = () => {
-    // usar la funcion reset para limpiar el estado
+    reset()
     setModalFormBeneficiario(false);
   };
+
+  const sendPayees = async(e) => {
+    e.preventDefault();
+    updateBeneficiario
+      ? dispatch(updateBeneficiarioInArray(values))
+      : dispatch(putDataBeneficiarios([values]));
+    cerrarModal();
+  }
 
   return (
     <div className={style.Backdrop} onClick={cerrarModal}>
@@ -47,7 +31,7 @@ export const FormBeneficiario = ({ setModalFormBeneficiario, poliza, cliente }) 
         className={style.container}
         onClick={(e) => e.stopPropagation()}
       >
-        <h1 className={style.title}>Registro de Beneficiario</h1>
+        <h1 className={style.title}>{updateBeneficiario ? 'Actualizar' : 'Registro de'} Beneficiario</h1>
 
         <div className={style.field}>
           <label>Nombre y Apellido</label>
@@ -69,6 +53,7 @@ export const FormBeneficiario = ({ setModalFormBeneficiario, poliza, cliente }) 
             type="text"
             placeholder="V- 12345678"
             required
+            disabled={updateBeneficiario}
             className={style.inputForm}
             value={values.cidentified_payee}
             onChange={handleInputChange}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 function VistaPreviaPago() {
+  const allBeneficiarios = useSelector((state) => state.beneficiario.data);
   const valuesClient = useSelector((state) => state.client.data);
   const valuesPoliza = useSelector((state) => state.poliza.data);
   const valuesPago = useSelector((state) => state.pago.data);
@@ -78,10 +79,10 @@ function VistaPreviaPago() {
               {!valuesClient.phone ? "undefined" : valuesClient.phone}
             </p>
           </div>
-          <div className={style.field}>
+          {/* <div className={style.field}>
             <p className={`${style.title_field} ${style.right}`}>Edad</p>
             <p className={`${style.data_field} ${style.right}`}>{edadActual == NaN ? "0": edadActual}</p>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -113,7 +114,7 @@ function VistaPreviaPago() {
           </div>
           <div className={style.field}>
             <p className={`${style.title_field}`}>N° Beneficiarios</p>
-            <p className={`${style.data_field} ${style.right}`}>6</p>
+            <p className={`${style.data_field} ${style.right}`}>{allBeneficiarios.length}</p>
           </div>
         </div>
       </div>
@@ -125,60 +126,27 @@ function VistaPreviaPago() {
             isFacturaPage ? style.heightAuto : ""
           }`}
         >
-          <div className={style.row}>
+          {allBeneficiarios.map(beneficiario => (
+            <div className={style.row} key={beneficiario.cidentified_payee}>
             <div className={style.row_content}>
               <p>Datos</p>
-              <p>Maria Victoria Santos</p>
+              <p>{beneficiario.name_payee}</p>
             </div>
             <div className={style.row_content}>
               <p>Fecha de Nacimiento</p>
-              <p>25/02/2023</p>
+              <p>{beneficiario.dateofbirth}</p>
             </div>
             <div className={style.row_content}>
               <p>Cedula</p>
-              <p>V-26.445.695</p>
+              <p>{beneficiario.cidentified_payee}</p>
             </div>
             <div className={style.row_content}>
               <p>Edad</p>
-              <p>22 Años</p>
+              <p>{beneficiario.age_payee}</p>
             </div>
           </div>
-          <div className={style.row}>
-            <div className={style.row_content}>
-              <p>Datos</p>
-              <p>Maria Victoria Santos</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Fecha de Nacimiento</p>
-              <p>25/02/2023</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Cedula</p>
-              <p>V-26.445.695</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Edad</p>
-              <p>22 Años</p>
-            </div>
-          </div>
-          <div className={style.row}>
-            <div className={style.row_content}>
-              <p>Datos</p>
-              <p>Maria Victoria Santos</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Fecha de Nacimiento</p>
-              <p>25/02/2023</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Cedula</p>
-              <p>V-26.445.695</p>
-            </div>
-            <div className={style.row_content}>
-              <p>Edad</p>
-              <p>22 Años</p>
-            </div>
-          </div>
+          ))}
+          
         </div>
       </div>
     </div>

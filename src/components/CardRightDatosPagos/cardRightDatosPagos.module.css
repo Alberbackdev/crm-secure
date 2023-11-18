@@ -25,6 +25,24 @@
     margin-top: 5px;
 }
 
+.listaMeses {
+    overflow-y: auto;
+    padding-right: 4px;
+    height: 115px;
+}
+
+.listaMeses::-webkit-scrollbar-thumb {
+    background: #2B308B;
+    border-radius: 5px;
+}
+
+.listaMeses::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa; 
+    border-radius: 5px;
+}
+
 .descripcion {
     color: #404D61;
     font-size: 12px;

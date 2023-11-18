@@ -4,7 +4,8 @@ import style from './sidebar.module.css'
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux'
-import { resetState } from '@/src/redux/slices/clientReducer'
+import { resetClientSlice } from "@/src/redux/slices/clientReducer";
+
 
 export default function Sidebar() {
     const { data: session } = useSession();
@@ -33,7 +34,7 @@ export default function Sidebar() {
         </Link>
 
         {session ? (
-          <nav className="flex flex-col gap-2" onClick={() => dispatch(resetState())}>
+          <nav className="flex flex-col gap-2" onClick={() => dispatch(resetClientSlice())}>
             <Link href={"/dashboard"} className={activeLink}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

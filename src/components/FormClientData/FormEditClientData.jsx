@@ -6,9 +6,11 @@ import { useForm } from "@/src/utils/useForm";
 import { updateClientAction } from "@/src/services/clienteServices";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { resetState } from '@/src/redux/slices/clientReducer'
+import { resetClientSlice } from '@/src/redux/slices/clientReducer'
 import { getPolizeAPI } from "@/src/services/polizaServices"
 import { putDataPolizaToUpdate } from "@/src/redux/slices/polizaReducer"
+import { getBeneficiariosAPI } from "@/src/services/payeesServices"
+import { putDataBeneficiarios } from "@/src/redux/slices/beneficiarioReducer"
 
 //This is form for new client
 
@@ -41,16 +43,18 @@ export const FormEditClientData = ({ params }) => {
 
     const cancelButton = () => {
         reset();
-        dispatch(resetState())
+        dispatch(resetClientSlice())
         router.push("/clientes");
     }
 
     useEffect(() => {        
-        async function getPolizeByuser() {
-            const {data} =  await getPolizeAPI(values._id); //Obtener data de la poliza del cliente a editar.
+        async function getPolizeAndBeneficiariosByuser() {
+            const {data} = await getPolizeAPI(values._id); //Obtener data de la poliza del cliente a editar.
+            const {data: beneficiarios} = await getBeneficiariosAPI(values._id);
+            dispatch(putDataBeneficiarios(beneficiarios.data));
             dispatch(putDataPolizaToUpdate(data.data))
         }
-        getPolizeByuser()
+        getPolizeAndBeneficiariosByuser()
     }, []);
 
     return (

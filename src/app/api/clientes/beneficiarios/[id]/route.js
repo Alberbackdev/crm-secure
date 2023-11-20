@@ -7,7 +7,7 @@ export async function GET(request, {params}) {
     await connectDB()
     const id = params.id
     try {
-        const result = await DataBeneficiario.findById(id)
+        const result = await DataBeneficiario.find({clientId: id})
         return NextResponse.json({data: result}, {status: 200})
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {

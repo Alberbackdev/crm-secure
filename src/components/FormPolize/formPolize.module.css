@@ -46,6 +46,7 @@
     margin-top: .8rem;
     display: flex; 
     justify-content: space-between;
+    align-items: center;
     font-weight: 600;
 }
 
@@ -59,6 +60,12 @@
     border: 1px solid #5A81FA;
     background: #CEDEFF;
     color: #000;
+}
+
+.mensajeLimitante {
+    font-size: 13px;
+    margin-left: 1rem;
+
 }
 
 @media only screen and (max-width: 816px) {
@@ -79,6 +86,10 @@
 
     .buttons {
         margin-top: 1rem;
+    }
+
+    .mensajeLimitante {
+        font-size: 9px;
     }
 
     .groupChild > input {

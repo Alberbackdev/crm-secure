@@ -3,7 +3,7 @@
     height: 505px;
     background-color: #fff;
     border-radius: 20px;
-    padding: 20px;
+    padding: 15px;
     margin-right: 41px;
 }
 
@@ -23,7 +23,11 @@
 .listaBeneficiarios {
     height: 420px;
     overflow-y: auto;
-    /* padding-left: 4px; */
+}
+
+.limiteBeneficiarios {
+    font-size: 13.5px;
+    color: red;
 }
 
 .listaBeneficiarios::-webkit-scrollbar-thumb {
@@ -39,6 +43,7 @@
 }
 
 .cardBeneficiario {
+    height: 130px;
     border: 2px solid #dadada;
     border-radius: 20px;
     padding: 10px;
@@ -55,12 +60,17 @@
 }
 
 .cardTop {
+    margin-top: -5px;
     cursor: pointer;
     color: #5A81FA;
 }
 
+.cardTop > p:nth-child(2) {
+    color: red;
+}
+
 .cardCenter {
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 .title {
@@ -81,5 +91,11 @@
     .header > h3 {
         font-size: 23px;
         margin-bottom: 18px;
+    }
+    .limiteBeneficiarios {
+        font-size: 10px;
+    }
+    .header {    
+        align-items: flex-start;
     }
 }

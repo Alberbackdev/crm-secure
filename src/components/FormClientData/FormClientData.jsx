@@ -5,7 +5,7 @@ import style from "./formClientData.module.css";
 import { useForm } from "@/src/utils/useForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { dataToCreate, resetState } from '@/src/redux/slices/clientReducer'
+import { dataToCreate, resetClientSlice } from '@/src/redux/slices/clientReducer'
 
 //This is form for new client
 
@@ -34,7 +34,7 @@ export const FormClientData = () => {
 
   const cancelButton = () => {
     reset();
-    dispatch(resetState())
+    dispatch(resetClientSlice())
     router.push("/clientes");
 }
 

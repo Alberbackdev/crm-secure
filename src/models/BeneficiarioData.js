@@ -7,7 +7,7 @@ const payeesSchema = new Schema({
     cidentified_payee: { type: String, require: true },
     dateofbirth: { type: String, require: true },
     age_payee: { type: String, require: true },
-    clienteId: {
+    clientId: {
         type: Schema.Types.ObjectId,
         ref: 'Client', 
 

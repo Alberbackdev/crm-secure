@@ -4,72 +4,82 @@ import { useState } from "react";
 import style from "./beneficiarios.module.css";
 import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
+import { useDispatch, useSelector } from "react-redux"
+import { putBeneficiarioToUpdate, removerBeneficiario } from "@/src/redux/slices/beneficiarioReducer"
 
-export default function Beneficiarios({ poliza, cliente }) {
+
+export default function Beneficiarios() {
+  const dispatch = useDispatch();
+  const beneficiarios = useSelector((state) => state.beneficiario.data);
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
 
-  console.log("InfoPoliza:", poliza);
-  console.log("InfoCliente:", cliente);
-
-  //ver el error y modificar, esto queda pendiente
+  const handleEditButton = (beneficiario) => {
+    dispatch(putBeneficiarioToUpdate(beneficiario));
+    setModalFormBeneficiario(true);
+  }
 
   return (
     <div className={style.container}>
-      {
-        // MODAL  FormBeneficiario
-        modalFormBeneficiario && (
-          <FormBeneficiario
-            setModalFormBeneficiario={setModalFormBeneficiario}
-            poliza={poliza}
-            cliente={cliente}
-          />
-        )
+      {        
+        modalFormBeneficiario && // MODAL  FormBeneficiario
+          <FormBeneficiario setModalFormBeneficiario={setModalFormBeneficiario} />        
       }
 
       <div className={style.header}>
         <h3>Beneficiarios</h3>
 
-        <Image
-          src="/userplus.png"
-          alt="Plus user icon"
-          className={style.avatar}
-          width={40}
-          height={40}
-          style={{ cursor: "pointer" }}
-          onClick={() => setModalFormBeneficiario(true)}
-        />
+        { beneficiarios.length < 6 
+            ? <Image
+                src="/userplus.png"
+                alt="Plus user icon"
+                className={style.avatar}
+                width={40}
+                height={40}
+                style={{ cursor: "pointer" }}
+                onClick={() => setModalFormBeneficiario(true)}
+              />
+            : <p className={style.limiteBeneficiarios}>Limite de beneficiarios alcanzados.</p>          
+        }
       </div>
 
       <div className={style.listaBeneficiarios}>
-        <div className={style.cardBeneficiario}>
-          <div className={style.cardTop}>
-            <p>Editar</p>
-          </div>
-          <div className={style.cardCenter}>
-            <div>
-              <p className={style.title}>Nombre</p>
-              <p>Alberto</p>
-            </div>
-            <div>
-              <p className={style.title} style={{ textAlign: "right" }}>
-                Fecha de Nacimiento
-              </p>
-              <p style={{ textAlign: "right" }}> 10/03/2000 </p>
-            </div>
-          </div>
-          <div className={style.cardBottom}>
-            <div>
-              <p className={style.title}>Cedula</p>
-              <p>27405246</p>
-            </div>
-            <div>
-              <p className={style.title} style={{ textAlign: "right" }}>
-                Edad
-              </p>
-              <p style={{ textAlign: "right" }}> 23 años</p>
-            </div>
-          </div>
-        </div>
+        {
+          beneficiarios.length > 0 
+          ? 
+            beneficiarios.map(beneficiario => (
+              <div className={style.cardBeneficiario} key={beneficiario.cidentified_payee}>
+                <div className={style.cardTop}>
+                  <p onClick={() => handleEditButton(beneficiario)}>Editar</p>
+                  <p onClick={() => dispatch(removerBeneficiario({cidentified_payee: beneficiario.cidentified_payee}))}>Remover</p>
+                </div>
+                <div className={style.cardCenter}>
+                  <div>
+                    <p className={style.title}>Nombre</p>
+                    <p>{beneficiario.name_payee}</p>
+                  </div>
+                  <div>
+                    <p className={style.title} style={{ textAlign: "right" }}>
+                      Fecha de Nacimiento
+                    </p>
+                    <p style={{ textAlign: "right" }}>{beneficiario.dateofbirth}</p>
+                  </div>
+                </div>
+                <div className={style.cardBottom}>
+                  <div>
+                    <p className={style.title}>Cedula</p>
+                    <p>{beneficiario.cidentified_payee}</p>
+                  </div>
+                  <div>
+                    <p className={style.title} style={{ textAlign: "right" }}>
+                      Edad
+                    </p>
+                    <p style={{ textAlign: "right" }}>{beneficiario.age_payee}</p>
+                  </div>
+                </div>
+              </div>
+            ))          
+          : <p>Aquí se verán los beneficiarios.</p>
+        }
       </div>
     </div>
   );

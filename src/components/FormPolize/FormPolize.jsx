@@ -17,6 +17,7 @@ export const FormPolize = () => {
   const router = useRouter();
   const dispatch = useDispatch()
   const valuesPoliza = useSelector(state => state.poliza)
+  const allBeneficiarios = useSelector((state) => state.beneficiario.data);
 
   const { values, handleInputChange } = useForm(valuesPoliza.data);
 
@@ -149,9 +150,13 @@ export const FormPolize = () => {
           >
             Atras
           </button>
-          <button type='submit' className='btn-primary'>
-            Siguiente
-          </button>
+          {
+            allBeneficiarios.length < 5 
+              ? <p className={style.mensajeLimitante}>Agrega al menos 5 beneficiarios para continuar.</p>
+              : <button type='submit' className='btn-primary'>
+                  Siguiente
+                </button>
+          }          
         </div>
       </form>
     </div>

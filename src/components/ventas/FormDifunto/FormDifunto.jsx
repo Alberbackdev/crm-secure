@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "@/src/utils/useForm";
-import { dataToCreate, resetState } from "@/src/redux/slices/ventasSlice/difuntoReducer";
-
+import { dataDifuntoToCreate, resetDifuntoSlice } from "@/src/redux/slices/ventasSlice/difuntoReducer";
+//import { dataToCreate, resetState } from "@/src/redux/slices/ventasSlice/difuntoReducer";
+//putDataDifuntoToUpdate, resetDifuntoSlice, dataDifuntoToCreate;
 function FormDifunto() {
   const [error, setError] = useState("");
   const valuesDifunto = useSelector((state) => state.difunto.data); // state es el reducer y con el punto se accede al nombre se accede al slice
@@ -21,7 +22,7 @@ function FormDifunto() {
   //actua como actualizador y reseteo de forms
   const sendDifunto = (ev) => {
     ev.preventDefault();
-    dispatch(dataToCreate(values));
+    dispatch(dataDifuntoToCreate(values));
     router.push("/ventas/responsable");
     //   const res = await createClientAction(ev, values, reset);
     //   console.log(res);
@@ -30,7 +31,7 @@ function FormDifunto() {
 
   const cancelButton = () => {
     reset();
-    dispatch(resetState());
+    dispatch(resetDifuntoSlice());
     router.push("/ventas");
   };
 

@@ -13,6 +13,9 @@ const servicioSchema = new Schema(
       type: String,
       //required: [true, "El nombre completo es requerido"],
     },
+    tipodecambio: {
+      type: String,
+    },
     preciobsataud: {
       type: String,
       //required: [true, "La cedula de identidad es requerido"],
@@ -20,12 +23,12 @@ const servicioSchema = new Schema(
     },
     preciodolarataud: {
       type: String,
-      //required: [true, "La cedula de identidad es requerido"],
-      unique: [true, "El Numero de cedula ya existe"],
     },
-    pagoataud: {
+    abonopagoataud: {
       type: String,
-      //required: [true, "La Edad es requerida"],
+    },
+    restapagoataud: {
+      type: String,
     },
     formatodepago: {
       type: String,
@@ -42,6 +45,14 @@ const servicioSchema = new Schema(
     ubicacionventa: {
       type: String,
       //required: [true, "El telefono es requerido"],
+    },
+    difuntoId: {
+      type: Schema.Types.ObjectId,
+      ref: "Difunto",
+    },
+    responsableId: {
+      type: Schema.Types.ObjectId,
+      ref: "Responsable",
     },
   },
   {

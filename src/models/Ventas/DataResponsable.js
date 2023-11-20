@@ -33,6 +33,10 @@ const responsableSchema = new Schema(
       type: String,
       //required: [true, "El telefono es requerido"],
     },
+    difuntoId: {
+      type: Schema.Types.ObjectId,
+      ref: "Difunto",
+    },
   },
   {
     timestamps: true,

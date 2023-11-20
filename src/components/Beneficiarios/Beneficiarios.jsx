@@ -1,17 +1,16 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import style from "./beneficiarios.module.css";
 import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 
-
-export default function Beneficiarios({poliza, cliente}) {
+export default function Beneficiarios({ poliza, cliente }) {
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
-  
-  console.log("InfoPoliza:", poliza)
+
+  console.log("InfoPoliza:", poliza);
   console.log("InfoCliente:", cliente);
-  
+
   //ver el error y modificar, esto queda pendiente
 
   return (
@@ -67,10 +66,7 @@ export default function Beneficiarios({poliza, cliente}) {
               <p className={style.title} style={{ textAlign: "right" }}>
                 Edad
               </p>
-              <p style={{ textAlign: "right" }}>
-                {" "}
-                23 años
-              </p>
+              <p style={{ textAlign: "right" }}> 23 años</p>
             </div>
           </div>
         </div>

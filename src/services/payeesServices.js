@@ -18,11 +18,14 @@ export async function createPayeeAction(values) {
 
 
 //UPDATE
-export async function updatePayeeAction(ev, values, reset, id) {
-    console.log(values, id)
-    ev.preventDefault();
-    return await axios.patch(`${urlApiDev}/clientes/beneficiarios/${id}`, values)
+export async function updatePayeeAction(values) {   
+    return await axios.patch(`${urlApiDev}/clientes/beneficiarios/${values._id}`, values)
     .then(response => response);
 } 
 
 //DELETE
+
+export async function deletePayeeAction(idBeneficiario) {   
+  return await axios.delete(`${urlApiDev}/clientes/beneficiarios/${idBeneficiario}`)
+  .then(response => console.log(response));
+} 

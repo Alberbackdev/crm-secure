@@ -26,11 +26,11 @@ export async function GET(request, {params}) {
 
 export async function DELETE(request, { params }) {
     await connectDB()
-    const id = params.id
+    const _id = params.id
     try {
-        const result = await DataBeneficiario.findByIdAndDelete(id)
+        const result = await DataBeneficiario.findByIdAndDelete({_id})
         if (!result) {
-            return NextResponse.json({message: `Document with ID: ${id} not found.`}, {status:404}) 
+            return NextResponse.json({message: `Document with ID: ${_id} not found.`}, {status:404}) 
         }
         return NextResponse.json({data: result},  {status: 200})
     } catch (error) {
@@ -38,15 +38,15 @@ export async function DELETE(request, { params }) {
     }
 }
 
-export async function PUT( request, {params}) {
+export async function PATCH( request, {params}) {
     await connectDB()
-    const id = params.id
+    const _id = params.id
     const body = await request.json()
 
     try {
-        const result = await DataBeneficiario.findByIdAndUpdate(id, {$set:{...body}}, {new: true})
+        const result = await DataBeneficiario.findByIdAndUpdate({_id}, {$set:{...body}}, {new: true})
         if (!result) {
-            return NextResponse.json({ message: `Document with ID: ${id} not found.` }, { status: 404 })
+            return NextResponse.json({ message: `Document with ID: ${_id} not found.` }, { status: 404 })
         }
         return NextResponse.json({ data: result }, { status: 200 })
     } catch (error) {

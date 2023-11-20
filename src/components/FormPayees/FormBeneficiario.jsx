@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../utils/useForm";
 import style from "./FormBeneficiario.module.css";
 import { putDataBeneficiarios, updateBeneficiarioInArray } from "@/src/redux/slices/beneficiarioReducer"
+import { updatePayeeAction } from "@/src/services/payeesServices"
 
 
 export const FormBeneficiario = ({ setModalFormBeneficiario }) => {
+  const isUpdatingClient = useSelector((state) => state.client.updatingClientData);
   const {updateBeneficiario, dataBeneficiarioToUpdate} = useSelector((state) => state.beneficiario);
   const dispatch = useDispatch();
   const { values, handleInputChange, reset } = useForm(dataBeneficiarioToUpdate);
@@ -18,9 +20,12 @@ export const FormBeneficiario = ({ setModalFormBeneficiario }) => {
 
   const sendPayees = async(e) => {
     e.preventDefault();
-    updateBeneficiario
-      ? dispatch(updateBeneficiarioInArray(values))
-      : dispatch(putDataBeneficiarios([values]));
+    if(updateBeneficiario) {
+      dispatch(updateBeneficiarioInArray(values))
+      isUpdatingClient && await updatePayeeAction(values)
+    } else {
+      dispatch(putDataBeneficiarios([values]));
+    }
     cerrarModal();
   }
 

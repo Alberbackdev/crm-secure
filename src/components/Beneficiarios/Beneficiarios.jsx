@@ -6,16 +6,23 @@ import Image from "next/image";
 import { FormBeneficiario } from "../FormPayees/FormBeneficiario";
 import { useDispatch, useSelector } from "react-redux"
 import { putBeneficiarioToUpdate, removerBeneficiario } from "@/src/redux/slices/beneficiarioReducer"
+import { deletePayeeAction } from "@/src/services/payeesServices"
 
 
 export default function Beneficiarios() {
   const dispatch = useDispatch();
   const beneficiarios = useSelector((state) => state.beneficiario.data);
+  const isUpdatingClient = useSelector((state) => state.client.updatingClientData);
   const [modalFormBeneficiario, setModalFormBeneficiario] = useState(false); // Abrir modal
 
   const handleEditButton = (beneficiario) => {
     dispatch(putBeneficiarioToUpdate(beneficiario));
     setModalFormBeneficiario(true);
+  }
+
+  const handleDeleteButton = async(beneficiario) => {
+    dispatch(removerBeneficiario({cidentified_payee: beneficiario.cidentified_payee}));
+    isUpdatingClient && await deletePayeeAction(beneficiario._id)
   }
 
   return (
@@ -50,7 +57,7 @@ export default function Beneficiarios() {
               <div className={style.cardBeneficiario} key={beneficiario.cidentified_payee}>
                 <div className={style.cardTop}>
                   <p onClick={() => handleEditButton(beneficiario)}>Editar</p>
-                  <p onClick={() => dispatch(removerBeneficiario({cidentified_payee: beneficiario.cidentified_payee}))}>Remover</p>
+                  <p onClick={() => handleDeleteButton(beneficiario)}>Remover</p>
                 </div>
                 <div className={style.cardCenter}>
                   <div>

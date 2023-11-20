@@ -115,6 +115,10 @@
     margin-top: 8px;
 }
 
+.separateTop {
+    margin-top: 21rem;
+}
+
 .listaBeneficiarios{
    height: 70px;
    padding-right: 4px;

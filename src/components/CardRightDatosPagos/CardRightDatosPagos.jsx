@@ -8,6 +8,8 @@ import { createPagoAction } from "@/src/services/pagoServices";
 import { resetPagoSlice } from "@/src/redux/slices/pagoReducer"
 import { resetPolizaSlice } from "@/src/redux/slices/polizaReducer"
 import { createPayeeAction } from "@/src/services/payeesServices"
+import { resetBeneficiarioSlice } from "@/src/redux/slices/beneficiarioReducer"
+import { resetClientSlice } from "@/src/redux/slices/clientReducer"
 
 //componendte para confirmar los datos de pago
 function CardRightDatosPagos() {
@@ -29,29 +31,32 @@ function CardRightDatosPagos() {
     dispatch(resetClientSlice());
     dispatch(resetPolizaSlice());
     dispatch(resetPagoSlice());
+    dispatch(resetBeneficiarioSlice())
   }
 
   const nextButton = async () => { // verificar si estan editando para que no trate de crear registros
     try {
-      if(updatingPagoData) { // aca hacer el registro solamente de pago
-        await createPagoAction({...valuesPago, clientId: valuesClient._id, polizaId: valuesPoliza._id});
-        const arrayBeneficiariosTransformado = allBeneficiarios.map(beneficiario => ({...beneficiario, clientId: valuesClient._id, polizaId: valuesPoliza._id}))
-        await Promise.all( // registrando los beneficiarios
-          arrayBeneficiariosTransformado.map(async (beneficiario) => {
-            return await createPayeeAction(beneficiario)
-          })
-        )
-      } else { // aca estan creando, por ende se hacen los cuatros registros
-        const { data } = await createClientAction(valuesClient); 
-        const {data: dataPoliza} = await createPolizeAction({...valuesPoliza, clientId: data.newClient._id});
+      if(!isConfirmarPage) {
+        if(updatingPagoData) { // aca hacer el registro solamente de pago
+          await createPagoAction({...valuesPago, clientId: valuesClient._id, polizaId: valuesPoliza._id});
+          const arrayBeneficiariosTransformado = allBeneficiarios.map(beneficiario => ({...beneficiario, clientId: valuesClient._id, polizaId: valuesPoliza._id}))
+          await Promise.all( // registrando los beneficiarios
+            arrayBeneficiariosTransformado.map(async (beneficiario) => {
+              return await createPayeeAction(beneficiario)
+            })
+          )
+        } else { // aca estan creando, por ende se hacen los cuatros registros
+          const { data } = await createClientAction(valuesClient); 
+          const {data: dataPoliza} = await createPolizeAction({...valuesPoliza, clientId: data.newClient._id});
 
-        const arrayBeneficiariosTransformado = allBeneficiarios.map(beneficiario => ({...beneficiario, clientId: data.newClient._id, polizaId: dataPoliza.data._id}))
-        await Promise.all( // registrando los beneficiarios
-          arrayBeneficiariosTransformado.map(async (beneficiario) => {
-            return await createPayeeAction(beneficiario)
-          })
-        )
-        await createPagoAction({...valuesPago, clientId: data.newClient._id, polizaId: dataPoliza.data._id});
+          const arrayBeneficiariosTransformado = allBeneficiarios.map(beneficiario => ({...beneficiario, clientId: data.newClient._id, polizaId: dataPoliza.data._id}))
+          await Promise.all( // registrando los beneficiarios
+            arrayBeneficiariosTransformado.map(async (beneficiario) => {
+              return await createPayeeAction(beneficiario)
+            })
+          )
+          await createPagoAction({...valuesPago, clientId: data.newClient._id, polizaId: dataPoliza.data._id});
+        }
       }
 
       isConfirmarPage
@@ -133,16 +138,16 @@ function CardRightDatosPagos() {
           </div>
         </div>
       </div>
-      <div className={style.contentCenter}>
+      <div className={`${style.contentCenter} ${isFacturaPage ? style.alturaDinamicaCenter : ''}`}>
         <p className={style.title}>Monto y Pago</p>
         <div className={style.mesesPagados}>
-          <div className={style.listaMeses}>
+          <div className={`${style.listaMeses} ${isFacturaPage ? style.alturaDinamica : ''}`}>
             {valuesPago.month_pay?.map((l, i) => (
               <div className={style.mesPagado} key={i}>
                 <p className={style.descripcion}>{l.nombreMes}</p>
                 <p className={style.montoPagado}>{l.monto}</p>
               </div>
-            ))}
+            ))}        
           </div>
 
           <div className={style.montoEnMoneda}>

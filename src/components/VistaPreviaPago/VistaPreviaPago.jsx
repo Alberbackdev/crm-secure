@@ -119,7 +119,7 @@ function VistaPreviaPago() {
         </div>
       </div>
 
-      <div className={style.contentBeneficiarios}>
+      <div className={`${style.contentBeneficiarios} ${isFacturaPage ? style.separateTop : ''}`}>
         <p className={style.titleInfo}>Lista de Beneficiarios</p>
         <div
           className={`${style.listaBeneficiarios} ${

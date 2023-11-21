@@ -50,13 +50,13 @@ function CardRightDatosVentas() {
           console.log(data)
           const { data: dataResponsable } = await createResponsableAction({
             ...valuesResponsable,
-            difuntoId: data.newDifunto._id,
+            difuntoId: data._id,
           });
           console.log(dataResponsable);
           const {data: dataServicio} = await createServicioAction({
             ...valuesServicio,
-            difuntoId: data.newDifunto._id,
-            responsableId: dataResponsable.newResponsable._id,
+            difuntoId: data._id,
+            responsableId: dataResponsable._id,
           });
           console.log(dataServicio)
           

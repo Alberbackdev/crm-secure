@@ -4,7 +4,7 @@ import style from './formResponsable.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useForm } from '@/src/utils/useForm';
-import { dataToCreate, resetState } from '@/src/redux/slices/ventasSlice/responsableReducer';
+import { dataResponsableToCreate, resetResponsableSlice } from '@/src/redux/slices/ventasSlice/responsableReducer';
 
 function FormResponsable() {
     const [error, setError] = useState("");
@@ -12,23 +12,19 @@ function FormResponsable() {
     const router = useRouter();
     const dispatch = useDispatch();
 
-    //console.log(poliza);
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm(valuesResponsable);
 
     //actua como actualizador y reseteo de forms
     const sendResponsable = (ev) => {
       ev.preventDefault();
-      dispatch(dataToCreate(values));
+      dispatch(dataResponsableToCreate(values));
       router.push("/ventas/servicio"); //next page process
-      //   const res = await createClientAction(ev, values, reset);
-      //   console.log(res);
-      //   //const {data} = await res.json();
     };
 
     const cancelButton = () => {
       reset();
-      dispatch(resetState());
+      dispatch(resetResponsableSlice());
       router.push("/ventas/difunto");
     };
 

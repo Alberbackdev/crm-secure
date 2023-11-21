@@ -25,18 +25,18 @@ export const difuntoReducer = createSlice({
         data: action.payload,
       };
     },
-    dataToCreate: (state, action) => {
+    dataDifuntoToCreate: (state, action) => {
       return {
         updatingDifuntoData: false,
         data: action.payload, // data del formulario
       };
     },
-    resetState: (state, action) => {
+    resetDifuntoSlice: (state, action) => {
       return initialState;
     },
   },
 });
 
-export const { putDataDifuntoToUpdate, resetState, dataToCreate } =
+export const { putDataDifuntoToUpdate, resetDifuntoSlice, dataDifuntoToCreate } =
   difuntoReducer.actions;
 export default difuntoReducer.reducer;

@@ -2,44 +2,47 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const { Schema, model, models } = require("mongoose");
 
 //Data of client-contract
-const difuntoSchema = new Schema({
+const difuntoSchema = new Schema(
+  {
     fullname: {
-        type: String,
-        //required: [true, "El nombre completo es requerido"],
+      type: String,
+      //required: [true, "El nombre completo es requerido"],
     },
     cidentified: {
-        type: String,
-        //required: [true, "La cedula de identidad es requerido"],
-        unique: [true, "El Numero de cedula ya existe"],
+      type: String,
+      //required: [true, "La cedula de identidad es requerido"],
+      unique: [true, "El Numero de cedula ya existe"],
     },
     edad: {
-        type: String,
-        //required: [true, "La Edad es requerida"],
+      type: String,
+      //required: [true, "La Edad es requerida"],
     },
     nrohijos: {
-        type: String,
-        //required: [true, "Debe ingresar el numero de hijos"],
+      type: String,
+      //required: [true, "Debe ingresar el numero de hijos"],
     },
     dateofbirth: {
-        type: String,
-        //required: [true, "La Fecha de Nacimiento es requerido"],
+      type: String,
+      //required: [true, "La Fecha de Nacimiento es requerido"],
     },
     direccion: {
-        type: String,
-        //required: [true, "La dirección es requerido"],
+      type: String,
+      //required: [true, "La dirección es requerido"],
     },
     lugarfallecimiento: {
-        type: String,
-        //required: [true, "La dirección es requerido"],
+      type: String,
+      //required: [true, "La dirección es requerido"],
     },
     nameconyugue: {
-        type: String,
-        //required: [true, "El telefono es requerido"],
-    }
-}, {
+      type: String,
+      //required: [true, "El telefono es requerido"],
+    },
+  },
+  {
     timestamps: true,
-    versionKey: false
-})
+    versionKey: false,
+  }
+);
 
 /* ventasSchema.plugin(mongoosePaginate) */
 

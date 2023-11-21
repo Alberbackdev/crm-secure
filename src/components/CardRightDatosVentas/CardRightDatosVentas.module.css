@@ -89,7 +89,12 @@
 }
 
 .contentNumServicios {
-    margin-left: -61px;
+    width: 370px;
+    height: 115px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    margin-left: -21px;
 }
 
 @media only screen and (max-width: 816px) {
@@ -104,3 +109,33 @@
         margin-left: 0px;
     }    
 }
+
+/* .container {
+    width: 370px;
+    height: 115px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-left: 41px;
+}
+
+.title {
+    color: #2B308B;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.container > input {
+    width: 313px;
+    height: 44px;
+    text-align: center;
+    border: 1px solid #404D61;
+}
+.container > input::placeholder {color: #000;}
+
+@media only screen and (max-width: 816px) {
+    .container {       
+        margin-left: 0;
+    }
+    .title {text-align: center;}
+} */

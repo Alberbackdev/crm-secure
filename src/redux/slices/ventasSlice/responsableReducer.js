@@ -4,11 +4,11 @@ const initialState = {
   updatingResponsableData: false,
   data: {
     fullname: "",
-    cidentified: "",
-    parentesco: "",
     dateofbirth: "",
-    direccion: "",
+    cidentified: "",
     telefono: "",
+    parentesco: "",
+    direccion: "",
     segurodifunto: "",
   },
 };
@@ -24,18 +24,18 @@ export const responsableReducer = createSlice({
         data: action.payload,
       };
     },
-    dataToCreate: (state, action) => {
+    dataResponsableToCreate: (state, action) => {
       return {
         updatingResponsableData: false,
         data: action.payload, // data del formulario
       };
     },
-    resetState: (state, action) => {
+    resetResponsableSlice: (state, action) => {
       return initialState;
     },
   },
 });
 
-export const { putDataResponsableToUpdate, resetState, dataToCreate } =
+export const { putDataResponsableToUpdate, resetResponsableSlice, dataResponsableToCreate } =
   responsableReducer.actions;
 export default responsableReducer.reducer;

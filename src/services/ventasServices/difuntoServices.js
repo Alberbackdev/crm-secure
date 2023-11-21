@@ -9,8 +9,8 @@ export async function getDifuntosAPI(id) {
 
 
 //Crea un Difunto
-export async function createDifuntoAction(ev, values) {
-  ev.preventDefault();
+export async function createDifuntoAction(values) {
+  //ev.preventDefault()
   return await axios.post(`${urlApiDev}/ventas/difunto`, values).then(response => response)
 }
 

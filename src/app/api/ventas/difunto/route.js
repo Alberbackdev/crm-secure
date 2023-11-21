@@ -16,7 +16,7 @@ export async function POST(req, res) {
   try {
     const body = await req.json()
     const newDifunto = await DataDifunto.create(body)
-    return NextResponse.json({ newDifunto }, { status: 201 })
+    return NextResponse.json(newDifunto , { status: 201 })
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       return NextResponse.json(

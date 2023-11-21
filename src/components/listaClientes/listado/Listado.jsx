@@ -3,17 +3,20 @@ import Link from "next/link";
 import style from "./listado.module.css";
 import Image from "next/image";
 import { deleteClientAction } from "@/src/services/clienteServices";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { putDataClientToUpdate } from "@/src/redux/slices/clientReducer";
 import { useScreenSize } from "@/src/utils/useWidthScreen";
 import BarSearchMobile from "../../BarSearchMobile/BarSearchMobile";
+import { putDataDifuntoToUpdate } from "@/src/redux/slices/ventasSlice/difuntoReducer"
 
 export default function Listado({ data }) {
   const { width } = useScreenSize();
   const router = useRouter();
   const dispatch = useDispatch();
   const isMobile = width <= 816;
+  const pathname = usePathname();
+  const isVentasPage = pathname === "/ventas";
   console.log(data)
 
   const deleteCard = async (ev) => {
@@ -22,11 +25,16 @@ export default function Listado({ data }) {
     router.refresh();
   };
 
-  const navigateToComponentSelected = (dataClient) => {
-    dispatch(putDataClientToUpdate(dataClient));
-    router.push(`/clientes/cliente`);
+  const navigateToComponentSelected = (dataToSend) => {
+    if( isVentasPage ) {
+      dispatch(putDataDifuntoToUpdate(dataToSend));
+      router.push(`/ventas/difunto`);
+    } else { // client Page
+      dispatch(putDataClientToUpdate(dataToSend));
+      router.push(`/clientes/cliente`);
+    }
   };
-
+  
   return (
     <div className={style.listado}>
       {isMobile && <BarSearchMobile />}
@@ -62,25 +70,25 @@ export default function Listado({ data }) {
               </div>
 
               <div className={style.dataUser}>
-                <p>{element.cidentified}</p>
                 <p>
-                  {element.name} {element.lastname}
+                  {element.name || element.fullname} {element.lastname}
                 </p>
+                <p>{element.cidentified}</p>
               </div>
 
               <div className={style.cardBottom}>
-                <div className={style.calendarIcon}>
-                  <Image
+                  <div >{/*  className={style.calendarIcon} */}
+                  {/* <Image
                     priority
                     src="/calendar.png"
                     height={20}
                     width={20}
                     alt="Follow us on Twitter"
-                  />
+                  /> */}
                 </div>
                 <div className={style.dateCard}>
-                  <p>Teléfono</p>
-                  <p>{element.phone}</p>
+                  <p>{element.phone ? 'Teléfono' : 'Dirección'}</p>
+                  <p style={{textAlign: 'right'}}>{element.phone || element.direccion}</p>
                 </div>
               </div>
             </div>

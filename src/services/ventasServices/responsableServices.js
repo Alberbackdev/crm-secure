@@ -16,7 +16,6 @@ export async function createResponsableAction(values) {
 
 //hacer que actualice cada campo
 export async function updateResponsableAction(values) {
-  console.log(values);
   return await axios
     .patch(`${urlApiDev}/ventas/responsable/${values._id}`, values)
     .then((response) => response);

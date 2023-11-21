@@ -1,32 +1,31 @@
 "use client";
 import { useRouter } from "next/navigation";
 import style from "./FormDifunto.module.css";
-
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useForm } from "@/src/utils/useForm";
 import { dataDifuntoToCreate, resetDifuntoSlice } from "@/src/redux/slices/ventasSlice/difuntoReducer";
-//import { dataToCreate, resetState } from "@/src/redux/slices/ventasSlice/difuntoReducer";
-//putDataDifuntoToUpdate, resetDifuntoSlice, dataDifuntoToCreate;
+import { updateDifuntoAction } from "@/src/services/ventasServices/difuntoServices"
+import { getResponsableAPI } from "@/src/services/ventasServices/responsableServices"
+import { putDataResponsableToUpdate } from "@/src/redux/slices/ventasSlice/responsableReducer"
+
+
 function FormDifunto() {
-  const [error, setError] = useState("");
-  const valuesDifunto = useSelector((state) => state.difunto.data); // state es el reducer y con el punto se accede al nombre se accede al slice
+  const {data, updatingDifuntoData} = useSelector((state) => state.difunto); // state es el reducer y con el punto se accede al nombre se accede al slice
   const router = useRouter();
   const dispatch = useDispatch();
 
-  //console.log(poliza);
-  //llama a la funcion para actualizar el estado del input
-  const { values, handleInputChange, reset } = useForm(valuesDifunto);
+  const { values, handleInputChange, reset } = useForm(data);
 
   //actua como actualizador y reseteo de forms
-  const sendDifunto = (ev) => {
+  const sendDifunto = async(ev) => {
     ev.preventDefault();
-    dispatch(dataDifuntoToCreate(values));
-    router.push("/ventas/responsable");
-    //   const res = await createClientAction(ev, values, reset);
-    //   console.log(res);
-    //   //const {data} = await res.json();
+    if(updatingDifuntoData) { // aqui se esta actualizado un registro por ende se manda al backend
+      await updateDifuntoAction(values);
+    } else{ // aqui se esta creando un registro por ende se manda al slice
+      dispatch(dataDifuntoToCreate(values));     
+    } 
+    router.push("/ventas/responsable");   
   };
 
   const cancelButton = () => {
@@ -34,6 +33,17 @@ function FormDifunto() {
     dispatch(resetDifuntoSlice());
     router.push("/ventas");
   };
+
+  useEffect(() => {
+    if(updatingDifuntoData) {
+      const getResponsableData = async () => {
+        const {data: response} = await getResponsableAPI(data._id);
+        dispatch(putDataResponsableToUpdate(response.data));
+      }
+      getResponsableData();
+    }
+  }, [])
+  
 
   return (
     <div className={style.container}>

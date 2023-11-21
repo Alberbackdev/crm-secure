@@ -1,14 +1,13 @@
 import { connectDB } from "@/src/lib/mongodb";
-import ClientData from "@/src/models/ClientData";
+import ServicioData from "@/src/models/Ventas/DataServicio";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function GET(request, {params}) {
     await connectDB()
-    console.log(params)
     const id = params.id
     try {
-        const result = await ClientData.findById(id).populate('polize');
+        const result = await ServicioData.findOne({difuntoId:id});
         return NextResponse.json({data: result}, {status: 200});
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -29,7 +28,7 @@ export async function DELETE(request, { params }) {
     await connectDB()
     const id = params.id
     try {
-        const result = await ClientData.findByIdAndDelete(id)
+        const result = await ServicioData.findByIdAndDelete(id)
         console.log(result)
         if (!result) {
             return NextResponse.json({message: `Document with ID: ${id} not found.`}, {status:404}) 
@@ -46,7 +45,7 @@ export async function PATCH( request, {params}) {
     const body = await request.json()
 
     try {
-        const result = await ClientData.findByIdAndUpdate(id, {$set:{...body}}, {new: true})
+        const result = await ServicioData.findByIdAndUpdate(id, {$set:{...body}}, {new: true})
         if (!result) {
             return NextResponse.json({ message: `Document with ID: ${id} not found.` }, { status: 404 })
         }

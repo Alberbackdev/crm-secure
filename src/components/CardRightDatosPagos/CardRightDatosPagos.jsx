@@ -38,13 +38,7 @@ function CardRightDatosPagos() {
     try {
       if(!isConfirmarPage) {
         if(updatingPagoData) { // aca hacer el registro solamente de pago
-          await createPagoAction({...valuesPago, clientId: valuesClient._id, polizaId: valuesPoliza._id});
-          const arrayBeneficiariosTransformado = allBeneficiarios.map(beneficiario => ({...beneficiario, clientId: valuesClient._id, polizaId: valuesPoliza._id}))
-          await Promise.all( // registrando los beneficiarios
-            arrayBeneficiariosTransformado.map(async (beneficiario) => {
-              return await createPayeeAction(beneficiario)
-            })
-          )
+          await createPagoAction({...valuesPago, clientId: valuesClient._id, polizaId: valuesPoliza._id});       
         } else { // aca estan creando, por ende se hacen los cuatros registros
           const { data } = await createClientAction(valuesClient); 
           const {data: dataPoliza} = await createPolizeAction({...valuesPoliza, clientId: data.newClient._id});

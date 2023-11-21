@@ -17,7 +17,6 @@ export async function createDifuntoAction(values) {
 
 //hacer que actualice cada campo
 export async function updateDifuntoAction(values) {
-  console.log(values)
   return await axios.patch(`${urlApiDev}/ventas/difunto/${values._id}`, values)
     .then(response => response)
 }

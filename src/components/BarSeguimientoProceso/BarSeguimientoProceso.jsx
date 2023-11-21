@@ -10,7 +10,7 @@ import React from 'react';
 const namesPageVentas = [
     {
         namePage: 'Difunto',
-        urlPage: '/ventas'
+        urlPage: '/ventas/difunto'
     }, 
     {
         namePage: 'Responsable',

@@ -22,26 +22,22 @@ function FormServicio() {
   const { values, handleInputChange, reset } = useForm(data);
   
   useEffect(() => {
-    if (!updatingServicioData) {
-      //cambio de dolar a bolivares en el precio total
-      const totalenBsD = values?.preciodolarataud * values?.tipodecambio
-        
-
-      // resta de deuda en dolares
-      const deudaTotalDolar = values?.preciodolarataud - values?.abonopagoataud;
-      // resta de deuda en bs
-      const deudaTotalBsD = deudaTotalDolar / values.tipodecambio;
+    //cambio de dolar a bolivares en el precio total
+    const totalenBsD = values?.preciodolarataud * values?.tipodecambio
+    // resta de deuda en dolares
+    const deudaTotalDolar = values?.preciodolarataud - values?.abonopagoataud;
+    // resta de deuda en bs
+    const deudaTotalBsD = deudaTotalDolar / values.tipodecambio;
       
-      const dataToSend = {
-        ...values,
-        preciobsataud: totalenBsD,
-        restapagoataud: deudaTotalDolar,
-      };
+    const dataToSend = {
+      ...values,
+      preciobsataud: totalenBsD,
+      restapagoataud: deudaTotalDolar,
+    };
       
-      updatingServicioData
-        ? dispatch(putDataServicioToUpdate(dataToSend))
-        : dispatch(dataServicioToCreate(dataToSend));
-    }
+    updatingServicioData
+      ? dispatch(putDataServicioToUpdate(dataToSend))
+      : dispatch(dataServicioToCreate(dataToSend)); 
   }, [dispatch, updatingServicioData, values]);
 
   useEffect(() => {

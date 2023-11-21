@@ -6,10 +6,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
   await connectDB();
-  console.log(params);
   const id = params.id;
   try {
-    const result = await DataResponsable.findById(id); //.populate('polize');
+    const result = await DataResponsable.findOne({difuntoId:id}); //.populate('polize');
     return NextResponse.json({ data: result }, { status: 200 });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
@@ -28,9 +27,9 @@ export async function GET(request, { params }) {
 
 export async function DELETE(request, { params }) {
   await connectDB();
-  const id = params.id;
+  const _id = params.id;
   try {
-    const result = await DataResponsable.findByIdAndDelete(id);
+    const result = await DataResponsable.findByIdAndDelete({_id});
     console.log(result);
     if (!result) {
       return NextResponse.json(
@@ -46,12 +45,12 @@ export async function DELETE(request, { params }) {
 
 export async function PATCH(request, { params }) {
   await connectDB();
-  const id = params.id;
+  const _id = params.id;
   const body = await request.json();
 
   try {
     const result = await DataResponsable.findByIdAndUpdate(
-      id,
+      {_id},
       { $set: { ...body } },
       { new: true }
     );

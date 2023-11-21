@@ -39,11 +39,7 @@ function CardRightDatosVentas() {
       if (!isConfirmarPage) {
         if (updatingServicioData) {
           // aca actualiza servicio
-          await updateServicioAction({
-            ...valuesServicio,
-            difuntoId: valuesDifunto._id,
-            responsableId: valuesResponsable._id,
-          });
+          await updateServicioAction(valuesServicio);
         } else {
           // aca estan creando, por ende se hacen los cuatros registros
           const { data } = await createDifuntoAction(valuesDifunto);
@@ -134,7 +130,7 @@ function CardRightDatosVentas() {
         <div className={style.montoEnMoneda}>
           <div className={`${style.mesPagado_center} ${style.monedaBs}`}>
             <p>Total Pagado</p>
-            <p>{valuesServicio.abonopagoataud}</p>
+            <p>${valuesServicio.abonopagoataud}</p>
           </div>
         </div>
       </div>

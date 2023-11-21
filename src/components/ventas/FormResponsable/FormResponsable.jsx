@@ -12,7 +12,6 @@ function FormResponsable() {
     const router = useRouter();
     const dispatch = useDispatch();
 
-    //console.log(poliza);
     //llama a la funcion para actualizar el estado del input
     const { values, handleInputChange, reset } = useForm(valuesResponsable);
 

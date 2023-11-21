@@ -19,7 +19,7 @@ function FormServicio() {
 
   const { data, updatingServicioData } = useSelector((state) => state.servicio); // state es el reducer y con el punto se accede al nombre se accede al slice
   const dispatch = useDispatch();
-  const { values, handleInputChange } = useForm(data);
+  const { values, handleInputChange, reset } = useForm(data);
   
   useEffect(() => {
     if (!updatingServicioData) {

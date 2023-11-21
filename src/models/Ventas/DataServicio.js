@@ -6,7 +6,7 @@ const servicioSchema = new Schema(
   {
     nroservicio: {
       type: String,
-      //required: [true, "El Numero de servicio es requerido"],
+      required: [true, "El Numero de servicio es requerido"],
       unique: [true, "El Numero de servicio ya existe"],
     },
     tipodeataud: {
@@ -19,7 +19,7 @@ const servicioSchema = new Schema(
     preciobsataud: {
       type: String,
       //required: [true, "La cedula de identidad es requerido"],
-      unique: [true, "El Numero de cedula ya existe"],
+      
     },
     preciodolarataud: {
       type: String,
@@ -64,4 +64,4 @@ const servicioSchema = new Schema(
 /* ventasSchema.plugin(mongoosePaginate) */
 
 //esto elimina el error overwrite model
-export const Servicio = models.Servicio || model("Servicio", servicioSchema);
+export default models.Servicio || model("Servicio", servicioSchema);

@@ -15,7 +15,7 @@ export async function POST(req, res) {
   try {
     const body = await req.json()
     const newResponsable = await DataResponsable.create(body)
-    return NextResponse.json({ newResponsable }, { status: 201 })
+    return NextResponse.json(newResponsable , { status: 201 })
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       return NextResponse.json(

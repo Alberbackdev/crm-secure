@@ -4,11 +4,11 @@ const initialState = {
   updatingResponsableData: false,
   data: {
     fullname: "",
-    cidentified: "",
-    parentesco: "",
     dateofbirth: "",
-    direccion: "",
+    cidentified: "",
     telefono: "",
+    parentesco: "",
+    direccion: "",
     segurodifunto: "",
   },
 };

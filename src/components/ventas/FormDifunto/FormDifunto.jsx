@@ -38,18 +38,30 @@ function FormDifunto() {
   return (
     <div className={style.container}>
       <form onSubmit={sendDifunto} className={style.formContent}>
-        <h1 className={style.title}>Ingrese los Datos</h1>
+        <h1 className={style.title}>Ingrese los Datos</h1>       
 
-        <div className={style.groupChild}>
-          <label>Nombres y Apellidos</label>
+        <div className={`${style.group} ${style.threeInputs}`}>
+          <div className={style.groupChild}>
+            <label>Nombres y Apellidos</label>
+            <input
+              name="fullname"
+              type="text"
+              placeholder="Maria Grabiela Garcia Moron"        
+              value={values.fullname}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={style.full_input}>
+          <label>Dirección donde vivia</label>
           <input
-            name="fullname"
+            name="direccion"
             type="text"
-            placeholder="Maria Grabiela Garcia Moron"
+            placeholder="Av. Libertador, Santa rosa."
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={values.fullname}
+            value={values.direccion}
             onChange={handleInputChange}
           />
+        </div>
         </div>
 
         <div className={`${style.group} ${style.threeInputs}`}>
@@ -112,18 +124,7 @@ function FormDifunto() {
               onChange={handleInputChange}
             />
           </div>
-        </div>
-        <div className={style.full_input}>
-          <label>Dirección donde vivia</label>
-          <input
-            name="direccion"
-            type="text"
-            placeholder="Av. Libertador, Santa rosa."
-            className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={values.direccion}
-            onChange={handleInputChange}
-          />
-        </div>
+        </div>        
         <div className={style.full_input}>
           <label>Lugar donde Fallecio</label>
           <input

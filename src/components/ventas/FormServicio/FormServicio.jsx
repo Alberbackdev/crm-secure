@@ -83,7 +83,7 @@ function FormServicio() {
               onChange={handleInputChange}
             />
           </div>
-          <div>
+          <div className={style.tipoCambio}>
             <p className={style.descripcion}>Tipo de Cambio</p>
             <p className={style.data} style={{ textAlign: "right" }}>
               {values.tipodecambio}
@@ -156,20 +156,20 @@ function FormServicio() {
           </div>
           <div className={style.groupChild}>
             <label>Abono</label>
-            <p>{data.abonopagoataud * values.tipodecambio}Bs.D</p>
+            {/* <p>{data.abonopagoataud * values.tipodecambio}Bs.D</p> */}
             <input
               name="abonopagoataud"
               type="number"
               step=".01"
               placeholder="200,00"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              value={values.abonopagoataud|| 0}
+              value={values.abonopagoataud}
               onChange={handleInputChange}
             />
           </div>
           <div className={style.groupChild}>
             <label>Resta</label>
-            <p>{data.restapagoataud * values.tipodecambio}Bs.D</p>
+            {/* <p>{data.restapagoataud * values.tipodecambio}Bs.D</p> */}
             <input
               name="restapagoataud"
               step=".01"

@@ -1,6 +1,6 @@
 .container {
     width: 574px;
-    height: 525px;
+    height: auto;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px 20px;
@@ -11,6 +11,12 @@
     color: #2B308B;
     font-size: 25px;
     font-weight: 600;
+}
+
+.threeInputs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .group {
@@ -35,7 +41,6 @@
 }
 
 .buttons {
-    margin-top: 2rem;
     display: flex; 
     justify-content: space-between;
 }
@@ -63,8 +68,7 @@
         flex-direction: column;
     }
 
-    .groupChild > input {
-        width: 
-        100%;
+    .groupChild, .groupChild > input {
+        width: 100%;
     }
 }

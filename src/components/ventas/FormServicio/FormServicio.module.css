@@ -1,6 +1,6 @@
 .container {
     width: 574px;
-    height: 515px;
+    height: 510px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px 20px;
@@ -73,12 +73,24 @@
     .title {
         font-size: 18px;
     }
-    .groupChild > input {
+    .group {
+        flex-direction: column;
+    }
+    .groupChild, .groupChild > input {
         width: 100%;
+    }
+    .groupChild {
+        display: block;
     }
     .buttons > button {
         width: 115px;
         padding: 13px 20px;
         border-radius: 25px;
+    }
+    .tipoCambio{
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+        justify-content: space-between;
     }
 }

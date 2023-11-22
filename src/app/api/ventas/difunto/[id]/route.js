@@ -1,5 +1,7 @@
 import { connectDB } from "@/src/lib/mongodb";
 import DataDifunto from "@/src/models/Ventas/DataDifunto";
+import DataResponsable from "@/src/models/Ventas/DataResponsable";
+import DataServicio from "@/src/models/Ventas/DataServicio";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -27,9 +29,13 @@ export async function GET(request, { params }) {
 
 export async function DELETE(request, { params }) {
   await connectDB();
-  const _id = params.id;
+  const id = params.id;
+  
   try {
-    const result = await DataDifunto.findByIdAndDelete({_id});
+    const result = await DataDifunto.findByIdAndDelete( id );
+    await DataResponsable.deleteMany({ difuntoId: id });
+    await DataServicio.deleteMany({difuntoId: id });
+    
     console.log(result);
     if (!result) {
       return NextResponse.json(
@@ -39,18 +45,19 @@ export async function DELETE(request, { params }) {
     }
     return NextResponse.json({ data: result }, { status: 200 });
   } catch (error) {
+    console.log(id);
     return NextResponse.json({ data: null }, { status: 500 });
   }
 }
 
 export async function PATCH(request, { params }) {
   await connectDB();
-  const _id = params.id;
+  const id = params.id;
   const body = await request.json();
 
   try {
     const result = await DataDifunto.findByIdAndUpdate(
-      {_id},
+      { id },
       { $set: { ...body } },
       { new: true }
     );

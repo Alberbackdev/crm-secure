@@ -26,7 +26,7 @@ export async function updateDifuntoAction(values) {
 
 export async function deleteDifuntoAction(ev, id) {
   ev.preventDefault();
-  return await axios.delete(`${urlApiDev}/venta/difunto/${id}`)
+  return await axios.delete(`${urlApiDev}/ventas/difunto/${id}`)
     .then(response => response)
     .then(response => {
       if (response.status === 200) {

@@ -1,5 +1,5 @@
 .listado {
-    height: 380px;
+    height: 768px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;

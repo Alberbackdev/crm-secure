@@ -9,6 +9,7 @@ import { putDataClientToUpdate } from "@/src/redux/slices/clientReducer";
 import { useScreenSize } from "@/src/utils/useWidthScreen";
 import BarSearchMobile from "../../BarSearchMobile/BarSearchMobile";
 import { putDataDifuntoToUpdate } from "@/src/redux/slices/ventasSlice/difuntoReducer"
+import { deleteDifuntoAction } from "@/src/services/ventasServices/difuntoServices";
 
 export default function Listado({ data }) {
   const { width } = useScreenSize();
@@ -20,9 +21,17 @@ export default function Listado({ data }) {
   console.log(data)
 
   const deleteCard = async (ev) => {
-    const id = ev.target.getAttribute("value");
-    await deleteClientAction(ev, id);
-    router.refresh();
+    if (isVentasPage) {
+      const id = ev.target.getAttribute("value");
+      await deleteDifuntoAction(ev, id);
+      router.refresh();
+    } else {
+      // client Page
+      const id = ev.target.getAttribute("value");
+      await deleteClientAction(ev, id);
+      router.refresh();
+    }
+    
   };
 
   const navigateToComponentSelected = (dataToSend) => {

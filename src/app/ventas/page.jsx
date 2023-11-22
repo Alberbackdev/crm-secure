@@ -7,7 +7,7 @@ import { getClientsAPI } from "@/src/services/clienteServices";
 
 
 export default async function Lista() {
-  const res = await getClientsAPI(); // no me funciona, 
+  const res = await getDifuntosAPI(); // no me funciona, 
   console.log(res.data) // adaptar el componente Listado para que sea reutilizable para el listado de clientes y ventas
   //console.log('cargando')
 

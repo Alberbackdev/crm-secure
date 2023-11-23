@@ -106,6 +106,7 @@ export const FormEditClientData = ({ params }) => {
                     <input
                         name="addres"
                         type="text"
+                        required
                         placeholder="Av. 6 entre calles 9 y 10 al aldo de..."
                         className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         value={values.addres}
@@ -118,6 +119,7 @@ export const FormEditClientData = ({ params }) => {
                         <input
                             name="cidentified"
                             type="number"
+                            required
                             placeholder="V- 12345678"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.cidentified}
@@ -129,6 +131,7 @@ export const FormEditClientData = ({ params }) => {
                         <input
                             name="phone"
                             type="number"
+                            required
                             placeholder="+58 04247894561"
                             className="block w-full rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={values.phone}

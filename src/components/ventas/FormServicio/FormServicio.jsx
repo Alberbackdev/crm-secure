@@ -73,6 +73,7 @@ function FormServicio() {
             <input
               name="tipodeataud"
               type="text"
+              required
               placeholder="Tapa Redonda"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.tipodeataud}
@@ -90,6 +91,7 @@ function FormServicio() {
             <input
               name="nroservicio"
               type="text"
+              required
               placeholder="0448"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.nroservicio}
@@ -104,6 +106,7 @@ function FormServicio() {
             <label>Formato de Pago</label>
             <select
               name="formatodepago"
+              required
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.formatodepago}
               onChange={handleInputChange}
@@ -119,6 +122,7 @@ function FormServicio() {
             <input
               name="preciodolarataud"
               type="text"
+              required
               placeholder="10 Dolares"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.preciodolarataud}
@@ -129,6 +133,7 @@ function FormServicio() {
             <label>Fecha</label>
             <input
               name="fecha"
+              required
               type="date"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.fecha}
@@ -156,6 +161,7 @@ function FormServicio() {
             <input
               name="abonopagoataud"
               type="number"
+              required
               step=".01"
               placeholder="200,00"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -169,6 +175,7 @@ function FormServicio() {
             <input
               name="restapagoataud"
               step=".01"
+              required
               type="number"
               placeholder="380,00"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -185,6 +192,7 @@ function FormServicio() {
           <input
             name="comentarioadd"
             type="text"
+            required
             placeholder="Llenar campo"
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={values.comentarioadd}
@@ -198,6 +206,7 @@ function FormServicio() {
           <input
             name="ubicacionventa"
             type="text"
+            required
             placeholder="Valera"
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={values.ubicacionventa}

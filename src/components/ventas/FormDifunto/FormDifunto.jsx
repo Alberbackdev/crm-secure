@@ -56,6 +56,7 @@ function FormDifunto() {
             <input
               name="fullname"
               type="text"
+              required
               placeholder="Maria Grabiela Garcia Moron"        
               value={values.fullname}
               onChange={handleInputChange}
@@ -66,6 +67,7 @@ function FormDifunto() {
           <input
             name="direccion"
             type="text"
+            required
             placeholder="Av. Libertador, Santa rosa."
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={values.direccion}
@@ -80,6 +82,7 @@ function FormDifunto() {
             <input
               name="cidentified"
               type="text"
+              required
               placeholder="V-57581234"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.cidentified}
@@ -91,6 +94,7 @@ function FormDifunto() {
             <input
               name="dateofbirth"
               type="date"
+              required
               placeholder="Apellidos"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.dateofbirth}
@@ -105,6 +109,7 @@ function FormDifunto() {
               name="edad"
               type="number"
               min={0}
+              required
               placeholder="0"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.edad}
@@ -118,6 +123,7 @@ function FormDifunto() {
               type="number"
               placeholder="0"
               min={0}
+              required
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.nrohijos}
               onChange={handleInputChange}
@@ -128,6 +134,7 @@ function FormDifunto() {
             <input
               name="nameconyugue"
               type="text"
+              required
               placeholder="Nombre del Conyugue"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.nameconyugue}
@@ -140,6 +147,7 @@ function FormDifunto() {
           <input
             name="lugarfallecimiento"
             type="text"
+            required
             placeholder="Av. Libertador, Santa rosa."
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={values.lugarfallecimiento}

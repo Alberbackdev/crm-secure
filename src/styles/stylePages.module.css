@@ -63,4 +63,8 @@
     .pageServicioVentas, .pageConfirmarVentas, .configPage, .pageClaveConfig {
         flex-direction: column;        
     }
+    .configPage, .pageClaveConfig  {
+        margin-bottom: 1rem;
+    }
+    
 }

@@ -58,6 +58,7 @@ function FormResponsable() {
             <input
               name="fullname"
               type="text"
+              required
               placeholder="Maria Grabiela Garcia Moron"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.fullname}
@@ -69,6 +70,7 @@ function FormResponsable() {
             <input
               name="dateofbirth"
               type="date"
+              required
               placeholder="Apellidos"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.dateofbirth}
@@ -82,6 +84,7 @@ function FormResponsable() {
             <input
               name="cidentified"
               type="text"
+              required
               placeholder="V-57581234"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.cidentified}
@@ -93,6 +96,7 @@ function FormResponsable() {
             <input
               name="telefono"
               type="text"
+              required
               placeholder="0416-80762846"
               className="rounded-3xl border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.telefono}
@@ -106,6 +110,7 @@ function FormResponsable() {
             <input
               name="parentesco"
               type="text"
+              required
               placeholder="Madre"
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.parentesco}
@@ -117,6 +122,7 @@ function FormResponsable() {
             <input
               name="direccion"
               type="text"
+              required
               placeholder="Av. Libertador, Santa rosa."
               className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={values.direccion}
@@ -155,6 +161,7 @@ function FormResponsable() {
           <input
             name="segurodifunto"
             type="text"
+            required
             placeholder="Basico"
             className=" rounded-3xl  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={values.segurodifunto}

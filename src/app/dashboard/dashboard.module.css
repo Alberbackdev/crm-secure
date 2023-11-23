@@ -1,0 +1,11 @@
+.userInfo {
+    color:  #27272a;
+    text-align: center;
+    font-size: 30px;
+}
+
+.logoutBtn {
+    background-color: rgb(30 58 138);
+    border-radius: 8px;
+    padding: 10px;
+}

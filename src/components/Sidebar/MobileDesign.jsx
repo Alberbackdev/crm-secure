@@ -1,27 +1,28 @@
 "use client"
+import Link from 'next/link';
 import style from './sidebar.module.css'
 import { useRouter } from "next/navigation";
 
 
 function MobileDesign() {
-  const router = useRouter();
+  //const router = useRouter();
 
   return (
     <div className={style.contentSidebarMobile}>
-        <div className={style.MobileLink}>
-            <p onClick={() => router.push('/dashboard')}>Inicio</p>
-        </div>
-        <div className={style.MobileLink}>
-            <p onClick={() => router.push('/clientes')}>Clientes</p>
-        </div>
-        <div className={style.MobileLink}>
-            <p onClick={() => router.push('/ventas')}>Ventas</p>
-        </div>
-        <div className={style.MobileLink}>
-            <p onClick={() => router.push('/configuracion')}>Configuracion</p>
-        </div>       
+      <Link href={"/dashboard"} className={style.MobileLink}>
+        Inicio
+      </Link>
+      <Link href={"/clientes"} className={style.MobileLink}>
+        Clientes
+      </Link>
+      <Link href={"/ventas"} className={style.MobileLink}>
+        Ventas
+      </Link>
+      <Link href={"/configuracion"}  className={style.MobileLink}>
+        Configuracion
+      </Link>
     </div>
-  )
+  );
 }
 
 export default MobileDesign

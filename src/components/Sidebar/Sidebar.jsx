@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import style from './sidebar.module.css'
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux'
 import { resetClientSlice } from "@/src/redux/slices/clientReducer";
@@ -213,6 +213,14 @@ export default function Sidebar() {
               </svg>
               Configuracion
             </Link>
+            <button
+              className={style.logoutBtn}
+              onClick={() => {
+                signOut();
+              }}
+            >
+              Cerrar Sesión
+            </button>
           </nav>
         ) : (
           <button type="button" onClick={() => router.push("/login")}>

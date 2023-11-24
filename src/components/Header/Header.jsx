@@ -14,6 +14,14 @@ export default function Header() {
   const { width } = useScreenSize();
   const isMobile = width <= 816;
 
+  const buttonRegistrar = () => {
+    if(pathname === "/clientes") {
+      router.push("/clientes/cliente")
+    } else {
+      router.push("/ventas/difunto")
+    }
+  }
+
   return (
     <div className={style.header}>
       <div className={style.headerNamePage}>
@@ -21,10 +29,10 @@ export default function Header() {
         {pathname.length > 1 && !isMobile && (
           <p className={style.pathPage}>{pathname}</p>
         )}
-        {pathname === "/clientes" && isMobile && (
+        {(pathname === "/clientes" || pathname === "/ventas") && isMobile && (
           <button
             type="button"
-            onClick={() => router.push("/clientes/cliente")}
+            onClick={buttonRegistrar}
           >
             <Image
               priority

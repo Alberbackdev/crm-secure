@@ -19,6 +19,7 @@ export const difuntoReducer = createSlice({
   initialState,
   reducers: {
     putDataDifuntoToUpdate: (state, action) => {
+      console.log(action.payload)
       // Colocar los datos actuales del cliente para que se pueda editar.
       return {
         updatingDifuntoData: true,

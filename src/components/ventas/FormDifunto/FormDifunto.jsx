@@ -21,7 +21,8 @@ function FormDifunto() {
   const sendDifunto = async(ev) => {
     ev.preventDefault();
     if(updatingDifuntoData) { // aqui se esta actualizado un registro por ende se manda al backend
-      await updateDifuntoAction(values);
+      const {data} = await updateDifuntoAction(values);
+      console.log("Se actualizo el responsable", data);
     } else{ // aqui se esta creando un registro por ende se manda al slice
       dispatch(dataDifuntoToCreate(values));     
     } 

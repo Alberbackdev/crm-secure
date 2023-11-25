@@ -62,6 +62,6 @@ export async function PATCH(request, { params }) {
     }
     return NextResponse.json({ data: result }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ data: null }, { status: 500 });
+    return NextResponse.json({ message: error }, { status: 500 });
   }
 }

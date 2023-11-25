@@ -24,7 +24,7 @@ function FormResponsable() {
       ev.preventDefault();
       if(updatingResponsableData) { // aqui se esta actualizado un registro por ende se manda al backend
         const {data} = await updateResponsableAction(values);
-        console.log('se actualizo el responsable', data)
+        console.log('Se actualizo el responsable', data)
       } else{ // aqui se esta creando un registro por ende se manda al slice
         dispatch(dataResponsableToCreate(values));      
       }      

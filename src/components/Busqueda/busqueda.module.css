@@ -1,0 +1,34 @@
+.container {
+    border-radius: 25px;
+    background: #CEDEFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 81px;
+    padding: 4px 8px;
+}
+
+.container > input {
+    border: 1px solid #CEDEFF;
+    padding: 8px;
+}
+
+.container > button {
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid #5A81FA;
+    background: #5A81FA;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+@media only screen and (max-width: 816px) {
+    .container{
+        margin: auto;
+    }
+}

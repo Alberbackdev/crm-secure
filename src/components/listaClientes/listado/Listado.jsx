@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import style from "./listado.module.css";
 import Image from "next/image";
 import { deleteClientAction } from "@/src/services/clienteServices";
@@ -7,9 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { putDataClientToUpdate } from "@/src/redux/slices/clientReducer";
 import { useScreenSize } from "@/src/utils/useWidthScreen";
-import BarSearchMobile from "../../BarSearchMobile/BarSearchMobile";
+// import BarSearchMobile from "../../BarSearchMobile/BarSearchMobile";
 import { putDataDifuntoToUpdate } from "@/src/redux/slices/ventasSlice/difuntoReducer"
 import { deleteDifuntoAction } from "@/src/services/ventasServices/difuntoServices";
+import Busqueda from "../../Busqueda/Busqueda"
 
 export default function Listado({ data }) {
   const { width } = useScreenSize();
@@ -18,7 +18,6 @@ export default function Listado({ data }) {
   const isMobile = width <= 816;
   const pathname = usePathname();
   const isVentasPage = pathname === "/ventas";
-  console.log(data)
 
   const deleteCard = async (ev) => {
     if (isVentasPage) {
@@ -46,7 +45,9 @@ export default function Listado({ data }) {
   
   return (
     <div className={style.listado}>
-      {isMobile && <BarSearchMobile />}
+      {/* {isMobile && <BarSearchMobile />} */}
+      <Busqueda />
+      <div className={style.containerCards}>
       {!data ? (
         <h2>No hay registros</h2>
       ) : (
@@ -104,6 +105,7 @@ export default function Listado({ data }) {
           );
         })
       )}
+      </div>
     </div>
   )
 }

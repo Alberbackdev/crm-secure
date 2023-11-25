@@ -4,6 +4,7 @@
     height: 100%;
     background: #2B308B;
     width: 250px;
+    position: relative;
 }
 
 .contentSidebarMobile {
@@ -23,22 +24,21 @@
 }
 
 .MobileLink {
-    //border-bottom: 1px solid #2b308b8e;
-    //padding-bottom: 3px;
     color: #fff ;
     background: #2B308B;
     border-radius: 15px;
-    height: 35px;
-    width: 20%;
+    padding: 5px;
     text-align: center;
     align-content: center;
+    font-size: 15px;
 }
 
 .logoutBtn {
-    margin-top: 24rem;
     color: #2B308B;
     background: #FFF;
     border-radius: 15px;
     height: 35px;
-
+    width: 210px;
+    position: absolute;
+    bottom: 25px;
 }

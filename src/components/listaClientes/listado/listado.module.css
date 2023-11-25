@@ -1,11 +1,28 @@
 .listado {
-    height: 768px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    height: 450px;
     padding: 8px;
     margin-right: 41px;
     margin-top: 2rem;    
+}
+
+.containerCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    overflow: auto;
+    margin-top: 1rem;
+    height: 320px;
+}
+
+.containerCards::-webkit-scrollbar-thumb {
+    background: #2B308B;
+    border-radius: 5px;
+}
+
+.containerCards::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa; 
 }
 
 .card {
@@ -70,14 +87,15 @@
 /*Responsive Design*/
 
 @media only screen and (max-width: 816px) {
-    .listado {
+    .listado{
+        margin: auto;
+    }
+    .containerCards {
         display: flex;
         flex-direction: column; 
         align-items: center;    
         margin-right: 0;
-        margin-top: 0;   
-        margin-bottom: 4rem;       
-        height: auto;
+        height: 420px;
     }
 
     .card {

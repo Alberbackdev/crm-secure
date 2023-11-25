@@ -60,11 +60,15 @@
     .headerNamePage > button {
         border-radius: 25px;
         background: #2B308B;
-        padding: 12px;
+        padding: 10px;
         color: #fff;
-        width: 125px;        
+        width: 110px; 
+        margin-right: 6px;       
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+    }
+    .nameAndRole {
+        display: none;
     }
 }

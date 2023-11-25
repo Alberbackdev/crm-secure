@@ -52,7 +52,7 @@ function CambiarClave({setChangeComponent}) {
         </div>
         <div className={style.buttons}>       
           <button type="submit" className="btn-primary">
-            Guardar Contraseña
+            Guardar cambios
           </button>
           <button type="submit" className="btn-primary" onClick={() => setChangeComponent('PIN')}>
             Siguiente

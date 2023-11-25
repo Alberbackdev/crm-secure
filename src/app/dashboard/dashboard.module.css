@@ -1,11 +1,99 @@
-.userInfo {
-    color:  #27272a;
-    text-align: center;
-    font-size: 30px;
+.dashboard {   
+    height: 100%;
 }
 
-.logoutBtn {
-    background-color: rgb(30 58 138);
-    border-radius: 8px;
+.welcomeMessage {
+    display: flex;
+    justify-content: space-between;
+    padding:  10px;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 70%;
+    align-items: center;
+    box-shadow: -6px 2px 19px 0px rgba(0,0,0,0.75);
+    margin: 2rem auto;
+}
+
+.message{
+    width: 60%;
+}
+
+.titleCards {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.zonaInferior {
+    margin: auto;
+    width: 80%;
+}
+
+.cardsPages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.card {
     padding: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: -6px 2px 19px 0px rgba(0,0,0,0.75);
+    width: 300px;
+    margin-right: 1.5rem;
+    height: 240px;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    color: #2b308b;
+    font-size: 1.2rem;
+    font-weight: 500;
+    gap: .5rem;
+}
+
+.textCard {
+    width: 90%;
+    text-align: justify;
+    margin: 1rem 0;
+}
+.bottom{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem;
+}
+
+.bottom > p {
+    background: #CEDEFf;
+    border-radius: 20px;
+    padding: 2px;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 816px) {
+    .dashboard {
+        margin-bottom: 5rem;
+    }
+    .welcomeMessage {
+        width: 90%;
+        flex-direction: column;
+    }
+    .message{
+        width: 100%;
+    }
+    .titleCards {
+        font-size: 1.3rem;
+    }
+    .cardsPages{
+        flex-direction: column;
+        margin-bottom: .7rem;
+    }
+    .card { 
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
 }
